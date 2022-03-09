@@ -30,7 +30,7 @@ namespace SomerenUI
             if (panelName == "Dashboard")
             {
                 // hide all other panels
-                pnlStudents.Hide();
+                pnlMaster.Hide();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -41,39 +41,34 @@ namespace SomerenUI
                 // hide all other panels
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
-
                 // show students
-                pnlStudents.Show();
+                pnlMaster.Show();
 
                 try
                 {
+                    
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
                     List<Student> studentList = studService.GetStudents(); ;
 
                     // clear the listview before filling it again
-                    listViewStudents.Clear();
+                    listViewMaster.Clear();
 
-                    listViewStudents.GridLines = true;
-                    listViewStudents.View = View.Details;
+                    listViewMaster.GridLines = true;
+                    listViewMaster.View = View.Details;
 
                     //Add Column Header
 
-                    listViewStudents.Columns.Add("Student Id", 150);
-                    listViewStudents.Columns.Add("First Name", 150);
-                    listViewStudents.Columns.Add("Last Name", 150);
+                    listViewMaster.Columns.Add("Student Id", 150);
+                    listViewMaster.Columns.Add("First Name", 150);
+                    listViewMaster.Columns.Add("Last Name", 150);
 
                     foreach (Student s in studentList)
                     {
                         ListViewItem liId = new ListViewItem(Convert.ToString(s.Number));
-                        ListViewItem liFirstName = new ListViewItem(s.FirstName);
-                        ListViewItem liLastName = new ListViewItem(s.LastName);
-
-                        listViewStudents.Items.Add(liId);
-                        listViewStudents.Items.Add(liFirstName);
-                        listViewStudents.Items.Add(liLastName);
-                        
-                        
+                        liId.SubItems.Add(s.FirstName);
+                        liId.SubItems.Add(s.LastName);
+                        listViewMaster.Items.Add(liId);                        
                     }
                     
                 }
@@ -85,12 +80,11 @@ namespace SomerenUI
             else if (panelName == "Teachers")
             {
                 // hide all other panels
-                pnlStudents.Hide();
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
 
                 // show dashboard
-                pnlTeachers.Show();
+                pnlMaster.Show();
             }
         }
 
