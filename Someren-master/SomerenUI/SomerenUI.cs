@@ -54,11 +54,28 @@ namespace SomerenUI
                     // clear the listview before filling it again
                     listViewStudents.Clear();
 
+                    listViewStudents.GridLines = true;
+                    listViewStudents.View = View.Details;
+
+                    //Add Column Header
+
+                    listViewStudents.Columns.Add("Student Id", 150);
+                    listViewStudents.Columns.Add("First Name", 150);
+                    listViewStudents.Columns.Add("Last Name", 150);
+
                     foreach (Student s in studentList)
                     {
-                        ListViewItem li = new ListViewItem(s.Name);
-                        listViewStudents.Items.Add(li);
+                        ListViewItem liId = new ListViewItem(Convert.ToString(s.Number));
+                        ListViewItem liFirstName = new ListViewItem(s.FirstName);
+                        ListViewItem liLastName = new ListViewItem(s.LastName);
+
+                        listViewStudents.Items.Add(liId);
+                        listViewStudents.Items.Add(liFirstName);
+                        listViewStudents.Items.Add(liLastName);
+                        
+                        
                     }
+                    
                 }
                 catch (Exception e)
                 {
@@ -84,7 +101,7 @@ namespace SomerenUI
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            //
         }
 
         private void imgDashboard_Click(object sender, EventArgs e)
@@ -95,6 +112,16 @@ namespace SomerenUI
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Students");
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Lecturers");
+        }
+
+        private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //
         }
     }
 }
