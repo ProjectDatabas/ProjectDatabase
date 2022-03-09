@@ -65,6 +65,16 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the students: " + e.Message);
                 }
             }
+            else if (panelName == "Teachers")
+            {
+                // hide all other panels
+                pnlStudents.Hide();
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+
+                // show dashboard
+                pnlTeachers.Show();
+            }
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -95,6 +105,11 @@ namespace SomerenUI
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Students");
+        }
+
+        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Teachers");
         }
     }
 }
