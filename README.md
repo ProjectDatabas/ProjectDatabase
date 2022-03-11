@@ -1,4 +1,10 @@
 # ProjectDatabase
+
+# Github Repo Link:
+https://github.com/ProjectDatabas/ProjectDatabase
+
+We hebben u overigens ook een invite gestuurd om de github repo in te mogen
+
 -- Week 1
   
     Opdracht Rolverdeling:
