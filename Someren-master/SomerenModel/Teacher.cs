@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenModel
 {
@@ -13,12 +9,12 @@ namespace SomerenModel
         public bool Supervisor { get; set; }
         public int Number { get; set; } // LecturerNumber, e.g. 47198
 
-        public Teacher(int teacher_ID, bool supervisor, int room_ID, string name)
+        public Teacher(int number , string name, bool supervisor, int roomID)
         {
-            Number = teacher_ID;
-            Supervisor = supervisor;
-            RoomID = room_ID;
+            Number = number;
             Name = name;
+            Supervisor = supervisor;
+            RoomID = roomID;
         }
     }
 }

@@ -1,14 +1,8 @@
-﻿using SomerenLogic;
+﻿using System;
+using SomerenLogic;
 using SomerenModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace SomerenUI
 {
@@ -38,6 +32,8 @@ namespace SomerenUI
             }
             else if (panelName == "Students")
             {
+                headerLabel.Text = "Students";
+
                 // hide all other panels
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
@@ -46,7 +42,6 @@ namespace SomerenUI
 
                 try
                 {
-                    
                     // fill the students listview within the students panel with a list of students
                     StudentService studService = new StudentService(); ;
                     List<Student> studentList = studService.GetStudents(); ;
@@ -68,9 +63,9 @@ namespace SomerenUI
                         ListViewItem liId = new ListViewItem(Convert.ToString(s.Number));
                         liId.SubItems.Add(s.FirstName);
                         liId.SubItems.Add(s.LastName);
-                        listViewMaster.Items.Add(liId);                        
+                        listViewMaster.Items.Add(liId);
                     }
-                    
+
                 }
                 catch (Exception e)
                 {
@@ -79,12 +74,47 @@ namespace SomerenUI
             }
             else if (panelName == "Teachers")
             {
+                headerLabel.Text = "Teachers";
+
                 // hide all other panels
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
 
                 // show dashboard
                 pnlMaster.Show();
+                try 
+                {
+                    // fill the students listview within the students panel with a list of students
+                    TeacherService lecturerService = new TeacherService(); ;
+                    List<Teacher> teachers = lecturerService.GetAllTeachers(); ;
+
+                    // clear the listview before filling it again
+                    listViewMaster.Clear();
+
+                    listViewMaster.GridLines = true;
+                    listViewMaster.View = View.Details;
+
+                    //Add Column Header
+
+                    listViewMaster.Columns.Add("Teacher ID", 150);
+                    listViewMaster.Columns.Add("Supervisor", 150);
+                    listViewMaster.Columns.Add("Name", 150);
+                    listViewMaster.Columns.Add("Room ID", 150);
+
+                    foreach (Teacher t in teachers)
+                    {
+                        ListViewItem listViewItem = new ListViewItem(Convert.ToString(t.Number));
+                        listViewItem.SubItems.Add(Convert.ToString((t.Supervisor)));
+                        listViewItem.SubItems.Add(t.Name);
+                        listViewItem.SubItems.Add(Convert.ToString(t.RoomID));
+
+                        listViewMaster.Items.Add(listViewItem);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the Teachers: " + e.Message);
+                }
             }
         }
 
@@ -118,7 +148,7 @@ namespace SomerenUI
             showPanel("Students");
         }
 
-        private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void teachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Teachers");
         }
