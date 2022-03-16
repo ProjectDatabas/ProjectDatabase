@@ -25,6 +25,7 @@ namespace SomerenUI
             {
                 // hide all other panels
                 pnlMaster.Hide();
+                pnlDrinks.Hide();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -37,6 +38,8 @@ namespace SomerenUI
                 // hide all other panels
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
+                pnlDrinks.Hide();
+
                 // show students
                 pnlMaster.Show();
 
@@ -79,10 +82,11 @@ namespace SomerenUI
                 // hide all other panels
                 pnlDashboard.Hide();
                 imgDashboard.Hide();
+                pnlDrinks.Hide();
 
                 // show dashboard
                 pnlMaster.Show();
-                try 
+                try
                 {
                     // fill the students listview within the students panel with a list of students
                     TeacherService lecturerService = new TeacherService(); ;
@@ -118,6 +122,75 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the Teachers: " + e.Message);
                 }
             }
+            else if (panelName == "Drinks")
+            {
+                headerLabel.Text = "Drinks";
+
+                // hide all other panels
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+                pnlMaster.Hide();
+
+                // show dashboard
+                pnlDrinks.Show();
+
+                try
+                {
+                    //students
+                    // fill the students listview within the students panel with a list of students
+                    StudentService studService = new StudentService();
+                    List<Student> studentList = studService.GetStudents();
+
+                    // clear the listview before filling it again
+                    StudentListView.Clear();
+
+                    StudentListView.GridLines = true;
+                    StudentListView.View = View.Details;
+                    StudentListView.FullRowSelect = true;
+
+                    //Add Column Header
+                    StudentListView.Columns.Add("Student ID", 150);
+                    StudentListView.Columns.Add("Student Name", 150);
+
+                    foreach (Student s in studentList)
+                    {
+                        ListViewItem liId = new ListViewItem(Convert.ToString(s.Number));
+                        liId.SubItems.Add(s.FullName);
+                        StudentListView.Items.Add(liId);
+                    }
+
+                    //drinks
+                    // clear the listview before filling it again
+                    DrinksListView.Clear();
+
+                    DrinksListView.GridLines = true;
+                    DrinksListView.View = View.Details;
+                    DrinksListView.FullRowSelect = true;
+
+                    //Add Column Header
+                    DrinksListView.Columns.Add("Drink ID", 150);
+                    DrinksListView.Columns.Add("Drink Name", 150);
+                    DrinksListView.Columns.Add("Alcoholic", 150);
+
+                    DrinksService drinkService = new DrinksService();
+                    List<Drinks> drinksList = drinkService.GetDrinks();
+
+                    foreach (Drinks d in drinksList)
+                    {
+                        ListViewItem liId = new ListViewItem(Convert.ToString(d.DrinkId));
+                        liId.SubItems.Add(d.DrinkName);
+                        liId.SubItems.Add(Convert.ToString(d.IsAlcoholic));
+                        //liId.SubItems.Add(d.IsAlcoholic);
+                        DrinksListView.Items.Add(liId);
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the Drinks: " + e.Message);
+                }
+            }
+
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,6 +226,45 @@ namespace SomerenUI
         private void teachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Teachers");
+        }
+
+        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Drinks");
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        //Ordering drinks
+        private int IndexOfStudent;
+        private int IndexOfDrink;
+
+        private void OrderButton_Click(object sender, EventArgs e)
+        {
+            StudentService studService = new StudentService();
+            List<Student> studentList = studService.GetStudents();
+
+            DrinksService drinkService = new DrinksService();
+            List<Drinks> drinksList = drinkService.GetDrinks();
+
+            
+
+
+            MessageBox.Show($"{IndexOfDrink} {IndexOfStudent}");
+            //MessageBox.Show($"Drink ordered succesfully \n {studentList[IndexOfStudent].FullName} {drinksList[IndexOfDrink].DrinkName}");
+        }
+
+        private void DrinksListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void StudentListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
