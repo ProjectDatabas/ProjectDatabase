@@ -250,21 +250,45 @@ namespace SomerenUI
             DrinksService drinkService = new DrinksService();
             List<Drinks> drinksList = drinkService.GetDrinks();
 
+
+            
             
 
-
-            MessageBox.Show($"{IndexOfDrink} {IndexOfStudent}");
-            //MessageBox.Show($"Drink ordered succesfully \n {studentList[IndexOfStudent].FullName} {drinksList[IndexOfDrink].DrinkName}");
+            MessageBox.Show($"Drink ordered succesfully \n{studentList[IndexOfStudent].FullName} ({drinksList[IndexOfDrink].DrinkName})");
         }
 
         private void DrinksListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if (DrinksListView.SelectedItems.Count == 1)
+            {
+                for (int i = 0; i < DrinksListView.Items.Count; i++)
+                {
+                    if (this.DrinksListView.Items[i].Selected)
+                    {
+                        IndexOfDrink = i;
+                    }
+                }
+            }
+
+
         }
 
         private void StudentListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (StudentListView.SelectedItems.Count == 1)
+            {
+                for (int i = 0; i < StudentListView.Items.Count; i++)
+                {
+                    if (this.StudentListView.Items[i].Selected)
+                    {
+                        IndexOfStudent = i;
+                    }
+                }
+            }
+            else if (StudentListView.SelectedItems.Count == 2)
+            {
+                MessageBox.Show("Can't select multiple students");
+            }
         }
     }
 }
