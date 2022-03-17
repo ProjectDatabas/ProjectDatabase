@@ -175,13 +175,16 @@ namespace SomerenUI
                     DrinksService drinkService = new DrinksService();
                     List<Drinks> drinksList = drinkService.GetDrinks();
 
+                    int I = 0;
                     foreach (Drinks d in drinksList)
                     {
                         ListViewItem liId = new ListViewItem(Convert.ToString(d.DrinkId));
                         liId.SubItems.Add(d.DrinkName);
                         liId.SubItems.Add(Convert.ToString(d.IsAlcoholic));
                         //liId.SubItems.Add(d.IsAlcoholic);
+                        liId.Tag = I;
                         DrinksListView.Items.Add(liId);
+                        I++;
                     }
 
                 }
@@ -239,22 +242,16 @@ namespace SomerenUI
         }
 
         //Ordering drinks
-        private int IndexOfStudent;
-        private int IndexOfDrink;
+        private List<int> IndexOfStudent = new List<int>();
+        private List<int> IndexOfDrink = new List<int>();
 
         private void OrderButton_Click(object sender, EventArgs e)
         {
-            StudentService studService = new StudentService();
-            List<Student> studentList = studService.GetStudents();
-
-            DrinksService drinkService = new DrinksService();
-            List<Drinks> drinksList = drinkService.GetDrinks();
+            OrderService OD = new OrderService();
 
 
             
-            
-
-            MessageBox.Show($"Drink ordered succesfully \n{studentList[IndexOfStudent].FullName} ({drinksList[IndexOfDrink].DrinkName})");
+            MessageBox.Show("Drink(s) ordered succesfully");
         }
 
         private void DrinksListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -263,15 +260,25 @@ namespace SomerenUI
             {
                 for (int i = 0; i < DrinksListView.Items.Count; i++)
                 {
-                    if (this.DrinksListView.Items[i].Selected)
+                    MessageBox.Show($"{i}");
+                    int indexBier = (int)DrinksListView.Items.IndexOfKey("Bier");
+                    int indexRodeWijn = (int)DrinksListView.Items.IndexOfKey("Rode Wijn");
+
+                    switch (i)
                     {
-                        IndexOfDrink = i;
+                        case 0:
+
+                            break;
+                        default:
+                            MessageBox.Show("Nothing happened");
+                            break;
                     }
+
                 }
+
             }
-
-
         }
+        
 
         private void StudentListView_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -281,7 +288,7 @@ namespace SomerenUI
                 {
                     if (this.StudentListView.Items[i].Selected)
                     {
-                        IndexOfStudent = i;
+                        MessageBox.Show($"{i}");
                     }
                 }
             }
