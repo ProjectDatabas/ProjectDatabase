@@ -178,6 +178,7 @@
             this.listViewMaster.Size = new System.Drawing.Size(766, 307);
             this.listViewMaster.TabIndex = 5;
             this.listViewMaster.UseCompatibleStateImageBehavior = false;
+            this.listViewMaster.SelectedIndexChanged += new System.EventHandler(this.listViewMaster_SelectedIndexChanged);
             // 
             // columnHeader4
             // 

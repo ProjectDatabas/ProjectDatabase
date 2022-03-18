@@ -154,5 +154,10 @@ namespace SomerenUI
         {
             showPanel("Teachers");
         }
+
+        private void listViewMaster_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
