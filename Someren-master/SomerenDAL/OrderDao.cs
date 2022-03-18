@@ -32,15 +32,24 @@ namespace SomerenDAL
             return orders;
         }
 
-        public void AddOrder(Order order)
+        public void SendOrder(Order order)
         {
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            sqlParameters[0].Value = ("@OrderId", order.OrderId);
-            sqlParameters[1].Value = ("@StudentId", order.StudentId);
+            SqlParameter[] sqlParameters = { new SqlParameter("@StudentId", SqlDbType.Int) { Value = order.StudentId }, 
+                new SqlParameter("@DrinkId", SqlDbType.Int) { Value = order.DrinksIds[0] } };
 
-            ExecuteEditQuery("INSERT INTO receipt (OrderId, StudentId)" +
-                "VALUES (@OrderId, @StudentId);" +
-                "SELECT SCOPE_IDENTITY();", sqlParameters);
+
+            try
+            {
+                ExecuteEditQuery("INSERT INTO [Order] (StudentId, DrinkId)" +
+                    "VALUES (@StudentId, @DrinkId);" +
+                    "SELECT SCOPE_IDENTITY();", sqlParameters);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Something went wrong with saving to the database. " + e.Message);
+            }
+            
+
         }
     }
 }

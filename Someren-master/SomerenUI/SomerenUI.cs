@@ -168,23 +168,21 @@ namespace SomerenUI
                     DrinksListView.FullRowSelect = true;
 
                     //Add Column Header
-                    DrinksListView.Columns.Add("Drink ID", 150);
-                    DrinksListView.Columns.Add("Drink Name", 150);
-                    DrinksListView.Columns.Add("Alcoholic", 150);
+                    DrinksListView.Columns.Add("Drink ID", 100);
+                    DrinksListView.Columns.Add("Drink Name", 100);
+                    DrinksListView.Columns.Add("Drink Price", 100);
+                    DrinksListView.Columns.Add("Drink Stock", 100);
 
                     DrinksService drinkService = new DrinksService();
                     List<Drinks> drinksList = drinkService.GetDrinks();
 
-                    int I = 0;
                     foreach (Drinks d in drinksList)
                     {
                         ListViewItem liId = new ListViewItem(Convert.ToString(d.DrinkId));
                         liId.SubItems.Add(d.DrinkName);
-                        liId.SubItems.Add(Convert.ToString(d.IsAlcoholic));
-                        //liId.SubItems.Add(d.IsAlcoholic);
-                        liId.Tag = I;
+                        liId.SubItems.Add(Convert.ToString(d.DrinkPrice));
+                        liId.SubItems.Add(Convert.ToString(d.DrinkStock));
                         DrinksListView.Items.Add(liId);
-                        I++;
                     }
 
                 }
@@ -238,44 +236,69 @@ namespace SomerenUI
 
         private void label1_Click_1(object sender, EventArgs e)
         {
-
+            //
         }
 
         //Ordering drinks
-        private List<int> IndexOfStudent = new List<int>();
-        private List<int> IndexOfDrink = new List<int>();
+        private OrderService OD = new OrderService();
 
         private void OrderButton_Click(object sender, EventArgs e)
         {
-            OrderService OD = new OrderService();
+            Order order = new Order();
+            order.StudentId = OD.student;
+            order.DrinksIds = OD.drinksIds;
 
-
-            
             MessageBox.Show("Drink(s) ordered succesfully");
+            OD.SendOrder(order);
         }
 
         private void DrinksListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        { 
+            //if (DrinksListView.SelectedItems.Count > 1)
+            //{
+            //    for (int i = 0; i < DrinksListView.Items.Count; i++)
+            //    {
+            //        if (this.DrinksListView.Items[i].Selected)
+            //        {
+            //            switch (i)
+            //            {
+            //                case 0:
+            //                    OD.drinksIds.Add((int)DrinkIds.Bier);
+            //                    break;
+            //                case 1:
+            //                    OD.drinksIds.Add((int)DrinkIds.RodeWijn);
+            //                    break;
+            //                case 2:
+            //                    OD.drinksIds.Add((int)DrinkIds.WitteWijn);
+            //                    break;
+            //                case 3:
+            //                    OD.drinksIds.Add((int)DrinkIds.Shotje);
+            //                    break;
+            //                case 4:
+            //                    OD.drinksIds.Add((int)DrinkIds.Fanta);
+            //                    break;
+            //                case 5:
+            //                    OD.drinksIds.Add((int)DrinkIds.Cola);
+            //                    break;
+            //                case 6:
+            //                    OD.drinksIds.Add((int)DrinkIds.SevenUp);
+            //                    break;
+            //                case 7:
+            //                    OD.drinksIds.Add((int)DrinkIds.IceTea);
+            //                    break;
+            //            }
+            //        }                    
+            //    }
+            //}
             if (DrinksListView.SelectedItems.Count == 1)
             {
                 for (int i = 0; i < DrinksListView.Items.Count; i++)
                 {
-                    MessageBox.Show($"{i}");
-                    int indexBier = (int)DrinksListView.Items.IndexOfKey("Bier");
-                    int indexRodeWijn = (int)DrinksListView.Items.IndexOfKey("Rode Wijn");
-
-                    switch (i)
+                    if (this.DrinksListView.Items[i].Selected)
                     {
-                        case 0:
-
-                            break;
-                        default:
-                            MessageBox.Show("Nothing happened");
-                            break;
+                        OD.drinksIds.Add(i+1);
                     }
-
                 }
-
             }
         }
         
@@ -288,7 +311,14 @@ namespace SomerenUI
                 {
                     if (this.StudentListView.Items[i].Selected)
                     {
-                        MessageBox.Show($"{i}");
+                        if (i == 0)
+                        {
+                            OD.student = 679691;
+                        }
+                        else if (i == 1)
+                        {
+                            OD.student = 684651;
+                        }
                     }
                 }
             }

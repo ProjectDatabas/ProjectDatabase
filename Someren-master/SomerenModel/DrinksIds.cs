@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SomerenModel
 {
-    public class Order
+    public enum DrinkIds
     {
-        public int OrderId { get; set; }
-        public int StudentId { get; set; }
-        public List<int> DrinksIds { get; set;}
+        Bier, RodeWijn, WitteWijn, Shotje, Fanta, Cola, SevenUp, IceTea
     }
 }
