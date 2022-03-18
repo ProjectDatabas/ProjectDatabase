@@ -159,7 +159,16 @@ namespace SomerenUI
                         listViewItem.SubItems.Add(d.DrinksName);
                         listViewItem.SubItems.Add(d.DrinksPrice.ToString());
                         listViewItem.SubItems.Add(d.Stock.ToString());
-                        listViewItem.SubItems.Add(d.IsSufficientStock.ToString());
+                        if (!d.IsSufficientStock)
+                        {
+                            listViewItem.SubItems.Add("Stock nearly depleted");
+                        }
+                        else
+                        {
+                            listViewItem.SubItems.Add("Stock sufficient");
+                        }
+
+                        
 
                         listViewMaster.Items.Add(listViewItem);
                     }
