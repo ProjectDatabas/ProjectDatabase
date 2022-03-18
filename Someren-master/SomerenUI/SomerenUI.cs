@@ -421,13 +421,13 @@ namespace SomerenUI
 
         private void changeStockButton_Click(object sender, EventArgs e)
         {
-            if (changeStockTextBox.Text == "")
+            if (string.IsNullOrWhiteSpace(changeStockTextBox.Text))
             {
                 MessageBox.Show("No stock change filled in...");
+                changeStockButton.Enabled = false;
             }
             else
             {
-
                 DrinkService drinkService = new DrinkService();
                 int stockChange = Convert.ToInt32(changeStockTextBox.Text);
                 drinkService.ChangeStock(ItemID, stockChange);

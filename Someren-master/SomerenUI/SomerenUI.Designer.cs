@@ -225,6 +225,7 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.listViewMaster.FullRowSelect = true;
             this.listViewMaster.HideSelection = false;
             this.listViewMaster.Location = new System.Drawing.Point(16, 42);
             this.listViewMaster.Name = "listViewMaster";
