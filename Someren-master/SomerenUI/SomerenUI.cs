@@ -454,7 +454,6 @@ namespace SomerenUI
             ChangeStockRadioButton.Hide();
             ChangeDrinkNameRadioButton.Hide();
         }
-        
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
         {
