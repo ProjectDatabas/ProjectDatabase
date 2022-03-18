@@ -15,7 +15,12 @@ namespace SomerenLogic
 
         public void ChangeStock(int itemID, int stockChange)
         {
-            drinkDAO.UpdateDrink(itemID, stockChange);
+            drinkDAO.UpdateDrinkStock(itemID, stockChange);
+        }
+
+        public void ChangeDrinkName(int itemID, string newDrinkName)
+        {
+            drinkDAO.UpdateDrinkName(itemID, newDrinkName);
         }
     }
 }
