@@ -43,13 +43,21 @@ namespace SomerenDAL
                 ExecuteEditQuery("INSERT INTO [Order] (StudentId, DrinkId)" +
                     "VALUES (@StudentId, @DrinkId);" +
                     "SELECT SCOPE_IDENTITY();", sqlParameters);
+
+
+                string queryUpdateStockDown = "UPDATE Drinks SET StockAmount -= @stockChange WHERE DrinksId = @itemID";
+                SqlParameter[] sqlParametersStockDown = { new SqlParameter("@stockChange", SqlDbType.Int) { Value = 1 }, new SqlParameter("@itemID", SqlDbType.Int) { Value = order.DrinksIds[0] } };
+                ExecuteEditQuery(queryUpdateStockDown, sqlParametersStockDown);
+
+
+                string queryUpdateNrSold = "UPDATE Drinks SET NrOfDrinksSold += @soldChange WHERE DrinksId = @itemID";
+                SqlParameter[] sqlParametersNrSold = { new SqlParameter("@soldChange", SqlDbType.Int) { Value = 1 }, new SqlParameter("@itemID", SqlDbType.Int) { Value = order.DrinksIds[0] } };
+                ExecuteEditQuery(queryUpdateNrSold, sqlParametersNrSold);
             }
             catch (Exception e)
             {
                 throw new Exception("Something went wrong with saving to the database. " + e.Message);
             }
-
-
         }
     }
 }
