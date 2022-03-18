@@ -82,10 +82,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SomerenDAL\SomerenDAL.csproj">
-      <Project>{5c8bda73-f134-4af6-bb41-dbe88eba2615}</Project>
-      <Name>SomerenDAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SomerenLogic\SomerenLogic.csproj">
       <Project>{715fc326-1104-4e49-8df2-a36e0458067d}</Project>
       <Name>SomerenLogic</Name>
