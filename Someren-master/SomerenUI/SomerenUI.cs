@@ -163,15 +163,6 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the Stock: " + e.Message);
                 }
             }
-        }
-
-        private void HideAllPanelsAndComponents()
-        {
-            pnlDashboard.Hide();
-            imgDashboard.Hide();
-            pnlMaster.Hide();
-            changeStockTextBox.Hide();
-            ChangeStockButton.Hide();
             else if (panelName == "Drinks")
             {
                 headerLabel.Text = "Drinks";
@@ -243,6 +234,14 @@ namespace SomerenUI
             }
         }
 
+        private void HideAllPanelsAndComponents()
+        {
+            pnlDashboard.Hide();
+            imgDashboard.Hide();
+            pnlMaster.Hide();
+            changeStockTextBox.Hide();
+            ChangeStockButton.Hide();
+        }
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //
