@@ -39,9 +39,13 @@
             this.lecturersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlMaster = new System.Windows.Forms.Panel();
+            this.changeStockTextBox = new System.Windows.Forms.TextBox();
+            this.changeStockButton = new System.Windows.Forms.Button();
             this.listViewMaster = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,17 +53,16 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.headerLabel = new System.Windows.Forms.Label();
             this.pnlDrinks = new System.Windows.Forms.Panel();
+            this.OrderButton = new System.Windows.Forms.Button();
+            this.DrinksListView = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StudentListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.DrinksListView = new System.Windows.Forms.ListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.OrderButton = new System.Windows.Forms.Button();
-            this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -87,7 +90,8 @@
             this.lecturersToolStripMenuItem,
             this.activitiesToolStripMenuItem,
             this.roomsToolStripMenuItem,
-            this.drinksToolStripMenuItem});
+            this.drinksToolStripMenuItem,
+            this.stockToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
@@ -151,6 +155,20 @@
             this.roomsToolStripMenuItem.Size = new System.Drawing.Size(56, 22);
             this.roomsToolStripMenuItem.Text = "Rooms";
             // 
+            // drinksToolStripMenuItem
+            // 
+            this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
+            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(52, 22);
+            this.drinksToolStripMenuItem.Text = "Drinks";
+            this.drinksToolStripMenuItem.Click += new System.EventHandler(this.drinksToolStripMenuItem_Click_1);
+            // 
+            // stockToolStripMenuItem
+            // 
+            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(48, 22);
+            this.stockToolStripMenuItem.Text = "Stock";
+            this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
+            // 
             // pnlDashboard
             // 
             this.pnlDashboard.Controls.Add(this.lbl_Dashboard);
@@ -172,6 +190,8 @@
             // 
             // pnlMaster
             // 
+            this.pnlMaster.Controls.Add(this.changeStockTextBox);
+            this.pnlMaster.Controls.Add(this.changeStockButton);
             this.pnlMaster.Controls.Add(this.listViewMaster);
             this.pnlMaster.Controls.Add(this.pictureBox1);
             this.pnlMaster.Controls.Add(this.headerLabel);
@@ -179,6 +199,25 @@
             this.pnlMaster.Name = "pnlMaster";
             this.pnlMaster.Size = new System.Drawing.Size(938, 466);
             this.pnlMaster.TabIndex = 8;
+            // 
+            // changeStockTextBox
+            // 
+            this.changeStockTextBox.Location = new System.Drawing.Point(28, 367);
+            this.changeStockTextBox.Name = "changeStockTextBox";
+            this.changeStockTextBox.Size = new System.Drawing.Size(89, 20);
+            this.changeStockTextBox.TabIndex = 7;
+            this.changeStockTextBox.TextChanged += new System.EventHandler(this.changeStockTextBox_TextChanged);
+            // 
+            // changeStockButton
+            // 
+            this.changeStockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.changeStockButton.Location = new System.Drawing.Point(27, 393);
+            this.changeStockButton.Name = "changeStockButton";
+            this.changeStockButton.Size = new System.Drawing.Size(90, 46);
+            this.changeStockButton.TabIndex = 6;
+            this.changeStockButton.Text = "Change Stock";
+            this.changeStockButton.UseVisualStyleBackColor = true;
+            this.changeStockButton.Click += new System.EventHandler(this.changeStockButton_Click);
             // 
             // listViewMaster
             // 
@@ -237,6 +276,42 @@
             this.pnlDrinks.Size = new System.Drawing.Size(938, 466);
             this.pnlDrinks.TabIndex = 9;
             // 
+            // OrderButton
+            // 
+            this.OrderButton.Location = new System.Drawing.Point(440, 380);
+            this.OrderButton.Name = "OrderButton";
+            this.OrderButton.Size = new System.Drawing.Size(263, 57);
+            this.OrderButton.TabIndex = 7;
+            this.OrderButton.Text = "Order";
+            this.OrderButton.UseVisualStyleBackColor = true;
+            this.OrderButton.Click += new System.EventHandler(this.OrderButton_Click_1);
+            // 
+            // DrinksListView
+            // 
+            this.DrinksListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+            this.DrinksListView.HideSelection = false;
+            this.DrinksListView.Location = new System.Drawing.Point(332, 42);
+            this.DrinksListView.Name = "DrinksListView";
+            this.DrinksListView.Size = new System.Drawing.Size(450, 307);
+            this.DrinksListView.TabIndex = 6;
+            this.DrinksListView.UseCompatibleStateImageBehavior = false;
+            this.DrinksListView.SelectedIndexChanged += new System.EventHandler(this.DrinksListView_SelectedIndexChanged_1);
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "ID";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Name";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Date of Birth";
+            // 
             // StudentListView
             // 
             this.StudentListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -273,58 +348,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Drinks";
             // 
-            // DrinksListView
-            // 
-            this.DrinksListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9});
-            this.DrinksListView.HideSelection = false;
-            this.DrinksListView.Location = new System.Drawing.Point(332, 42);
-            this.DrinksListView.Name = "DrinksListView";
-            this.DrinksListView.Size = new System.Drawing.Size(450, 307);
-            this.DrinksListView.TabIndex = 6;
-            this.DrinksListView.UseCompatibleStateImageBehavior = false;
-            this.DrinksListView.SelectedIndexChanged += new System.EventHandler(this.DrinksListView_SelectedIndexChanged_1);
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "ID";
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Name";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Date of Birth";
-            // 
-            // OrderButton
-            // 
-            this.OrderButton.Location = new System.Drawing.Point(440, 380);
-            this.OrderButton.Name = "OrderButton";
-            this.OrderButton.Size = new System.Drawing.Size(263, 57);
-            this.OrderButton.TabIndex = 7;
-            this.OrderButton.Text = "Order";
-            this.OrderButton.UseVisualStyleBackColor = true;
-            this.OrderButton.Click += new System.EventHandler(this.OrderButton_Click_1);
-            // 
-            // drinksToolStripMenuItem
-            // 
-            this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
-            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(52, 22);
-            this.drinksToolStripMenuItem.Text = "Drinks";
-            this.drinksToolStripMenuItem.Click += new System.EventHandler(this.drinksToolStripMenuItem_Click_1);
-            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
-            this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlMaster);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlDrinks);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SomerenUI";
@@ -379,6 +411,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ToolStripMenuItem drinksToolStripMenuItem;
+        private System.Windows.Forms.TextBox changeStockTextBox;
+        private System.Windows.Forms.Button changeStockButton;
+        private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
     }
 }
 

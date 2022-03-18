@@ -145,7 +145,7 @@ namespace SomerenUI
                     listViewMaster.Columns.Add("Drink", 150);
                     listViewMaster.Columns.Add("Drink Price", 150);
                     listViewMaster.Columns.Add("Stock Amount", 150);
-                    listViewMaster.Columns.Add("Sufficiënt", 150);
+                    listViewMaster.Columns.Add("Sufficient", 150);
 
                     foreach (Drink d in drinks)
                     {
@@ -238,8 +238,8 @@ namespace SomerenUI
             imgDashboard.Hide();
             pnlMaster.Hide();
             pnlDrinks.Hide();
-            //changeStockTextBox.Hide();
-            //ChangeStockButton.Hide();
+            changeStockTextBox.Hide();
+            changeStockButton.Hide();
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -264,16 +264,16 @@ namespace SomerenUI
 
         private void listViewMaster_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //for (int i = 0; i < listViewMaster.Items.Count; i++)
-            //{
-            //    if (this.listViewMaster.Items[i].Selected && headerLabel.Text == "Stock")
-            //    {
-            //        ChangeStockButton.Enabled = false;
-            //        ItemID = i + 1;
-            //        changeStockTextBox.Show();
-            //        ChangeStockButton.Show();
-            //    }
-            //}
+            for (int i = 0; i < listViewMaster.Items.Count; i++)
+            {
+                if (this.listViewMaster.Items[i].Selected && headerLabel.Text == "Stock")
+                {
+                    changeStockButton.Enabled = false;
+                    ItemID = i + 1;
+                    changeStockTextBox.Show();
+                    changeStockButton.Show();
+                }
+            }
         }
 
         private void imgDashboard_Click(object sender, EventArgs e)
@@ -290,33 +290,11 @@ namespace SomerenUI
         {
             showPanel("Teachers");
         }
-
         private void stockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Stock");
         }
 
-        private void ChangeStockButton_Click(object sender, EventArgs e)
-        {
-            //if (changeStockTextBox.Text == "")
-            //{
-            //    MessageBox.Show("No stock change filled in...");
-            //}
-            //else
-            //{
-
-            //    DrinkService drinkService = new DrinkService();
-            //    int stockChange = Convert.ToInt32(changeStockTextBox.Text);
-            //    drinkService.ChangeStock(ItemID, stockChange);
-            //    this.Close();
-            //    MessageBox.Show($"Succesfully edited:");
-            //}
-        }
-
-        private void changestocktextbox_textchanged(object sender, EventArgs e)
-        {
-            //changestockbutton.enabled = true;
-        }
         private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Drinks");
@@ -434,6 +412,38 @@ namespace SomerenUI
 
             MessageBox.Show("Drink(s) ordered succesfully");
             OD.SendOrder(order);
+        }
+
+        private void changeStockTextBox_TextChanged(object sender, EventArgs e)
+        {
+            changeStockButton.Enabled = true;
+        }
+
+        private void changeStockButton_Click(object sender, EventArgs e)
+        {
+            if (changeStockTextBox.Text == "")
+            {
+                MessageBox.Show("No stock change filled in...");
+            }
+            else
+            {
+
+                DrinkService drinkService = new DrinkService();
+                int stockChange = Convert.ToInt32(changeStockTextBox.Text);
+                drinkService.ChangeStock(ItemID, stockChange);
+                
+                changeStockTextBox.Clear();
+                changeStockTextBox.Hide();
+
+                changeStockButton.Enabled=false;
+                changeStockButton.Hide();
+
+                listViewMaster.Clear();
+                showPanel("Stock");
+
+                MessageBox.Show($"Succesfully edited");
+
+            }
         }
     }
 }
