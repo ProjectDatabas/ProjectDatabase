@@ -37,13 +37,24 @@ namespace SomerenDAL
             return drinks;
         }
 
-        public void UpdateDrink(int itemID, int stockChange)
+        public void UpdateDrinkStock(int itemID, int stockChange)
         {
             string query = "UPDATE Drinks SET StockAmount = @stockChange WHERE DrinksId = @itemID";
 
             SqlCommand cmd = new SqlCommand();
 
             SqlParameter[] sqlParameters = { new SqlParameter("@stockChange", SqlDbType.Int) { Value = stockChange }, new SqlParameter("@itemID", SqlDbType.Int) { Value = itemID } };
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void UpdateDrinkName(int itemID, string newDrinkName)
+        {
+            string query = "UPDATE Drinks SET DrinksName = @newDrinkName WHERE DrinksId = @itemID";
+
+            SqlCommand cmd = new SqlCommand();
+
+            SqlParameter[] sqlParameters = { new SqlParameter("@newDrinkName", SqlDbType.NVarChar) { Value = newDrinkName }, new SqlParameter("@itemID", SqlDbType.Int) { Value = itemID } };
 
             ExecuteEditQuery(query, sqlParameters);
         }
