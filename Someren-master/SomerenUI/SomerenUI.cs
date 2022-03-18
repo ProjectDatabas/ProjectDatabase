@@ -367,7 +367,6 @@ namespace SomerenUI
                     if (this.DrinksListView.Items[i].Selected)
                     {
                         OD.drinksIds.Add(i + 1);
-                        MessageBox.Show($"{i}");
                     }
                 }
             }
@@ -379,12 +378,36 @@ namespace SomerenUI
             order.StudentId = OD.student;
             order.DrinksIds = OD.drinksIds;
 
-            MessageBox.Show("Drink(s) ordered succesfully");
+            int orderPrice = 0;
+
+            foreach (int id in OD.drinksIds)
+            {
+                orderPrice += GetPrice(id);
+            }
+
+
+            MessageBox.Show($"Drink(s) ordered succesfully\nPrice {orderPrice} tickets");
             OD.SendOrder(order);
 
             StudentListView.Clear();
             DrinksListView.Clear();
+            OD.drinksIds.Clear();
             showPanel("Drinks");
+        }
+
+        private int GetPrice(int id)
+        {
+            DrinksService drinkService = new DrinksService();
+            List<Drinks> drinks = drinkService.GetDrinks();
+
+            foreach(Drinks D in drinks)
+            {
+                if (id == D.DrinkId)
+                {
+                    return D.DrinkPrice;
+                }
+            }
+            return 0;
         }
 
         private void changeStockTextBox_TextChanged(object sender, EventArgs e)
