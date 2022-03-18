@@ -354,14 +354,8 @@ namespace SomerenUI
                 {
                     if (this.StudentListView.Items[i].Selected)
                     {
-                        if (i == 0)
-                        {
-                            OD.student = 679691;
-                        }
-                        else if (i == 1)
-                        {
-                            OD.student = 684651;
-                        }
+                        ListViewItem item = StudentListView.Items[i];
+                        OD.student = Convert.ToInt32(item.SubItems[0].Text);
                     }
                 }
             }
