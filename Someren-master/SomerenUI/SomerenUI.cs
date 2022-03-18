@@ -23,7 +23,7 @@ namespace SomerenUI
         {
             if (panelName == "Dashboard")
             {
-                // hide all other panels
+                // hide all other panels and components
                 HideAllPanelsAndComponents();
 
                 // show dashboard
@@ -34,8 +34,10 @@ namespace SomerenUI
             {
                 headerLabel.Text = "Students";
 
-                // hide all other panels
+                // hide all other panels and components
                 HideAllPanelsAndComponents();
+
+
                 // show students
                 pnlMaster.Show();
 
@@ -77,6 +79,7 @@ namespace SomerenUI
 
                 // hide all other panels
                 HideAllPanelsAndComponents();
+
 
                 // show dashboard
                 pnlMaster.Show();
@@ -169,6 +172,75 @@ namespace SomerenUI
             pnlMaster.Hide();
             changeStockTextBox.Hide();
             ChangeStockButton.Hide();
+            else if (panelName == "Drinks")
+            {
+                headerLabel.Text = "Drinks";
+
+                // hide all other panels
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+                pnlMaster.Hide();
+
+                // show dashboard
+                pnlDrinks.Show();
+
+                try
+                {
+                    //students
+                    // fill the students listview within the students panel with a list of students
+                    StudentService studService = new StudentService();
+                    List<Student> studentList = studService.GetStudents();
+
+                    // clear the listview before filling it again
+                    StudentListView.Clear();
+
+                    StudentListView.GridLines = true;
+                    StudentListView.View = View.Details;
+                    StudentListView.FullRowSelect = true;
+
+                    //Add Column Header
+                    StudentListView.Columns.Add("Student ID", 150);
+                    StudentListView.Columns.Add("Student Name", 150);
+
+                    foreach (Student s in studentList)
+                    {
+                        ListViewItem liId = new ListViewItem(Convert.ToString(s.Number));
+                        liId.SubItems.Add(s.FullName);
+                        StudentListView.Items.Add(liId);
+                    }
+
+                    //drinks
+                    // clear the listview before filling it again
+                    DrinksListView.Clear();
+
+                    DrinksListView.GridLines = true;
+                    DrinksListView.View = View.Details;
+                    DrinksListView.FullRowSelect = true;
+
+                    //Add Column Header
+                    DrinksListView.Columns.Add("Drink ID", 100);
+                    DrinksListView.Columns.Add("Drink Name", 100);
+                    DrinksListView.Columns.Add("Drink Price", 100);
+                    DrinksListView.Columns.Add("Drink Stock", 100);
+
+                    DrinksService drinkService = new DrinksService();
+                    List<Drinks> drinksList = drinkService.GetDrinks();
+
+                    foreach (Drinks d in drinksList)
+                    {
+                        ListViewItem liId = new ListViewItem(Convert.ToString(d.DrinkId));
+                        liId.SubItems.Add(d.DrinkName);
+                        liId.SubItems.Add(Convert.ToString(d.DrinkPrice));
+                        liId.SubItems.Add(Convert.ToString(d.DrinkStock));
+                        DrinksListView.Items.Add(liId);
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the Drinks: " + e.Message);
+                }
+            }
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -245,6 +317,105 @@ namespace SomerenUI
         private void changeStockTextBox_TextChanged(object sender, EventArgs e)
         {
             ChangeStockButton.Enabled = true;
+        }
+        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Drinks");
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+            //
+        }
+
+        //Ordering drinks
+        private OrderService OD = new OrderService();
+
+        private void OrderButton_Click(object sender, EventArgs e)
+        {
+            Order order = new Order();
+            order.StudentId = OD.student;
+            order.DrinksIds = OD.drinksIds;
+
+            MessageBox.Show("Drink(s) ordered succesfully");
+            OD.SendOrder(order);
+        }
+
+        private void DrinksListView_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            //if (DrinksListView.SelectedItems.Count > 1)
+            //{
+            //    for (int i = 0; i < DrinksListView.Items.Count; i++)
+            //    {
+            //        if (this.DrinksListView.Items[i].Selected)
+            //        {
+            //            switch (i)
+            //            {
+            //                case 0:
+            //                    OD.drinksIds.Add((int)DrinkIds.Bier);
+            //                    break;
+            //                case 1:
+            //                    OD.drinksIds.Add((int)DrinkIds.RodeWijn);
+            //                    break;
+            //                case 2:
+            //                    OD.drinksIds.Add((int)DrinkIds.WitteWijn);
+            //                    break;
+            //                case 3:
+            //                    OD.drinksIds.Add((int)DrinkIds.Shotje);
+            //                    break;
+            //                case 4:
+            //                    OD.drinksIds.Add((int)DrinkIds.Fanta);
+            //                    break;
+            //                case 5:
+            //                    OD.drinksIds.Add((int)DrinkIds.Cola);
+            //                    break;
+            //                case 6:
+            //                    OD.drinksIds.Add((int)DrinkIds.SevenUp);
+            //                    break;
+            //                case 7:
+            //                    OD.drinksIds.Add((int)DrinkIds.IceTea);
+            //                    break;
+            //            }
+            //        }                    
+            //    }
+            //}
+            if (DrinksListView.SelectedItems.Count == 1)
+            {
+                for (int i = 0; i < DrinksListView.Items.Count; i++)
+                {
+                    if (this.DrinksListView.Items[i].Selected)
+                    {
+                        OD.drinksIds.Add(i+1);
+                    }
+                }
+            }
+        }
+        
+
+        private void StudentListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (StudentListView.SelectedItems.Count == 1)
+            {
+                for (int i = 0; i < StudentListView.Items.Count; i++)
+                {
+                    if (this.StudentListView.Items[i].Selected)
+                    {
+                        if (i == 0)
+                        {
+                            OD.student = 679691;
+                        }
+                        else if (i == 1)
+                        {
+                            OD.student = 684651;
+                        }
+                    }
+                }
+            }
+            else if (StudentListView.SelectedItems.Count == 2)
+            {
+                MessageBox.Show("Can't select multiple students");
+            }
+
         }
     }
 }
