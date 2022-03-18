@@ -9,6 +9,7 @@ namespace SomerenUI
     public partial class SomerenUI : Form
     {
         private int ItemID = 0;
+
         public SomerenUI()
         {
             InitializeComponent();
@@ -36,7 +37,6 @@ namespace SomerenUI
 
                 // hide all other panels and components
                 HideAllPanelsAndComponents();
-
 
                 // show students
                 pnlMaster.Show();
@@ -159,7 +159,16 @@ namespace SomerenUI
                         listViewItem.SubItems.Add(d.DrinksName);
                         listViewItem.SubItems.Add(d.DrinksPrice.ToString());
                         listViewItem.SubItems.Add(d.Stock.ToString());
-                        listViewItem.SubItems.Add(d.IsSufficientStock.ToString());
+                        if (!d.IsSufficientStock)
+                        {
+                            listViewItem.SubItems.Add("Stock nearly depleted");
+                        }
+                        else
+                        {
+                            listViewItem.SubItems.Add("Stock sufficient");
+                        }
+
+                        
 
                         listViewMaster.Items.Add(listViewItem);
                     }
@@ -284,7 +293,9 @@ namespace SomerenUI
                         ChangeStockRadioButton.Enabled = false;
                         ChangeDrinkNameRadioButton.Enabled = false;
 
-                        ItemID = i + 1;
+                        ListViewItem item = listViewMaster.Items[i];
+                        ItemID = Convert.ToInt32(item.SubItems[0].Text);
+
                         ChangeStockTextBox.Show();
                         ChangeStockButton.Show();
                     }
@@ -293,7 +304,9 @@ namespace SomerenUI
                         ChangeStockRadioButton.Enabled = false;
                         ChangeDrinkNameRadioButton.Enabled = false;
 
-                        ItemID = i + 1;
+                        ListViewItem item = listViewMaster.Items[i];
+                        ItemID = Convert.ToInt32(item.SubItems[0].Text);
+
                         ChangeStockTextBox.Show();
                         ChangeDrinkNameButton.Show();
                     }

@@ -12,7 +12,7 @@ namespace SomerenDAL
     {
         public List<Drink> GetAll()
         {
-            string query = "SELECT DrinksId, DrinksName, DrinksPrice, StockAmount FROM Drinks";
+            string query = "SELECT DrinksId, DrinksName, DrinksPrice, StockAmount FROM Drinks WHERE StockAmount > 1 AND DrinksPrice > 1 ORDER BY StockAmount, DrinksPrice, NrOfDrinksSold";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
