@@ -11,7 +11,7 @@ namespace SomerenDAL
     {
         public List<Order> GetAllOrders()
         {
-            string query = "SELECT * FROM receipt";
+            string query = "SELECT *OrderId, StudentId, DrinksId FROM receipt";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
