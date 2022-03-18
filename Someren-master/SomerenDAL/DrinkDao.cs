@@ -17,6 +17,13 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public List<Drink> GetAllDrinkIds()
+        {
+            string query = "SELECT DrinksId, DrinksName, DrinksPrice, StockAmount FROM Drinks";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
         private List<Drink> ReadTables(DataTable dataTable)
         {
             List<Drink> drinks = new List<Drink>();
@@ -35,6 +42,34 @@ namespace SomerenDAL
 
             // return the filled list
             return drinks;
+        }
+
+        public void DeleteDrink(int itemID)
+        {
+            string orderQuery = "DELETE FROM [Order] WHERE DrinkId = @itemId";
+
+            SqlParameter[] orderSQLParameters = { new SqlParameter("@itemId", SqlDbType.Int) { Value = itemID } };
+
+            ExecuteEditQuery(orderQuery, orderSQLParameters);
+
+            string drinkQuery = "DELETE FROM Drinks WHERE DrinksId = @itemId";
+
+            SqlParameter[] drinkSQLParameters = { new SqlParameter("@itemId", SqlDbType.Int) { Value = itemID } };
+
+            ExecuteEditQuery(drinkQuery, drinkSQLParameters);
+
+        }
+
+        public void AddNewDrink(string newDrinkName, int newDrinkPrice, int newDrinkStock)
+        {
+            
+            string query = "INSERT INTO Drinks(DrinksName, DrinksPrice, StockAmount) VALUES(@newDrinkName, @newDrinkPrice, @newDrinkStock); ";
+
+            SqlParameter[] sqlParameters = { new SqlParameter("@newDrinkName", SqlDbType.NVarChar) { Value = newDrinkName }, 
+                                             new SqlParameter("@newDrinkPrice", SqlDbType.Int) { Value = newDrinkPrice },
+                                             new SqlParameter("@newDrinkStock", SqlDbType.Int) { Value = newDrinkStock } };
+
+            ExecuteEditQuery(query, sqlParameters);
         }
 
         public void UpdateDrinkPrice(int itemID, int newDrinkPrice)

@@ -125,14 +125,15 @@ namespace SomerenUI
 
                 // hide all other panels
                 HideAllPanelsAndComponents();
-                // show students
+
+                // show Stock
                 pnlMaster.Show();
 
                 EnableAndShowStockRadioButtons();
 
                 try
                 {
-                    // fill the teacher listview within the teachers panel with a list of teachers
+                    // fill the drink listview within the stock panel with a list of drinks
                     DrinkService drinkService = new DrinkService(); ;
                     List<Drink> drinks = drinkService.GetAllDrinks(); ;
 
@@ -163,9 +164,6 @@ namespace SomerenUI
                         {
                             listViewItem.SubItems.Add("Stock sufficient");
                         }
-
-
-
                         listViewMaster.Items.Add(listViewItem);
                     }
                 }
@@ -248,10 +246,22 @@ namespace SomerenUI
             ChangePriceRadioButton.Enabled = true;
             ChangeStockRadioButton.Enabled = true;
             ChangeDrinkNameRadioButton.Enabled = true;
+            DeleteDrinkRadioButton.Enabled = true;
 
             ChangePriceRadioButton.Show();
             ChangeStockRadioButton.Show();
             ChangeDrinkNameRadioButton.Show();
+            DeleteDrinkRadioButton.Show();
+
+            NameNewDrinkTextBox.Show();
+            PriceNewDrinkTextBox.Show();
+            StockNewDrinkTextBox.Show();
+
+            NameNewDrinkLabel.Show();
+            PriceNewDrinkLabel.Show();
+            StockNewDrinkLabel.Show();
+
+            AddNewDrinkButton.Show();
         }
 
         private void HideAllPanelsAndComponents()
@@ -289,7 +299,7 @@ namespace SomerenUI
             {
                 if (this.listViewMaster.Items[i].Selected && headerLabel.Text == "Stock")
                 {
-                    if (!ChangeStockRadioButton.Checked && !ChangeDrinkNameRadioButton.Checked && !ChangePriceRadioButton.Checked)
+                    if (!ChangeStockRadioButton.Checked && !ChangeDrinkNameRadioButton.Checked && !ChangePriceRadioButton.Checked && !DeleteDrinkRadioButton.Checked)
                     {
                         listViewMaster.Clear();
                         showPanel("Stock");
@@ -297,9 +307,7 @@ namespace SomerenUI
                     }
                     if (ChangeStockRadioButton.Checked)
                     {
-                        ChangeStockRadioButton.Enabled = false;
-                        ChangeDrinkNameRadioButton.Enabled = false;
-                        ChangePriceRadioButton.Enabled = false;
+                        DisableRadioButtons();
 
                         ListViewItem item = listViewMaster.Items[i];
                         ItemID = Convert.ToInt32(item.SubItems[0].Text);
@@ -309,9 +317,7 @@ namespace SomerenUI
                     }
                     else if (ChangeDrinkNameRadioButton.Checked)
                     {
-                        ChangeStockRadioButton.Enabled = false;
-                        ChangeDrinkNameRadioButton.Enabled = false;
-                        ChangePriceRadioButton.Enabled = false;
+                        DisableRadioButtons();
 
                         ListViewItem item = listViewMaster.Items[i];
                         ItemID = Convert.ToInt32(item.SubItems[0].Text);
@@ -321,9 +327,17 @@ namespace SomerenUI
                     }
                     else if (ChangePriceRadioButton.Checked)
                     {
-                        ChangeStockRadioButton.Enabled = false;
-                        ChangeDrinkNameRadioButton.Enabled = false;
-                        ChangePriceRadioButton.Enabled = false; 
+                        DisableRadioButtons();
+
+                        ListViewItem item = listViewMaster.Items[i];
+                        ItemID = Convert.ToInt32(item.SubItems[0].Text);
+
+                        ChangeStockTextBox.Show();
+                        ChangePriceButton.Show();
+                    }
+                    else if (DeleteDrinkRadioButton.Checked)
+                    {
+                        DisableRadioButtons();
 
                         ListViewItem item = listViewMaster.Items[i];
                         ItemID = Convert.ToInt32(item.SubItems[0].Text);
@@ -333,6 +347,14 @@ namespace SomerenUI
                     }
                 }
             }
+        }
+
+        private void DisableRadioButtons()
+        {
+            ChangeStockRadioButton.Enabled = false;
+            ChangeDrinkNameRadioButton.Enabled = false;
+            ChangePriceRadioButton.Enabled = false;
+            DeleteDrinkRadioButton.Enabled = false;
         }
 
         private void imgDashboard_Click(object sender, EventArgs e)
@@ -500,7 +522,7 @@ namespace SomerenUI
             {
                 DrinkService drinkService = new DrinkService();
                 int newDrinkPrice = Convert.ToInt32(ChangeStockTextBox.Text);
-                drinkService.ChangeDrinkName(ItemID, newDrinkPrice);
+                drinkService.ChangeDrinkPrice(ItemID, newDrinkPrice);
 
                 StockTextBoxAndButtonReset();
 
@@ -519,16 +541,36 @@ namespace SomerenUI
             ChangeDrinkNameButton.Enabled = false;
             ChangeDrinkNameButton.Hide();
 
+            ChangePriceButton.Enabled = false;
+            ChangePriceButton.Hide();
+
             ChangeStockButton.Enabled = false;
             ChangeStockButton.Hide();
 
             ChangeStockRadioButton.Checked = false;
             ChangeDrinkNameRadioButton.Checked = false;
             ChangePriceRadioButton.Checked = false;
+            DeleteDrinkRadioButton.Checked = false;
 
             ChangeStockRadioButton.Hide();
             ChangeDrinkNameRadioButton.Hide();
             ChangePriceRadioButton.Hide();
+
+            NameNewDrinkTextBox.Clear();
+            PriceNewDrinkTextBox.Clear();
+            StockNewDrinkTextBox.Clear();
+
+            NameNewDrinkTextBox.Hide();
+            PriceNewDrinkTextBox.Hide();
+            StockNewDrinkTextBox.Hide();
+
+            NameNewDrinkLabel.Hide();
+            PriceNewDrinkLabel.Hide();
+            StockNewDrinkLabel.Hide();
+
+            AddNewDrinkButton.Hide();
+
+            
         }
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
@@ -539,6 +581,58 @@ namespace SomerenUI
             StudentListView.Clear();
             DrinksListView.Clear();
             showPanel("Drinks");
+        }
+
+        private void AddNewDrinkButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(NameNewDrinkTextBox.Text) && string.IsNullOrWhiteSpace(PriceNewDrinkTextBox.Text) && string.IsNullOrWhiteSpace(StockNewDrinkTextBox.Text))
+            {
+                MessageBox.Show("Please fill in all fields before pressing 'Add New Drink'");
+                
+                StockTextBoxAndButtonReset();
+
+                showPanel("Stock");
+            }
+            else
+            {
+
+                string newDrinkName = NameNewDrinkTextBox.Text;
+                int newDrinkPrice = Convert.ToInt32(PriceNewDrinkTextBox.Text);
+                int newDrinkStock = Convert.ToInt32(StockNewDrinkTextBox.Text);
+
+                DrinkService drinkService = new DrinkService();
+                drinkService.AddNewDrink(newDrinkName, newDrinkPrice, newDrinkStock);
+
+                StockTextBoxAndButtonReset();
+
+                listViewMaster.Clear();
+                showPanel("Stock");
+
+                MessageBox.Show($"Succesfully Added!");
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            DrinkService drinkService = new DrinkService();
+            drinkService.SetToTen();
+
+            StockTextBoxAndButtonReset();
+            listViewMaster.Clear();
+            showPanel($"{headerLabel.Text}");
+        }
+
+        private void DeleteDrinkButton_Click(object sender, EventArgs e)
+        {
+            DrinkService drinkService = new DrinkService();
+            drinkService.DeleteDrink(ItemID);
+
+            StockTextBoxAndButtonReset();
+
+            listViewMaster.Clear();
+            showPanel("Stock");
+
+            MessageBox.Show($"Succesfully deleted!");
         }
     }
 }

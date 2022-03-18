@@ -27,10 +27,10 @@ https://github.com/ProjectDatabas/ProjectDatabase
 
     Opdracht Rolverdeling:
 
-    Variant A Lecturers:
+    Variant A Drink supplies:
     Luke Huisman
 
-    Variant B Student:
+    Variant B Cash Register:
     Jesper van der Ven
 
 --
