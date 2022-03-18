@@ -43,13 +43,13 @@
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlMaster = new System.Windows.Forms.Panel();
+            this.ChangeStockButton = new System.Windows.Forms.Button();
             this.listViewMaster = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlMasterPictureBox = new System.Windows.Forms.PictureBox();
             this.headerLabel = new System.Windows.Forms.Label();
-            this.ChangeStockButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -177,19 +177,31 @@
             this.pnlMaster.Size = new System.Drawing.Size(938, 466);
             this.pnlMaster.TabIndex = 8;
             // 
+            // ChangeStockButton
+            // 
+            this.ChangeStockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ChangeStockButton.Location = new System.Drawing.Point(30, 379);
+            this.ChangeStockButton.Name = "ChangeStockButton";
+            this.ChangeStockButton.Size = new System.Drawing.Size(87, 52);
+            this.ChangeStockButton.TabIndex = 6;
+            this.ChangeStockButton.Text = "Change Stock";
+            this.ChangeStockButton.UseVisualStyleBackColor = true;
+            this.ChangeStockButton.Click += new System.EventHandler(this.ChangeStockButton_Click);
+            // 
             // listViewMaster
             // 
             this.listViewMaster.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.listViewMaster.FullRowSelect = true;
             this.listViewMaster.HideSelection = false;
-            this.listViewMaster.HoverSelection = true;
             this.listViewMaster.Location = new System.Drawing.Point(16, 42);
             this.listViewMaster.Name = "listViewMaster";
             this.listViewMaster.Size = new System.Drawing.Size(766, 307);
             this.listViewMaster.TabIndex = 5;
             this.listViewMaster.UseCompatibleStateImageBehavior = false;
+            this.listViewMaster.SelectedIndexChanged += new System.EventHandler(this.listViewMaster_SelectedIndexChanged);
             // 
             // columnHeader4
             // 
@@ -222,16 +234,6 @@
             this.headerLabel.Size = new System.Drawing.Size(107, 29);
             this.headerLabel.TabIndex = 3;
             this.headerLabel.Text = "Students";
-            // 
-            // ChangeStockButton
-            // 
-            this.ChangeStockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.ChangeStockButton.Location = new System.Drawing.Point(30, 379);
-            this.ChangeStockButton.Name = "ChangeStockButton";
-            this.ChangeStockButton.Size = new System.Drawing.Size(87, 52);
-            this.ChangeStockButton.TabIndex = 6;
-            this.ChangeStockButton.Text = "Change Stock";
-            this.ChangeStockButton.UseVisualStyleBackColor = true;
             // 
             // SomerenUI
             // 

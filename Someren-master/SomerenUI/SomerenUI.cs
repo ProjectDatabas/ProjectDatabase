@@ -191,13 +191,12 @@ namespace SomerenUI
 
         private void listViewMaster_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.listViewMaster.SelectedItems.Count == 0) 
-            { 
-                return; 
-            }
-            else
-            { 
-                MessageBox.Show("blah");
+            for (int i = 0; i < listViewMaster.Items.Count; i++)
+            {
+                if (this.listViewMaster.Items[i].Selected && headerLabel.Text == "Stock")
+                {
+                    ChangeStockButton.Show();
+                }
             }
         }
 
@@ -219,6 +218,11 @@ namespace SomerenUI
         private void stockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Stock");
+        }
+
+        private void ChangeStockButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
