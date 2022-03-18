@@ -50,15 +50,5 @@
     <Compile Include="StudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SomerenDAL\SomerenDAL.csproj">
-      <Project>{5c8bda73-f134-4af6-bb41-dbe88eba2615}</Project>
-      <Name>SomerenDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SomerenModel\SomerenModel.csproj">
-      <Project>{90a9ed02-35d3-4d84-80e4-458bc835c722}</Project>
-      <Name>SomerenModel</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
