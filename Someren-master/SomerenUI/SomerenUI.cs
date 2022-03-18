@@ -386,8 +386,7 @@ namespace SomerenUI
                         ListViewItem item = listViewMaster.Items[i];
                         ItemID = Convert.ToInt32(item.SubItems[0].Text);
 
-                        ChangeStockTextBox.Show();
-                        ChangePriceButton.Show();
+                        DeleteDrinkButton.Show();
                     }
                 }
             }
@@ -599,6 +598,7 @@ namespace SomerenUI
             ChangeStockRadioButton.Hide();
             ChangeDrinkNameRadioButton.Hide();
             ChangePriceRadioButton.Hide();
+            DeleteDrinkRadioButton.Hide();
 
             NameNewDrinkTextBox.Clear();
             PriceNewDrinkTextBox.Clear();
@@ -613,8 +613,7 @@ namespace SomerenUI
             StockNewDrinkLabel.Hide();
 
             AddNewDrinkButton.Hide();
-
-            
+            DeleteDrinkButton.Hide();            
         }
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
