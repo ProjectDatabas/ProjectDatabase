@@ -8,6 +8,7 @@ namespace SomerenUI
 {
     public partial class SomerenUI : Form
     {
+        private int ItemID = 0;
         public SomerenUI()
         {
             InitializeComponent();
@@ -166,6 +167,7 @@ namespace SomerenUI
             pnlDashboard.Hide();
             imgDashboard.Hide();
             pnlMaster.Hide();
+            changeStockTextBox.Hide();
             ChangeStockButton.Hide();
         }
 
@@ -195,6 +197,9 @@ namespace SomerenUI
             {
                 if (this.listViewMaster.Items[i].Selected && headerLabel.Text == "Stock")
                 {
+                    ChangeStockButton.Enabled = false;
+                    ItemID = i + 1;
+                    changeStockTextBox.Show();
                     ChangeStockButton.Show();
                 }
             }
@@ -222,7 +227,24 @@ namespace SomerenUI
 
         private void ChangeStockButton_Click(object sender, EventArgs e)
         {
+            if (changeStockTextBox.Text == "")
+            {
+                MessageBox.Show("No stock change filled in...");
+            }
+            else
+            {
+                
+                DrinkService drinkService = new DrinkService();
+                int stockChange = Convert.ToInt32(changeStockTextBox.Text);
+                drinkService.ChangeStock(ItemID, stockChange);
+                this.Close();
+                MessageBox.Show($"Succesfully edited:");
+            }
+        }
 
+        private void changeStockTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ChangeStockButton.Enabled = true;
         }
     }
 }

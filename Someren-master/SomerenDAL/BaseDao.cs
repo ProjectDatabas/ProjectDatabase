@@ -64,6 +64,7 @@ namespace SomerenDAL
             try
             {
                 command.Connection = OpenConnection();
+
                 command.CommandText = query;
                 command.Parameters.AddRange(sqlParameters);
                 adapter.InsertCommand = command;

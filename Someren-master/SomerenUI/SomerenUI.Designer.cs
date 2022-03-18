@@ -50,6 +50,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlMasterPictureBox = new System.Windows.Forms.PictureBox();
             this.headerLabel = new System.Windows.Forms.Label();
+            this.changeStockTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -168,6 +169,7 @@
             // 
             // pnlMaster
             // 
+            this.pnlMaster.Controls.Add(this.changeStockTextBox);
             this.pnlMaster.Controls.Add(this.ChangeStockButton);
             this.pnlMaster.Controls.Add(this.listViewMaster);
             this.pnlMaster.Controls.Add(this.pnlMasterPictureBox);
@@ -180,7 +182,7 @@
             // ChangeStockButton
             // 
             this.ChangeStockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.ChangeStockButton.Location = new System.Drawing.Point(30, 379);
+            this.ChangeStockButton.Location = new System.Drawing.Point(30, 389);
             this.ChangeStockButton.Name = "ChangeStockButton";
             this.ChangeStockButton.Size = new System.Drawing.Size(87, 52);
             this.ChangeStockButton.TabIndex = 6;
@@ -235,6 +237,14 @@
             this.headerLabel.TabIndex = 3;
             this.headerLabel.Text = "Students";
             // 
+            // changeStockTextBox
+            // 
+            this.changeStockTextBox.Location = new System.Drawing.Point(30, 363);
+            this.changeStockTextBox.Name = "changeStockTextBox";
+            this.changeStockTextBox.Size = new System.Drawing.Size(87, 20);
+            this.changeStockTextBox.TabIndex = 7;
+            this.changeStockTextBox.TextChanged += new System.EventHandler(this.changeStockTextBox_TextChanged);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,6 +295,7 @@
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
         private System.Windows.Forms.Button ChangeStockButton;
+        private System.Windows.Forms.TextBox changeStockTextBox;
     }
 }
 

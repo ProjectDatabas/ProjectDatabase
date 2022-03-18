@@ -12,5 +12,10 @@ namespace SomerenLogic
         {
             return drinkDAO.GetAll();
         }
+
+        public void ChangeStock(int itemID, int stockChange)
+        {
+            drinkDAO.UpdateDrink(itemID, stockChange);
+        }
     }
 }

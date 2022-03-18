@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace SomerenDAL
 {
@@ -34,6 +35,17 @@ namespace SomerenDAL
 
             // return the filled list
             return drinks;
+        }
+
+        public void UpdateDrink(int itemID, int stockChange)
+        {
+            string query = "UPDATE Drinks SET StockAmount = @stockChange WHERE DrinksId = @itemID";
+
+            SqlCommand cmd = new SqlCommand();
+
+            SqlParameter[] sqlParameters = { new SqlParameter("@stockChange", SqlDbType.Int) { Value = stockChange}, new SqlParameter("@itemID", SqlDbType.Int) { Value = itemID } };
+
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }
