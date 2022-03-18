@@ -7,10 +7,10 @@ namespace SomerenLogic
 {
     public class TeacherService
     {
-        private TeacherDAO LecturerDAO = new TeacherDAO();
+        private TeacherDAO teacherDao = new TeacherDAO();
         public List<Teacher> GetAllTeachers()
         {
-            return LecturerDAO.GetAll();
+            return teacherDao.GetAll();
         }
     }
 }

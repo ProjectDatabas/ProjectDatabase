@@ -20,11 +20,10 @@ namespace SomerenUI
 
         private void showPanel(string panelName)
         {
-
             if (panelName == "Dashboard")
             {
                 // hide all other panels
-                pnlMaster.Hide();
+                HideAllPanelsAndComponents();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -35,8 +34,7 @@ namespace SomerenUI
                 headerLabel.Text = "Students";
 
                 // hide all other panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
+                HideAllPanelsAndComponents();
                 // show students
                 pnlMaster.Show();
 
@@ -77,16 +75,15 @@ namespace SomerenUI
                 headerLabel.Text = "Teachers";
 
                 // hide all other panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
+                HideAllPanelsAndComponents();
 
                 // show dashboard
                 pnlMaster.Show();
-                try 
+                try
                 {
-                    // fill the students listview within the students panel with a list of students
-                    TeacherService lecturerService = new TeacherService(); ;
-                    List<Teacher> teachers = lecturerService.GetAllTeachers(); ;
+                    // fill the teacher listview within the teachers panel with a list of teachers
+                    TeacherService teacherService = new TeacherService(); ;
+                    List<Teacher> teachers = teacherService.GetAllTeachers(); ;
 
                     // clear the listview before filling it again
                     listViewMaster.Clear();
@@ -118,6 +115,58 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the Teachers: " + e.Message);
                 }
             }
+            else if (panelName == "Stock")
+            {
+                headerLabel.Text = "Stock";
+
+                // hide all other panels
+                HideAllPanelsAndComponents();
+                // show students
+                pnlMaster.Show();
+
+                try
+                {
+                    // fill the teacher listview within the teachers panel with a list of teachers
+                    DrinkService drinkService = new DrinkService(); ;
+                    List<Drink> drinks = drinkService.GetAllDrinks(); ;
+
+                    // clear the listview before filling it again
+                    listViewMaster.Clear();
+
+                    listViewMaster.GridLines = true;
+                    listViewMaster.View = View.Details;
+
+                    //Add Column Header
+                    listViewMaster.Columns.Add("DrinkId", 150);
+                    listViewMaster.Columns.Add("Drink", 150);
+                    listViewMaster.Columns.Add("Drink Price", 150);
+                    listViewMaster.Columns.Add("Stock Amount", 150);
+                    listViewMaster.Columns.Add("Sufficiënt", 150);
+
+                    foreach (Drink d in drinks)
+                    {
+                        ListViewItem listViewItem = new ListViewItem((d.DrinkId).ToString());
+                        listViewItem.SubItems.Add(d.DrinksName);
+                        listViewItem.SubItems.Add(d.DrinksPrice.ToString());
+                        listViewItem.SubItems.Add(d.Stock.ToString());
+                        listViewItem.SubItems.Add(d.IsSufficientStock.ToString());
+
+                        listViewMaster.Items.Add(listViewItem);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the Stock: " + e.Message);
+                }
+            }
+        }
+
+        private void HideAllPanelsAndComponents()
+        {
+            pnlDashboard.Hide();
+            imgDashboard.Hide();
+            pnlMaster.Hide();
+            ChangeStockButton.Hide();
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -140,6 +189,18 @@ namespace SomerenUI
             //
         }
 
+        private void listViewMaster_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listViewMaster.SelectedItems.Count == 0) 
+            { 
+                return; 
+            }
+            else
+            { 
+                MessageBox.Show("blah");
+            }
+        }
+
         private void imgDashboard_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
@@ -153,6 +214,11 @@ namespace SomerenUI
         private void teachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Teachers");
+        }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Stock");
         }
     }
 }

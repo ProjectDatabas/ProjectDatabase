@@ -39,6 +39,7 @@
             this.lecturersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlMaster = new System.Windows.Forms.Panel();
@@ -46,13 +47,14 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlMasterPictureBox = new System.Windows.Forms.PictureBox();
             this.headerLabel = new System.Windows.Forms.Label();
+            this.ChangeStockButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
             this.pnlMaster.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlMasterPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -73,7 +75,8 @@
             this.studentsToolStripMenuItem,
             this.lecturersToolStripMenuItem,
             this.activitiesToolStripMenuItem,
-            this.roomsToolStripMenuItem});
+            this.roomsToolStripMenuItem,
+            this.stockToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
@@ -137,6 +140,13 @@
             this.roomsToolStripMenuItem.Size = new System.Drawing.Size(56, 22);
             this.roomsToolStripMenuItem.Text = "Rooms";
             // 
+            // stockToolStripMenuItem
+            // 
+            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(48, 22);
+            this.stockToolStripMenuItem.Text = "Stock";
+            this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
+            // 
             // pnlDashboard
             // 
             this.pnlDashboard.Controls.Add(this.lbl_Dashboard);
@@ -158,8 +168,9 @@
             // 
             // pnlMaster
             // 
+            this.pnlMaster.Controls.Add(this.ChangeStockButton);
             this.pnlMaster.Controls.Add(this.listViewMaster);
-            this.pnlMaster.Controls.Add(this.pictureBox1);
+            this.pnlMaster.Controls.Add(this.pnlMasterPictureBox);
             this.pnlMaster.Controls.Add(this.headerLabel);
             this.pnlMaster.Location = new System.Drawing.Point(12, 27);
             this.pnlMaster.Name = "pnlMaster";
@@ -173,6 +184,7 @@
             this.columnHeader5,
             this.columnHeader6});
             this.listViewMaster.HideSelection = false;
+            this.listViewMaster.HoverSelection = true;
             this.listViewMaster.Location = new System.Drawing.Point(16, 42);
             this.listViewMaster.Name = "listViewMaster";
             this.listViewMaster.Size = new System.Drawing.Size(766, 307);
@@ -191,15 +203,15 @@
             // 
             this.columnHeader6.Text = "Date of Birth";
             // 
-            // pictureBox1
+            // pnlMasterPictureBox
             // 
-            this.pictureBox1.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(805, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 123);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pnlMasterPictureBox.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pnlMasterPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("pnlMasterPictureBox.InitialImage")));
+            this.pnlMasterPictureBox.Location = new System.Drawing.Point(805, 0);
+            this.pnlMasterPictureBox.Name = "pnlMasterPictureBox";
+            this.pnlMasterPictureBox.Size = new System.Drawing.Size(130, 123);
+            this.pnlMasterPictureBox.TabIndex = 0;
+            this.pnlMasterPictureBox.TabStop = false;
             // 
             // headerLabel
             // 
@@ -210,6 +222,16 @@
             this.headerLabel.Size = new System.Drawing.Size(107, 29);
             this.headerLabel.TabIndex = 3;
             this.headerLabel.Text = "Students";
+            // 
+            // ChangeStockButton
+            // 
+            this.ChangeStockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ChangeStockButton.Location = new System.Drawing.Point(30, 379);
+            this.ChangeStockButton.Name = "ChangeStockButton";
+            this.ChangeStockButton.Size = new System.Drawing.Size(87, 52);
+            this.ChangeStockButton.TabIndex = 6;
+            this.ChangeStockButton.Text = "Change Stock";
+            this.ChangeStockButton.UseVisualStyleBackColor = true;
             // 
             // SomerenUI
             // 
@@ -232,7 +254,7 @@
             this.pnlDashboard.PerformLayout();
             this.pnlMaster.ResumeLayout(false);
             this.pnlMaster.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlMasterPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,8 +279,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pnlMasterPictureBox;
         private System.Windows.Forms.Label headerLabel;
+        private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
+        private System.Windows.Forms.Button ChangeStockButton;
     }
 }
 
