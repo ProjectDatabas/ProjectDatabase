@@ -63,6 +63,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
+            this.ClearOrderButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -268,6 +269,7 @@
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Controls.Add(this.ClearOrderButton);
             this.pnlDrinks.Controls.Add(this.OrderButton);
             this.pnlDrinks.Controls.Add(this.DrinksListView);
             this.pnlDrinks.Controls.Add(this.StudentListView);
@@ -349,14 +351,24 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Drinks";
             // 
+            // ClearOrderButton
+            // 
+            this.ClearOrderButton.Location = new System.Drawing.Point(70, 380);
+            this.ClearOrderButton.Name = "ClearOrderButton";
+            this.ClearOrderButton.Size = new System.Drawing.Size(154, 57);
+            this.ClearOrderButton.TabIndex = 8;
+            this.ClearOrderButton.Text = "Clear Order";
+            this.ClearOrderButton.UseVisualStyleBackColor = true;
+            this.ClearOrderButton.Click += new System.EventHandler(this.ClearOrderButton_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
             this.Controls.Add(this.pnlMaster);
-            this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.pnlDrinks);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -415,6 +427,7 @@
         private System.Windows.Forms.TextBox changeStockTextBox;
         private System.Windows.Forms.Button changeStockButton;
         private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
+        private System.Windows.Forms.Button ClearOrderButton;
     }
 }
 

@@ -34,25 +34,25 @@ namespace SomerenDAL
 
         public void SendOrder(Order order)
         {
-            SqlParameter[] sqlParameters = { new SqlParameter("@StudentId", SqlDbType.Int) { Value = order.StudentId },
-                new SqlParameter("@DrinkId", SqlDbType.Int) { Value = order.DrinksIds[0] } };
-
 
             try
             {
-                ExecuteEditQuery("INSERT INTO [Order] (StudentId, DrinkId)" +
-                    "VALUES (@StudentId, @DrinkId);" +
-                    "SELECT SCOPE_IDENTITY();", sqlParameters);
+                for (int i = 0; i < order.DrinksIds.Count; i++)
+                {
+                    string queryInsertDrinks = "INSERT INTO [Order] (StudentId, DrinkId) VALUES (@StudentId, @DrinkId); SELECT SCOPE_IDENTITY();";
+                    SqlParameter[] sqlParameters = { new SqlParameter("@StudentId", SqlDbType.Int) { Value = order.StudentId }, new SqlParameter("@DrinkId", SqlDbType.Int) { Value = order.DrinksIds[i] } };
+                    ExecuteEditQuery(queryInsertDrinks, sqlParameters);
 
 
-                string queryUpdateStockDown = "UPDATE Drinks SET StockAmount -= @stockChange WHERE DrinksId = @itemID";
-                SqlParameter[] sqlParametersStockDown = { new SqlParameter("@stockChange", SqlDbType.Int) { Value = 1 }, new SqlParameter("@itemID", SqlDbType.Int) { Value = order.DrinksIds[0] } };
-                ExecuteEditQuery(queryUpdateStockDown, sqlParametersStockDown);
+                    string queryUpdateStockDown = "UPDATE Drinks SET StockAmount -= @stockChange WHERE DrinksId = @itemID";
+                    SqlParameter[] sqlParametersStockDown = { new SqlParameter("@stockChange", SqlDbType.Int) { Value = 1 }, new SqlParameter("@itemID", SqlDbType.Int) { Value = order.DrinksIds[i] } };
+                    ExecuteEditQuery(queryUpdateStockDown, sqlParametersStockDown);
 
 
-                string queryUpdateNrSold = "UPDATE Drinks SET NrOfDrinksSold += @soldChange WHERE DrinksId = @itemID";
-                SqlParameter[] sqlParametersNrSold = { new SqlParameter("@soldChange", SqlDbType.Int) { Value = 1 }, new SqlParameter("@itemID", SqlDbType.Int) { Value = order.DrinksIds[0] } };
-                ExecuteEditQuery(queryUpdateNrSold, sqlParametersNrSold);
+                    string queryUpdateNrSold = "UPDATE Drinks SET NrOfDrinksSold += @soldChange WHERE DrinksId = @itemID";
+                    SqlParameter[] sqlParametersNrSold = { new SqlParameter("@soldChange", SqlDbType.Int) { Value = 1 }, new SqlParameter("@itemID", SqlDbType.Int) { Value = order.DrinksIds[i] } };
+                    ExecuteEditQuery(queryUpdateNrSold, sqlParametersNrSold);
+                }
             }
             catch (Exception e)
             {

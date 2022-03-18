@@ -335,49 +335,14 @@ namespace SomerenUI
 
         private void DrinksListView_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            //if (DrinksListView.SelectedItems.Count > 1)
-            //{
-            //    for (int i = 0; i < DrinksListView.Items.Count; i++)
-            //    {
-            //        if (this.DrinksListView.Items[i].Selected)
-            //        {
-            //            switch (i)
-            //            {
-            //                case 0:
-            //                    OD.drinksIds.Add((int)DrinkIds.Bier);
-            //                    break;
-            //                case 1:
-            //                    OD.drinksIds.Add((int)DrinkIds.RodeWijn);
-            //                    break;
-            //                case 2:
-            //                    OD.drinksIds.Add((int)DrinkIds.WitteWijn);
-            //                    break;
-            //                case 3:
-            //                    OD.drinksIds.Add((int)DrinkIds.Shotje);
-            //                    break;
-            //                case 4:
-            //                    OD.drinksIds.Add((int)DrinkIds.Fanta);
-            //                    break;
-            //                case 5:
-            //                    OD.drinksIds.Add((int)DrinkIds.Cola);
-            //                    break;
-            //                case 6:
-            //                    OD.drinksIds.Add((int)DrinkIds.SevenUp);
-            //                    break;
-            //                case 7:
-            //                    OD.drinksIds.Add((int)DrinkIds.IceTea);
-            //                    break;
-            //            }
-            //        }                    
-            //    }
-            //}
-            if (DrinksListView.SelectedItems.Count == 1)
+            if (DrinksListView.SelectedItems.Count >= 1)
             {
                 for (int i = 0; i < DrinksListView.Items.Count; i++)
                 {
                     if (this.DrinksListView.Items[i].Selected)
                     {
                         OD.drinksIds.Add(i + 1);
+                        MessageBox.Show($"{i}");
                     }
                 }
             }
@@ -427,6 +392,16 @@ namespace SomerenUI
                 MessageBox.Show($"Succesfully edited");
 
             }
+        }
+
+        private void ClearOrderButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order Cleared Succesfully");
+
+            OD.drinksIds.Clear();
+            StudentListView.Clear();
+            DrinksListView.Clear();
+            showPanel("Drinks");
         }
     }
 }
