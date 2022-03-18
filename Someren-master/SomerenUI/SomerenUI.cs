@@ -391,6 +391,10 @@ namespace SomerenUI
 
             MessageBox.Show("Drink(s) ordered succesfully");
             OD.SendOrder(order);
+
+            StudentListView.Clear();
+            DrinksListView.Clear();
+            showPanel("Drinks");
         }
 
         private void changeStockTextBox_TextChanged(object sender, EventArgs e)
