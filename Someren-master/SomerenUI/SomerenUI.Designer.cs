@@ -59,6 +59,7 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OrderButton = new System.Windows.Forms.Button();
+            this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -85,7 +86,8 @@
             this.studentsToolStripMenuItem,
             this.lecturersToolStripMenuItem,
             this.activitiesToolStripMenuItem,
-            this.roomsToolStripMenuItem});
+            this.roomsToolStripMenuItem,
+            this.drinksToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
@@ -247,6 +249,7 @@
             this.StudentListView.Size = new System.Drawing.Size(280, 307);
             this.StudentListView.TabIndex = 5;
             this.StudentListView.UseCompatibleStateImageBehavior = false;
+            this.StudentListView.SelectedIndexChanged += new System.EventHandler(this.StudentListView_SelectedIndexChanged_1);
             // 
             // columnHeader1
             // 
@@ -282,6 +285,7 @@
             this.DrinksListView.Size = new System.Drawing.Size(450, 307);
             this.DrinksListView.TabIndex = 6;
             this.DrinksListView.UseCompatibleStateImageBehavior = false;
+            this.DrinksListView.SelectedIndexChanged += new System.EventHandler(this.DrinksListView_SelectedIndexChanged_1);
             // 
             // columnHeader7
             // 
@@ -303,6 +307,14 @@
             this.OrderButton.TabIndex = 7;
             this.OrderButton.Text = "Order";
             this.OrderButton.UseVisualStyleBackColor = true;
+            this.OrderButton.Click += new System.EventHandler(this.OrderButton_Click_1);
+            // 
+            // drinksToolStripMenuItem
+            // 
+            this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
+            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(52, 22);
+            this.drinksToolStripMenuItem.Text = "Drinks";
+            this.drinksToolStripMenuItem.Click += new System.EventHandler(this.drinksToolStripMenuItem_Click_1);
             // 
             // SomerenUI
             // 
@@ -366,6 +378,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ToolStripMenuItem drinksToolStripMenuItem;
     }
 }
 

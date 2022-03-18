@@ -168,9 +168,7 @@ namespace SomerenUI
                 headerLabel.Text = "Drinks";
 
                 // hide all other panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlMaster.Hide();
+                HideAllPanelsAndComponents();
 
                 // show dashboard
                 pnlDrinks.Show();
@@ -239,9 +237,11 @@ namespace SomerenUI
             pnlDashboard.Hide();
             imgDashboard.Hide();
             pnlMaster.Hide();
-            changeStockTextBox.Hide();
-            ChangeStockButton.Hide();
+            pnlDrinks.Hide();
+            //changeStockTextBox.Hide();
+            //ChangeStockButton.Hide();
         }
+
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //
@@ -264,16 +264,16 @@ namespace SomerenUI
 
         private void listViewMaster_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < listViewMaster.Items.Count; i++)
-            {
-                if (this.listViewMaster.Items[i].Selected && headerLabel.Text == "Stock")
-                {
-                    ChangeStockButton.Enabled = false;
-                    ItemID = i + 1;
-                    changeStockTextBox.Show();
-                    ChangeStockButton.Show();
-                }
-            }
+            //for (int i = 0; i < listViewMaster.Items.Count; i++)
+            //{
+            //    if (this.listViewMaster.Items[i].Selected && headerLabel.Text == "Stock")
+            //    {
+            //        ChangeStockButton.Enabled = false;
+            //        ItemID = i + 1;
+            //        changeStockTextBox.Show();
+            //        ChangeStockButton.Show();
+            //    }
+            //}
         }
 
         private void imgDashboard_Click(object sender, EventArgs e)
@@ -298,24 +298,24 @@ namespace SomerenUI
 
         private void ChangeStockButton_Click(object sender, EventArgs e)
         {
-            if (changeStockTextBox.Text == "")
-            {
-                MessageBox.Show("No stock change filled in...");
-            }
-            else
-            {
+            //if (changeStockTextBox.Text == "")
+            //{
+            //    MessageBox.Show("No stock change filled in...");
+            //}
+            //else
+            //{
 
-                DrinkService drinkService = new DrinkService();
-                int stockChange = Convert.ToInt32(changeStockTextBox.Text);
-                drinkService.ChangeStock(ItemID, stockChange);
-                this.Close();
-                MessageBox.Show($"Succesfully edited:");
-            }
+            //    DrinkService drinkService = new DrinkService();
+            //    int stockChange = Convert.ToInt32(changeStockTextBox.Text);
+            //    drinkService.ChangeStock(ItemID, stockChange);
+            //    this.Close();
+            //    MessageBox.Show($"Succesfully edited:");
+            //}
         }
 
-        private void changeStockTextBox_TextChanged(object sender, EventArgs e)
+        private void changestocktextbox_textchanged(object sender, EventArgs e)
         {
-            ChangeStockButton.Enabled = true;
+            //changestockbutton.enabled = true;
         }
         private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -327,20 +327,56 @@ namespace SomerenUI
             //
         }
 
-        //Ordering drinks
-        private OrderService OD = new OrderService();
-
         private void OrderButton_Click(object sender, EventArgs e)
         {
-            Order order = new Order();
-            order.StudentId = OD.student;
-            order.DrinksIds = OD.drinksIds;
-
-            MessageBox.Show("Drink(s) ordered succesfully");
-            OD.SendOrder(order);
+            //old
         }
 
         private void DrinksListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //old
+        }
+
+
+        private void StudentListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //old
+        }
+
+        private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            showPanel("Drinks");
+        }
+
+        //Ordering drinks
+        private OrderService OD = new OrderService();
+
+        private void StudentListView_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (StudentListView.SelectedItems.Count == 1)
+            {
+                for (int i = 0; i < StudentListView.Items.Count; i++)
+                {
+                    if (this.StudentListView.Items[i].Selected)
+                    {
+                        if (i == 0)
+                        {
+                            OD.student = 679691;
+                        }
+                        else if (i == 1)
+                        {
+                            OD.student = 684651;
+                        }
+                    }
+                }
+            }
+            else if (StudentListView.SelectedItems.Count == 2)
+            {
+                MessageBox.Show("Can't select multiple students");
+            }
+        }
+
+        private void DrinksListView_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             //if (DrinksListView.SelectedItems.Count > 1)
             //{
@@ -390,31 +426,14 @@ namespace SomerenUI
             }
         }
 
-
-        private void StudentListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void OrderButton_Click_1(object sender, EventArgs e)
         {
-            if (StudentListView.SelectedItems.Count == 1)
-            {
-                for (int i = 0; i < StudentListView.Items.Count; i++)
-                {
-                    if (this.StudentListView.Items[i].Selected)
-                    {
-                        if (i == 0)
-                        {
-                            OD.student = 679691;
-                        }
-                        else if (i == 1)
-                        {
-                            OD.student = 684651;
-                        }
-                    }
-                }
-            }
-            else if (StudentListView.SelectedItems.Count == 2)
-            {
-                MessageBox.Show("Can't select multiple students");
-            }
+            Order order = new Order();
+            order.StudentId = OD.student;
+            order.DrinksIds = OD.drinksIds;
 
+            MessageBox.Show("Drink(s) ordered succesfully");
+            OD.SendOrder(order);
         }
     }
 }
