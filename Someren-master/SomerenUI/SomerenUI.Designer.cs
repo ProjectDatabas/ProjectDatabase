@@ -44,16 +44,22 @@
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlMaster = new System.Windows.Forms.Panel();
-            this.ChangeDrinkNameButton = new System.Windows.Forms.Button();
-            this.ChangeStockTextBox = new System.Windows.Forms.TextBox();
-            this.ChangeStockButton = new System.Windows.Forms.Button();
+            this.ChangePriceButton = new System.Windows.Forms.Button();
+            this.ChangePriceRadioButton = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ChangeDrinkNameRadioButton = new System.Windows.Forms.RadioButton();
+            this.ChangeStockRadioButton = new System.Windows.Forms.RadioButton();
             this.listViewMaster = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.headerLabel = new System.Windows.Forms.Label();
+            this.ChangeDrinkNameButton = new System.Windows.Forms.Button();
+            this.ChangeStockButton = new System.Windows.Forms.Button();
+            this.ChangeStockTextBox = new System.Windows.Forms.TextBox();
             this.pnlDrinks = new System.Windows.Forms.Panel();
+            this.ClearOrderButton = new System.Windows.Forms.Button();
             this.OrderButton = new System.Windows.Forms.Button();
             this.DrinksListView = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -64,9 +70,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.ClearOrderButton = new System.Windows.Forms.Button();
-            this.ChangeStockRadioButton = new System.Windows.Forms.RadioButton();
-            this.ChangeDrinkNameRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -194,6 +197,9 @@
             // 
             // pnlMaster
             // 
+            this.pnlMaster.Controls.Add(this.ChangePriceButton);
+            this.pnlMaster.Controls.Add(this.ChangePriceRadioButton);
+            this.pnlMaster.Controls.Add(this.button1);
             this.pnlMaster.Controls.Add(this.ChangeDrinkNameRadioButton);
             this.pnlMaster.Controls.Add(this.ChangeStockRadioButton);
             this.pnlMaster.Controls.Add(this.listViewMaster);
@@ -207,35 +213,59 @@
             this.pnlMaster.Size = new System.Drawing.Size(938, 466);
             this.pnlMaster.TabIndex = 8;
             // 
-            // ChangeDrinkNameButton
+            // ChangePriceButton
             // 
-            this.ChangeDrinkNameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ChangeDrinkNameButton.Location = new System.Drawing.Point(27, 393);
-            this.ChangeDrinkNameButton.Name = "ChangeDrinkNameButton";
-            this.ChangeDrinkNameButton.Size = new System.Drawing.Size(90, 46);
-            this.ChangeDrinkNameButton.TabIndex = 8;
-            this.ChangeDrinkNameButton.Text = "Change Drink Name";
-            this.ChangeDrinkNameButton.UseVisualStyleBackColor = true;
-            this.ChangeDrinkNameButton.Click += new System.EventHandler(this.ChangeDrinkNameButton_Click);
+            this.ChangePriceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ChangePriceButton.Location = new System.Drawing.Point(27, 393);
+            this.ChangePriceButton.Name = "ChangePriceButton";
+            this.ChangePriceButton.Size = new System.Drawing.Size(90, 46);
+            this.ChangePriceButton.TabIndex = 13;
+            this.ChangePriceButton.Text = "Change Price";
+            this.ChangePriceButton.UseVisualStyleBackColor = true;
+            this.ChangePriceButton.Click += new System.EventHandler(this.ChangePriceButton_Click);
             // 
-            // ChangeStockTextBox
+            // ChangePriceRadioButton
             // 
-            this.ChangeStockTextBox.Location = new System.Drawing.Point(28, 367);
-            this.ChangeStockTextBox.Name = "ChangeStockTextBox";
-            this.ChangeStockTextBox.Size = new System.Drawing.Size(89, 20);
-            this.ChangeStockTextBox.TabIndex = 7;
-            this.ChangeStockTextBox.TextChanged += new System.EventHandler(this.changeStockTextBox_TextChanged);
+            this.ChangePriceRadioButton.AutoSize = true;
+            this.ChangePriceRadioButton.Location = new System.Drawing.Point(134, 393);
+            this.ChangePriceRadioButton.Name = "ChangePriceRadioButton";
+            this.ChangePriceRadioButton.Size = new System.Drawing.Size(89, 17);
+            this.ChangePriceRadioButton.TabIndex = 12;
+            this.ChangePriceRadioButton.TabStop = true;
+            this.ChangePriceRadioButton.Text = "Change Price";
+            this.ChangePriceRadioButton.UseVisualStyleBackColor = true;
             // 
-            // ChangeStockButton
+            // button1
             // 
-            this.ChangeStockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.ChangeStockButton.Location = new System.Drawing.Point(27, 393);
-            this.ChangeStockButton.Name = "ChangeStockButton";
-            this.ChangeStockButton.Size = new System.Drawing.Size(90, 46);
-            this.ChangeStockButton.TabIndex = 6;
-            this.ChangeStockButton.Text = "Change Stock";
-            this.ChangeStockButton.UseVisualStyleBackColor = true;
-            this.ChangeStockButton.Click += new System.EventHandler(this.changeStockButton_Click);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button1.Location = new System.Drawing.Point(692, 391);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 46);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Add New Drink";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // ChangeDrinkNameRadioButton
+            // 
+            this.ChangeDrinkNameRadioButton.AutoSize = true;
+            this.ChangeDrinkNameRadioButton.Location = new System.Drawing.Point(134, 416);
+            this.ChangeDrinkNameRadioButton.Name = "ChangeDrinkNameRadioButton";
+            this.ChangeDrinkNameRadioButton.Size = new System.Drawing.Size(121, 17);
+            this.ChangeDrinkNameRadioButton.TabIndex = 10;
+            this.ChangeDrinkNameRadioButton.TabStop = true;
+            this.ChangeDrinkNameRadioButton.Text = "Change Drink Name";
+            this.ChangeDrinkNameRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ChangeStockRadioButton
+            // 
+            this.ChangeStockRadioButton.AutoSize = true;
+            this.ChangeStockRadioButton.Location = new System.Drawing.Point(134, 370);
+            this.ChangeStockRadioButton.Name = "ChangeStockRadioButton";
+            this.ChangeStockRadioButton.Size = new System.Drawing.Size(93, 17);
+            this.ChangeStockRadioButton.TabIndex = 9;
+            this.ChangeStockRadioButton.TabStop = true;
+            this.ChangeStockRadioButton.Text = "Change Stock";
+            this.ChangeStockRadioButton.UseVisualStyleBackColor = true;
             // 
             // listViewMaster
             // 
@@ -284,6 +314,36 @@
             this.headerLabel.TabIndex = 3;
             this.headerLabel.Text = "Students";
             // 
+            // ChangeDrinkNameButton
+            // 
+            this.ChangeDrinkNameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ChangeDrinkNameButton.Location = new System.Drawing.Point(27, 393);
+            this.ChangeDrinkNameButton.Name = "ChangeDrinkNameButton";
+            this.ChangeDrinkNameButton.Size = new System.Drawing.Size(90, 46);
+            this.ChangeDrinkNameButton.TabIndex = 8;
+            this.ChangeDrinkNameButton.Text = "Change Drink Name";
+            this.ChangeDrinkNameButton.UseVisualStyleBackColor = true;
+            this.ChangeDrinkNameButton.Click += new System.EventHandler(this.ChangeDrinkNameButton_Click);
+            // 
+            // ChangeStockButton
+            // 
+            this.ChangeStockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.ChangeStockButton.Location = new System.Drawing.Point(27, 393);
+            this.ChangeStockButton.Name = "ChangeStockButton";
+            this.ChangeStockButton.Size = new System.Drawing.Size(90, 46);
+            this.ChangeStockButton.TabIndex = 6;
+            this.ChangeStockButton.Text = "Change Stock";
+            this.ChangeStockButton.UseVisualStyleBackColor = true;
+            this.ChangeStockButton.Click += new System.EventHandler(this.ChangeStockButton_Click);
+            // 
+            // ChangeStockTextBox
+            // 
+            this.ChangeStockTextBox.Location = new System.Drawing.Point(28, 367);
+            this.ChangeStockTextBox.Name = "ChangeStockTextBox";
+            this.ChangeStockTextBox.Size = new System.Drawing.Size(89, 20);
+            this.ChangeStockTextBox.TabIndex = 7;
+            this.ChangeStockTextBox.TextChanged += new System.EventHandler(this.changeStockTextBox_TextChanged);
+            // 
             // pnlDrinks
             // 
             this.pnlDrinks.Controls.Add(this.ClearOrderButton);
@@ -295,6 +355,16 @@
             this.pnlDrinks.Name = "pnlDrinks";
             this.pnlDrinks.Size = new System.Drawing.Size(938, 466);
             this.pnlDrinks.TabIndex = 9;
+            // 
+            // ClearOrderButton
+            // 
+            this.ClearOrderButton.Location = new System.Drawing.Point(70, 380);
+            this.ClearOrderButton.Name = "ClearOrderButton";
+            this.ClearOrderButton.Size = new System.Drawing.Size(154, 57);
+            this.ClearOrderButton.TabIndex = 8;
+            this.ClearOrderButton.Text = "Clear Order";
+            this.ClearOrderButton.UseVisualStyleBackColor = true;
+            this.ClearOrderButton.Click += new System.EventHandler(this.ClearOrderButton_Click);
             // 
             // OrderButton
             // 
@@ -368,38 +438,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Drinks";
             // 
-            // ClearOrderButton
-            // 
-            this.ClearOrderButton.Location = new System.Drawing.Point(70, 380);
-            this.ClearOrderButton.Name = "ClearOrderButton";
-            this.ClearOrderButton.Size = new System.Drawing.Size(154, 57);
-            this.ClearOrderButton.TabIndex = 8;
-            this.ClearOrderButton.Text = "Clear Order";
-            this.ClearOrderButton.UseVisualStyleBackColor = true;
-            this.ClearOrderButton.Click += new System.EventHandler(this.ClearOrderButton_Click);
-            // 
-            // ChangeStockRadioButton
-            // 
-            this.ChangeStockRadioButton.AutoSize = true;
-            this.ChangeStockRadioButton.Location = new System.Drawing.Point(134, 393);
-            this.ChangeStockRadioButton.Name = "ChangeStockRadioButton";
-            this.ChangeStockRadioButton.Size = new System.Drawing.Size(93, 17);
-            this.ChangeStockRadioButton.TabIndex = 9;
-            this.ChangeStockRadioButton.TabStop = true;
-            this.ChangeStockRadioButton.Text = "Change Stock";
-            this.ChangeStockRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // ChangeDrinkNameRadioButton
-            // 
-            this.ChangeDrinkNameRadioButton.AutoSize = true;
-            this.ChangeDrinkNameRadioButton.Location = new System.Drawing.Point(134, 416);
-            this.ChangeDrinkNameRadioButton.Name = "ChangeDrinkNameRadioButton";
-            this.ChangeDrinkNameRadioButton.Size = new System.Drawing.Size(121, 17);
-            this.ChangeDrinkNameRadioButton.TabIndex = 10;
-            this.ChangeDrinkNameRadioButton.TabStop = true;
-            this.ChangeDrinkNameRadioButton.Text = "Change Drink Name";
-            this.ChangeDrinkNameRadioButton.UseVisualStyleBackColor = true;
-            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,6 +508,9 @@
         private System.Windows.Forms.Button ChangeDrinkNameButton;
         private System.Windows.Forms.RadioButton ChangeDrinkNameRadioButton;
         private System.Windows.Forms.RadioButton ChangeStockRadioButton;
+        private System.Windows.Forms.Button ChangePriceButton;
+        private System.Windows.Forms.RadioButton ChangePriceRadioButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 

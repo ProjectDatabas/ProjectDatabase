@@ -22,5 +22,10 @@ namespace SomerenLogic
         {
             drinkDAO.UpdateDrinkName(itemID, newDrinkName);
         }
+
+        public void ChangeDrinkName(int itemID, int newDrinkPrice)
+        {
+            drinkDAO.UpdateDrinkPrice(itemID, newDrinkPrice);
+        }
     }
 }

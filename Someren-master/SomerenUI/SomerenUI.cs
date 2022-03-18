@@ -128,11 +128,7 @@ namespace SomerenUI
                 // show students
                 pnlMaster.Show();
 
-                ChangeStockRadioButton.Enabled = true;
-                ChangeDrinkNameRadioButton.Enabled = true;
-
-                ChangeStockRadioButton.Show();
-                ChangeDrinkNameRadioButton.Show();
+                EnableAndShowStockRadioButtons();
 
                 try
                 {
@@ -168,7 +164,7 @@ namespace SomerenUI
                             listViewItem.SubItems.Add("Stock sufficient");
                         }
 
-                        
+
 
                         listViewMaster.Items.Add(listViewItem);
                     }
@@ -247,6 +243,17 @@ namespace SomerenUI
             }
         }
 
+        private void EnableAndShowStockRadioButtons()
+        {
+            ChangePriceRadioButton.Enabled = true;
+            ChangeStockRadioButton.Enabled = true;
+            ChangeDrinkNameRadioButton.Enabled = true;
+
+            ChangePriceRadioButton.Show();
+            ChangeStockRadioButton.Show();
+            ChangeDrinkNameRadioButton.Show();
+        }
+
         private void HideAllPanelsAndComponents()
         {
             pnlDashboard.Hide();
@@ -282,7 +289,7 @@ namespace SomerenUI
             {
                 if (this.listViewMaster.Items[i].Selected && headerLabel.Text == "Stock")
                 {
-                    if (!ChangeStockRadioButton.Checked && !ChangeDrinkNameRadioButton.Checked)
+                    if (!ChangeStockRadioButton.Checked && !ChangeDrinkNameRadioButton.Checked && !ChangePriceRadioButton.Checked)
                     {
                         listViewMaster.Clear();
                         showPanel("Stock");
@@ -292,6 +299,7 @@ namespace SomerenUI
                     {
                         ChangeStockRadioButton.Enabled = false;
                         ChangeDrinkNameRadioButton.Enabled = false;
+                        ChangePriceRadioButton.Enabled = false;
 
                         ListViewItem item = listViewMaster.Items[i];
                         ItemID = Convert.ToInt32(item.SubItems[0].Text);
@@ -303,12 +311,25 @@ namespace SomerenUI
                     {
                         ChangeStockRadioButton.Enabled = false;
                         ChangeDrinkNameRadioButton.Enabled = false;
+                        ChangePriceRadioButton.Enabled = false;
 
                         ListViewItem item = listViewMaster.Items[i];
                         ItemID = Convert.ToInt32(item.SubItems[0].Text);
 
                         ChangeStockTextBox.Show();
                         ChangeDrinkNameButton.Show();
+                    }
+                    else if (ChangePriceRadioButton.Checked)
+                    {
+                        ChangeStockRadioButton.Enabled = false;
+                        ChangeDrinkNameRadioButton.Enabled = false;
+                        ChangePriceRadioButton.Enabled = false; 
+
+                        ListViewItem item = listViewMaster.Items[i];
+                        ItemID = Convert.ToInt32(item.SubItems[0].Text);
+
+                        ChangeStockTextBox.Show();
+                        ChangePriceButton.Show();
                     }
                 }
             }
@@ -404,9 +425,10 @@ namespace SomerenUI
         {
             ChangeStockButton.Enabled = true;
             ChangeDrinkNameButton.Enabled = true;
+            ChangePriceButton.Enabled = true;
         }
 
-        private void changeStockButton_Click(object sender, EventArgs e)
+        private void ChangeStockButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(ChangeStockTextBox.Text))
             {
@@ -450,6 +472,28 @@ namespace SomerenUI
             }
         }
 
+        private void ChangePriceButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(ChangeStockTextBox.Text))
+            {
+                MessageBox.Show("No stock change filled in...");
+                ChangeStockTextBox.Enabled = false;
+            }
+            else
+            {
+                DrinkService drinkService = new DrinkService();
+                int newDrinkPrice = Convert.ToInt32(ChangeStockTextBox.Text);
+                drinkService.ChangeDrinkName(ItemID, newDrinkPrice);
+
+                StockTextBoxAndButtonReset();
+
+                listViewMaster.Clear();
+                showPanel("Stock");
+
+                MessageBox.Show($"Succesfully edited");
+            }
+        }
+
         private void StockTextBoxAndButtonReset()
         {
             ChangeStockTextBox.Clear();
@@ -463,9 +507,11 @@ namespace SomerenUI
 
             ChangeStockRadioButton.Checked = false;
             ChangeDrinkNameRadioButton.Checked = false;
+            ChangePriceRadioButton.Checked = false;
 
             ChangeStockRadioButton.Hide();
             ChangeDrinkNameRadioButton.Hide();
+            ChangePriceRadioButton.Hide();
         }
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
