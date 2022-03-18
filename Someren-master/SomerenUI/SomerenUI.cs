@@ -9,6 +9,7 @@ namespace SomerenUI
     public partial class SomerenUI : Form
     {
         private int ItemID = 0;
+
         public SomerenUI()
         {
             InitializeComponent();
@@ -36,7 +37,6 @@ namespace SomerenUI
 
                 // hide all other panels and components
                 HideAllPanelsAndComponents();
-
 
                 // show students
                 pnlMaster.Show();
@@ -284,7 +284,9 @@ namespace SomerenUI
                         ChangeStockRadioButton.Enabled = false;
                         ChangeDrinkNameRadioButton.Enabled = false;
 
-                        ItemID = i + 1;
+                        ListViewItem item = listViewMaster.Items[i];
+                        ItemID = Convert.ToInt32(item.SubItems[0].Text);
+
                         ChangeStockTextBox.Show();
                         ChangeStockButton.Show();
                     }
@@ -293,7 +295,9 @@ namespace SomerenUI
                         ChangeStockRadioButton.Enabled = false;
                         ChangeDrinkNameRadioButton.Enabled = false;
 
-                        ItemID = i + 1;
+                        ListViewItem item = listViewMaster.Items[i];
+                        ItemID = Convert.ToInt32(item.SubItems[0].Text);
+
                         ChangeStockTextBox.Show();
                         ChangeDrinkNameButton.Show();
                     }
