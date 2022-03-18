@@ -1,21 +1,40 @@
 ﻿using System;
-using SomerenDAL;
-using SomerenModel;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
+using System.Collections.ObjectModel;
+using SomerenModel;
 
-namespace SomerenLogic
+namespace SomerenDAL
 {
-    public class DrinkService
+    public class DrinksDao : BaseDao
     {
-        private DrinkDAO drinkDAO = new DrinkDAO();
-        public List<Drink> GetAllDrinks()
+        public List<Drinks> GetAllDrinks()
         {
-            return drinkDAO.GetAll();
+            string query = "SELECT DrinksId, DrinksName, DrinksPrice, StockAmount FROM drinks";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public void ChangeStock(int itemID, int stockChange)
+        private List<Drinks> ReadTables(DataTable dataTable)
         {
-            drinkDAO.UpdateDrink(itemID, stockChange);
+            List<Drinks> drinks = new List<Drinks>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Drinks drink = new Drinks()
+                {
+                    DrinkId = (int)dr["DrinksId"],
+                    DrinkName = (string)(dr["DrinksName"]),
+                    DrinkPrice = (int)(dr["DrinksPrice"]),
+                    DrinkStock = (int)(dr["StockAmount"])
+                };
+                drinks.Add(drink);
+            }
+            return drinks;
         }
     }
 }
