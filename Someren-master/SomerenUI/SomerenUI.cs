@@ -300,27 +300,6 @@ namespace SomerenUI
             showPanel("Drinks");
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-            //
-        }
-
-        private void OrderButton_Click(object sender, EventArgs e)
-        {
-            //old
-        }
-
-        private void DrinksListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //old
-        }
-
-
-        private void StudentListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //old
-        }
-
         private void drinksToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             showPanel("Drinks");
