@@ -421,7 +421,6 @@ namespace SomerenUI
                 showPanel("Stock");
 
                 MessageBox.Show($"Succesfully edited");
-
             }
         }
     }
