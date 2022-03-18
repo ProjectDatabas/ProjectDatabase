@@ -451,7 +451,9 @@ namespace SomerenUI
             ChangeStockRadioButton.Checked = false;
             ChangeDrinkNameRadioButton.Checked = false;
 
-            }
+            ChangeStockRadioButton.Hide();
+            ChangeDrinkNameRadioButton.Hide();
+        }
         }
 
         private void ClearOrderButton_Click(object sender, EventArgs e)
@@ -462,8 +464,6 @@ namespace SomerenUI
             StudentListView.Clear();
             DrinksListView.Clear();
             showPanel("Drinks");
-            ChangeStockRadioButton.Hide();
-            ChangeDrinkNameRadioButton.Hide();
         }
     }
 }
