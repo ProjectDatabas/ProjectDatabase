@@ -134,8 +134,8 @@ namespace SomerenUI
                 try
                 {
                     // fill the drink listview within the stock panel with a list of drinks
-                    DrinkService drinkService = new DrinkService(); ;
-                    List<Drink> drinks = drinkService.GetAllDrinks(); ;
+                    DrinkService drinkService = new DrinkService();
+                    List<Drink> drinks = drinkService.GetAllDrinks();
 
                     // clear the listview before filling it again
                     listViewMaster.Clear();
@@ -237,6 +237,46 @@ namespace SomerenUI
                 catch (Exception e)
                 {
                     MessageBox.Show("Something went wrong while loading the Drinks: " + e.Message);
+                }
+            }
+            else if(panelName == "Activities")
+            {
+                headerLabel.Text = "Activities";
+
+                // hide all other panels
+                HideAllPanelsAndComponents();
+
+                // show dashboard
+                pnlMaster.Show();
+
+                try
+                {
+                    //activities
+                    ActivityService activityService = new ActivityService();
+                    List<Activity> activityList = activityService.GetActivities();
+
+                    // clear the listview before filling it again
+                    listViewMaster.Clear();
+
+                    listViewMaster.GridLines = true;
+                    listViewMaster.View = View.Details;
+                    listViewMaster.FullRowSelect = true;
+
+                    //Add Column Header
+                    listViewMaster.Columns.Add("ActivityId", 150);
+                    listViewMaster.Columns.Add("Activity", 150);
+
+                    foreach (Activity A in activityList)
+                    {
+                        ListViewItem listViewItem = new ListViewItem((A.ActivityId).ToString());
+                        listViewItem.SubItems.Add(A.ActivityName);
+                        listViewMaster.Items.Add(listViewItem);
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
                 }
             }
         }
@@ -633,6 +673,11 @@ namespace SomerenUI
             showPanel("Stock");
 
             MessageBox.Show($"Succesfully deleted!");
+        }
+
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
         }
     }
 }

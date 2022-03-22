@@ -44,6 +44,11 @@
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlMaster = new System.Windows.Forms.Panel();
+            this.DeleteDrinkRadioButton = new System.Windows.Forms.RadioButton();
+            this.DeleteDrinkButton = new System.Windows.Forms.Button();
+            this.StockNewDrinkLabel = new System.Windows.Forms.Label();
+            this.PriceNewDrinkLabel = new System.Windows.Forms.Label();
+            this.NameNewDrinkLabel = new System.Windows.Forms.Label();
             this.StockNewDrinkTextBox = new System.Windows.Forms.TextBox();
             this.PriceNewDrinkTextBox = new System.Windows.Forms.TextBox();
             this.NameNewDrinkTextBox = new System.Windows.Forms.TextBox();
@@ -74,11 +79,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.NameNewDrinkLabel = new System.Windows.Forms.Label();
-            this.PriceNewDrinkLabel = new System.Windows.Forms.Label();
-            this.StockNewDrinkLabel = new System.Windows.Forms.Label();
-            this.DeleteDrinkButton = new System.Windows.Forms.Button();
-            this.DeleteDrinkRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -164,6 +164,7 @@
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
             this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
             this.activitiesToolStripMenuItem.Text = "Activities";
+            this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
@@ -229,6 +230,55 @@
             this.pnlMaster.Name = "pnlMaster";
             this.pnlMaster.Size = new System.Drawing.Size(938, 466);
             this.pnlMaster.TabIndex = 8;
+            // 
+            // DeleteDrinkRadioButton
+            // 
+            this.DeleteDrinkRadioButton.AutoSize = true;
+            this.DeleteDrinkRadioButton.Location = new System.Drawing.Point(684, 416);
+            this.DeleteDrinkRadioButton.Name = "DeleteDrinkRadioButton";
+            this.DeleteDrinkRadioButton.Size = new System.Drawing.Size(93, 17);
+            this.DeleteDrinkRadioButton.TabIndex = 21;
+            this.DeleteDrinkRadioButton.TabStop = true;
+            this.DeleteDrinkRadioButton.Text = "Delete a Drink";
+            this.DeleteDrinkRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteDrinkButton
+            // 
+            this.DeleteDrinkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.DeleteDrinkButton.Location = new System.Drawing.Point(678, 364);
+            this.DeleteDrinkButton.Name = "DeleteDrinkButton";
+            this.DeleteDrinkButton.Size = new System.Drawing.Size(104, 46);
+            this.DeleteDrinkButton.TabIndex = 20;
+            this.DeleteDrinkButton.Text = "Delete Selected Drink";
+            this.DeleteDrinkButton.UseVisualStyleBackColor = true;
+            this.DeleteDrinkButton.Click += new System.EventHandler(this.DeleteDrinkButton_Click);
+            // 
+            // StockNewDrinkLabel
+            // 
+            this.StockNewDrinkLabel.AutoSize = true;
+            this.StockNewDrinkLabel.Location = new System.Drawing.Point(809, 244);
+            this.StockNewDrinkLabel.Name = "StockNewDrinkLabel";
+            this.StockNewDrinkLabel.Size = new System.Drawing.Size(63, 13);
+            this.StockNewDrinkLabel.TabIndex = 19;
+            this.StockNewDrinkLabel.Text = "Drink Stock";
+            // 
+            // PriceNewDrinkLabel
+            // 
+            this.PriceNewDrinkLabel.AutoSize = true;
+            this.PriceNewDrinkLabel.Location = new System.Drawing.Point(809, 202);
+            this.PriceNewDrinkLabel.Name = "PriceNewDrinkLabel";
+            this.PriceNewDrinkLabel.Size = new System.Drawing.Size(59, 13);
+            this.PriceNewDrinkLabel.TabIndex = 18;
+            this.PriceNewDrinkLabel.Text = "Drink Price";
+            // 
+            // NameNewDrinkLabel
+            // 
+            this.NameNewDrinkLabel.AutoSize = true;
+            this.NameNewDrinkLabel.Location = new System.Drawing.Point(809, 155);
+            this.NameNewDrinkLabel.Name = "NameNewDrinkLabel";
+            this.NameNewDrinkLabel.Size = new System.Drawing.Size(63, 13);
+            this.NameNewDrinkLabel.TabIndex = 17;
+            this.NameNewDrinkLabel.Text = "Drink Name";
             // 
             // StockNewDrinkTextBox
             // 
@@ -487,55 +537,6 @@
             this.label1.Size = new System.Drawing.Size(81, 29);
             this.label1.TabIndex = 3;
             this.label1.Text = "Drinks";
-            // 
-            // NameNewDrinkLabel
-            // 
-            this.NameNewDrinkLabel.AutoSize = true;
-            this.NameNewDrinkLabel.Location = new System.Drawing.Point(809, 155);
-            this.NameNewDrinkLabel.Name = "NameNewDrinkLabel";
-            this.NameNewDrinkLabel.Size = new System.Drawing.Size(63, 13);
-            this.NameNewDrinkLabel.TabIndex = 17;
-            this.NameNewDrinkLabel.Text = "Drink Name";
-            // 
-            // PriceNewDrinkLabel
-            // 
-            this.PriceNewDrinkLabel.AutoSize = true;
-            this.PriceNewDrinkLabel.Location = new System.Drawing.Point(809, 202);
-            this.PriceNewDrinkLabel.Name = "PriceNewDrinkLabel";
-            this.PriceNewDrinkLabel.Size = new System.Drawing.Size(59, 13);
-            this.PriceNewDrinkLabel.TabIndex = 18;
-            this.PriceNewDrinkLabel.Text = "Drink Price";
-            // 
-            // StockNewDrinkLabel
-            // 
-            this.StockNewDrinkLabel.AutoSize = true;
-            this.StockNewDrinkLabel.Location = new System.Drawing.Point(809, 244);
-            this.StockNewDrinkLabel.Name = "StockNewDrinkLabel";
-            this.StockNewDrinkLabel.Size = new System.Drawing.Size(63, 13);
-            this.StockNewDrinkLabel.TabIndex = 19;
-            this.StockNewDrinkLabel.Text = "Drink Stock";
-            // 
-            // DeleteDrinkButton
-            // 
-            this.DeleteDrinkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.DeleteDrinkButton.Location = new System.Drawing.Point(678, 364);
-            this.DeleteDrinkButton.Name = "DeleteDrinkButton";
-            this.DeleteDrinkButton.Size = new System.Drawing.Size(104, 46);
-            this.DeleteDrinkButton.TabIndex = 20;
-            this.DeleteDrinkButton.Text = "Delete Selected Drink";
-            this.DeleteDrinkButton.UseVisualStyleBackColor = true;
-            this.DeleteDrinkButton.Click += new System.EventHandler(this.DeleteDrinkButton_Click);
-            // 
-            // DeleteDrinkRadioButton
-            // 
-            this.DeleteDrinkRadioButton.AutoSize = true;
-            this.DeleteDrinkRadioButton.Location = new System.Drawing.Point(684, 416);
-            this.DeleteDrinkRadioButton.Name = "DeleteDrinkRadioButton";
-            this.DeleteDrinkRadioButton.Size = new System.Drawing.Size(93, 17);
-            this.DeleteDrinkRadioButton.TabIndex = 21;
-            this.DeleteDrinkRadioButton.TabStop = true;
-            this.DeleteDrinkRadioButton.Text = "Delete a Drink";
-            this.DeleteDrinkRadioButton.UseVisualStyleBackColor = true;
             // 
             // SomerenUI
             // 
