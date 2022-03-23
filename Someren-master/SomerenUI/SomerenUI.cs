@@ -262,6 +262,28 @@ namespace SomerenUI
                 //Display the child window
                 activityUI.Show();
             }
+            else if (panelName == "Supervisors")
+            {
+                // hide all other panels
+                HideAllPanelsAndComponents();
+
+                //Create a new instance of the MDI child template form
+                SupervisorUI supervisorUI = new SupervisorUI();
+
+                //Set parent form for the child window
+                supervisorUI.TopLevel = false;
+                supervisorUI.Parent = this;
+
+
+                //Set starting position
+                supervisorUI.StartPosition = FormStartPosition.Manual;
+                supervisorUI.Left = 100;
+                supervisorUI.Top = 50;
+
+
+                //Display the child window
+                supervisorUI.Show();
+            }
         }
 
         private void EnableAndShowStockRadioButtons()
