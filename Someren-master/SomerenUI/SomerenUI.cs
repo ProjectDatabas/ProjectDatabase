@@ -679,5 +679,10 @@ namespace SomerenUI
         {
             showPanel("Activities");
         }
+
+        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Supervisors");
+        }
     }
 }
