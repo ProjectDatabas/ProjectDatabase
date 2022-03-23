@@ -272,7 +272,6 @@ namespace SomerenUI
                         listViewItem.SubItems.Add(A.ActivityName);
                         listViewMaster.Items.Add(listViewItem);
                     }
-
                 }
                 catch (Exception e)
                 {
@@ -310,6 +309,7 @@ namespace SomerenUI
             imgDashboard.Hide();
             pnlMaster.Hide();
             pnlDrinks.Hide();
+            pnlSupervisor.Hide();
             StockTextBoxAndButtonReset();
         }
 
