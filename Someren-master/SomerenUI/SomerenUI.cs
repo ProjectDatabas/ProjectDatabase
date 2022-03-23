@@ -241,42 +241,25 @@ namespace SomerenUI
             }
             else if(panelName == "Activities")
             {
-                headerLabel.Text = "Activities";
-
                 // hide all other panels
                 HideAllPanelsAndComponents();
 
-                // show dashboard
-                pnlMaster.Show();
+                //Create a new instance of the MDI child template form
+                ActivitiesForm activityForm = new ActivitiesForm();
 
-                try
-                {
-                    //activities
-                    ActivityService activityService = new ActivityService();
-                    List<Activity> activityList = activityService.GetActivities();
+                //Set parent form for the child window
+                activityForm.TopLevel = false;
+                activityForm.Parent = this;
 
-                    // clear the listview before filling it again
-                    listViewMaster.Clear();
 
-                    listViewMaster.GridLines = true;
-                    listViewMaster.View = View.Details;
-                    listViewMaster.FullRowSelect = true;
+                //Set starting position
+                activityForm.StartPosition = FormStartPosition.Manual;
+                activityForm.Left = 500;
+                activityForm.Top = 500;
 
-                    //Add Column Header
-                    listViewMaster.Columns.Add("ActivityId", 150);
-                    listViewMaster.Columns.Add("Activity", 150);
 
-                    foreach (Activity A in activityList)
-                    {
-                        ListViewItem listViewItem = new ListViewItem((A.ActivityId).ToString());
-                        listViewItem.SubItems.Add(A.ActivityName);
-                        listViewMaster.Items.Add(listViewItem);
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
-                }
+                //Display the child window
+                activityForm.Show();
             }
         }
 
@@ -683,6 +666,11 @@ namespace SomerenUI
         private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Supervisors");
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

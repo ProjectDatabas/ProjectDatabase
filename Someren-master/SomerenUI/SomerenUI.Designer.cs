@@ -598,7 +598,7 @@
             this.pnlSupervisor.Controls.Add(this.AddSupervisorButton);
             this.pnlSupervisor.Controls.Add(this.RemoveSupervisorButton);
             this.pnlSupervisor.Location = new System.Drawing.Point(18, 42);
-            this.pnlSupervisor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlSupervisor.Margin = new System.Windows.Forms.Padding(2);
             this.pnlSupervisor.Name = "pnlSupervisor";
             this.pnlSupervisor.Size = new System.Drawing.Size(1407, 714);
             this.pnlSupervisor.TabIndex = 22;
@@ -631,7 +631,7 @@
             // 
             this.ActivityTeacherListView.HideSelection = false;
             this.ActivityTeacherListView.Location = new System.Drawing.Point(290, 65);
-            this.ActivityTeacherListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ActivityTeacherListView.Margin = new System.Windows.Forms.Padding(2);
             this.ActivityTeacherListView.Name = "ActivityTeacherListView";
             this.ActivityTeacherListView.Size = new System.Drawing.Size(698, 422);
             this.ActivityTeacherListView.TabIndex = 3;
@@ -652,7 +652,7 @@
             // 
             this.ActivityListView.HideSelection = false;
             this.ActivityListView.Location = new System.Drawing.Point(44, 65);
-            this.ActivityListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ActivityListView.Margin = new System.Windows.Forms.Padding(2);
             this.ActivityListView.Name = "ActivityListView";
             this.ActivityListView.Size = new System.Drawing.Size(152, 422);
             this.ActivityListView.TabIndex = 1;
