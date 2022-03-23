@@ -44,8 +44,7 @@ namespace SomerenUI
             // 
             this.SupervisorsLabel.AutoSize = true;
             this.SupervisorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupervisorsLabel.Location = new System.Drawing.Point(464, 62);
-            this.SupervisorsLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.SupervisorsLabel.Location = new System.Drawing.Point(180, 13);
             this.SupervisorsLabel.Name = "SupervisorsLabel";
             this.SupervisorsLabel.Size = new System.Drawing.Size(216, 42);
             this.SupervisorsLabel.TabIndex = 0;
@@ -55,8 +54,7 @@ namespace SomerenUI
             // 
             this.ActivitiesLabel.AutoSize = true;
             this.ActivitiesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivitiesLabel.Location = new System.Drawing.Point(148, 62);
-            this.ActivitiesLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.ActivitiesLabel.Location = new System.Drawing.Point(22, 13);
             this.ActivitiesLabel.Name = "ActivitiesLabel";
             this.ActivitiesLabel.Size = new System.Drawing.Size(165, 42);
             this.ActivitiesLabel.TabIndex = 1;
@@ -64,22 +62,26 @@ namespace SomerenUI
             // 
             // ActivityListView
             // 
+            this.ActivityListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.ActivityListView.FullRowSelect = true;
             this.ActivityListView.HideSelection = false;
-            this.ActivityListView.Location = new System.Drawing.Point(124, 118);
+            this.ActivityListView.Location = new System.Drawing.Point(10, 42);
+            this.ActivityListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ActivityListView.Name = "ActivityListView";
-            this.ActivityListView.Size = new System.Drawing.Size(217, 494);
+            this.ActivityListView.Size = new System.Drawing.Size(110, 259);
             this.ActivityListView.TabIndex = 2;
             this.ActivityListView.UseCompatibleStateImageBehavior = false;
             this.ActivityListView.SelectedIndexChanged += new System.EventHandler(this.ActivityListView_SelectedIndexChanged);
             // 
             // SupervisorListView
             // 
+            this.SupervisorListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.SupervisorListView.FullRowSelect = true;
             this.SupervisorListView.HideSelection = false;
-            this.SupervisorListView.Location = new System.Drawing.Point(471, 118);
+            this.SupervisorListView.Location = new System.Drawing.Point(184, 42);
+            this.SupervisorListView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SupervisorListView.Name = "SupervisorListView";
-            this.SupervisorListView.Size = new System.Drawing.Size(861, 487);
+            this.SupervisorListView.Size = new System.Drawing.Size(432, 255);
             this.SupervisorListView.TabIndex = 3;
             this.SupervisorListView.UseCompatibleStateImageBehavior = false;
             this.SupervisorListView.SelectedIndexChanged += new System.EventHandler(this.SupervisorListView_SelectedIndexChanged);
@@ -87,9 +89,10 @@ namespace SomerenUI
             // AddSupervisorButton
             // 
             this.AddSupervisorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.AddSupervisorButton.Location = new System.Drawing.Point(155, 650);
+            this.AddSupervisorButton.Location = new System.Drawing.Point(26, 319);
+            this.AddSupervisorButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddSupervisorButton.Name = "AddSupervisorButton";
-            this.AddSupervisorButton.Size = new System.Drawing.Size(158, 85);
+            this.AddSupervisorButton.Size = new System.Drawing.Size(79, 44);
             this.AddSupervisorButton.TabIndex = 4;
             this.AddSupervisorButton.Text = "Add Supervisor";
             this.AddSupervisorButton.UseVisualStyleBackColor = true;
@@ -97,9 +100,11 @@ namespace SomerenUI
             // AddSupervisorRadioButton
             // 
             this.AddSupervisorRadioButton.AutoSize = true;
-            this.AddSupervisorRadioButton.Location = new System.Drawing.Point(319, 661);
+            this.AddSupervisorRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.AddSupervisorRadioButton.Location = new System.Drawing.Point(108, 324);
+            this.AddSupervisorRadioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddSupervisorRadioButton.Name = "AddSupervisorRadioButton";
-            this.AddSupervisorRadioButton.Size = new System.Drawing.Size(190, 29);
+            this.AddSupervisorRadioButton.Size = new System.Drawing.Size(192, 30);
             this.AddSupervisorRadioButton.TabIndex = 5;
             this.AddSupervisorRadioButton.TabStop = true;
             this.AddSupervisorRadioButton.Text = "Add Supervisor";
@@ -108,9 +113,11 @@ namespace SomerenUI
             // RemoveSupervisorRadioButton
             // 
             this.RemoveSupervisorRadioButton.AutoSize = true;
-            this.RemoveSupervisorRadioButton.Location = new System.Drawing.Point(319, 696);
+            this.RemoveSupervisorRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.RemoveSupervisorRadioButton.Location = new System.Drawing.Point(108, 343);
+            this.RemoveSupervisorRadioButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RemoveSupervisorRadioButton.Name = "RemoveSupervisorRadioButton";
-            this.RemoveSupervisorRadioButton.Size = new System.Drawing.Size(231, 29);
+            this.RemoveSupervisorRadioButton.Size = new System.Drawing.Size(235, 30);
             this.RemoveSupervisorRadioButton.TabIndex = 6;
             this.RemoveSupervisorRadioButton.TabStop = true;
             this.RemoveSupervisorRadioButton.Text = "Remove Supervisor";
@@ -119,9 +126,10 @@ namespace SomerenUI
             // RemoveSupervisorButton
             // 
             this.RemoveSupervisorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.RemoveSupervisorButton.Location = new System.Drawing.Point(155, 650);
+            this.RemoveSupervisorButton.Location = new System.Drawing.Point(26, 319);
+            this.RemoveSupervisorButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RemoveSupervisorButton.Name = "RemoveSupervisorButton";
-            this.RemoveSupervisorButton.Size = new System.Drawing.Size(158, 85);
+            this.RemoveSupervisorButton.Size = new System.Drawing.Size(79, 44);
             this.RemoveSupervisorButton.TabIndex = 7;
             this.RemoveSupervisorButton.Text = "Remove Supervisor";
             this.RemoveSupervisorButton.UseVisualStyleBackColor = true;
@@ -129,9 +137,10 @@ namespace SomerenUI
             // ResetButton
             // 
             this.ResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.ResetButton.Location = new System.Drawing.Point(1174, 640);
+            this.ResetButton.Location = new System.Drawing.Point(535, 314);
+            this.ResetButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(158, 85);
+            this.ResetButton.Size = new System.Drawing.Size(79, 44);
             this.ResetButton.TabIndex = 8;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = true;
@@ -139,9 +148,9 @@ namespace SomerenUI
             // 
             // SupervisorUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1478, 804);
+            this.ClientSize = new System.Drawing.Size(638, 375);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.RemoveSupervisorButton);
             this.Controls.Add(this.RemoveSupervisorRadioButton);
@@ -151,8 +160,7 @@ namespace SomerenUI
             this.Controls.Add(this.ActivityListView);
             this.Controls.Add(this.ActivitiesLabel);
             this.Controls.Add(this.SupervisorsLabel);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(6);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 4.125F);
             this.Name = "SupervisorUI";
             this.Text = "SupervisorUI";
             this.ResumeLayout(false);
