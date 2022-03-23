@@ -37,6 +37,7 @@ namespace SomerenUI
             this.AddSupervisorRadioButton = new System.Windows.Forms.RadioButton();
             this.RemoveSupervisorRadioButton = new System.Windows.Forms.RadioButton();
             this.RemoveSupervisorButton = new System.Windows.Forms.Button();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SupervisorsLabel
@@ -70,6 +71,7 @@ namespace SomerenUI
             this.ActivityListView.Size = new System.Drawing.Size(217, 494);
             this.ActivityListView.TabIndex = 2;
             this.ActivityListView.UseCompatibleStateImageBehavior = false;
+            this.ActivityListView.SelectedIndexChanged += new System.EventHandler(this.ActivityListView_SelectedIndexChanged);
             // 
             // SupervisorListView
             // 
@@ -80,6 +82,7 @@ namespace SomerenUI
             this.SupervisorListView.Size = new System.Drawing.Size(861, 487);
             this.SupervisorListView.TabIndex = 3;
             this.SupervisorListView.UseCompatibleStateImageBehavior = false;
+            this.SupervisorListView.SelectedIndexChanged += new System.EventHandler(this.SupervisorListView_SelectedIndexChanged);
             // 
             // AddSupervisorButton
             // 
@@ -123,11 +126,23 @@ namespace SomerenUI
             this.RemoveSupervisorButton.Text = "Remove Supervisor";
             this.RemoveSupervisorButton.UseVisualStyleBackColor = true;
             // 
+            // ResetButton
+            // 
+            this.ResetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.ResetButton.Location = new System.Drawing.Point(1174, 640);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(158, 85);
+            this.ResetButton.TabIndex = 8;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // SupervisorUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1478, 804);
+            this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.RemoveSupervisorButton);
             this.Controls.Add(this.RemoveSupervisorRadioButton);
             this.Controls.Add(this.AddSupervisorRadioButton);
@@ -155,5 +170,6 @@ namespace SomerenUI
         private System.Windows.Forms.RadioButton AddSupervisorRadioButton;
         private System.Windows.Forms.RadioButton RemoveSupervisorRadioButton;
         private System.Windows.Forms.Button RemoveSupervisorButton;
+        private System.Windows.Forms.Button ResetButton;
     }
 }
