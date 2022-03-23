@@ -3,6 +3,7 @@ using SomerenLogic;
 using SomerenModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace SomerenUI
 {
@@ -254,8 +255,8 @@ namespace SomerenUI
 
                 //Set starting position
                 activityForm.StartPosition = FormStartPosition.Manual;
-                activityForm.Left = 500;
-                activityForm.Top = 500;
+                activityForm.Left = 100;
+                activityForm.Top = 50;
 
 
                 //Display the child window
