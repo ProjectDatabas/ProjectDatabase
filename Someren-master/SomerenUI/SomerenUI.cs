@@ -246,21 +246,21 @@ namespace SomerenUI
                 HideAllPanelsAndComponents();
 
                 //Create a new instance of the MDI child template form
-                ActivitiesForm activityForm = new ActivitiesForm();
+                ActivitiesForm activityUI = new ActivitiesForm();
 
                 //Set parent form for the child window
-                activityForm.TopLevel = false;
-                activityForm.Parent = this;
+                activityUI.TopLevel = false;
+                activityUI.Parent = this;
 
 
                 //Set starting position
-                activityForm.StartPosition = FormStartPosition.Manual;
-                activityForm.Left = 100;
-                activityForm.Top = 50;
+                activityUI.StartPosition = FormStartPosition.Manual;
+                activityUI.Left = 100;
+                activityUI.Top = 50;
 
 
                 //Display the child window
-                activityForm.Show();
+                activityUI.Show();
             }
         }
 

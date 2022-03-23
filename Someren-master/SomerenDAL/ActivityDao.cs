@@ -34,5 +34,39 @@ namespace SomerenDAL
             }
             return activities;
         }
+
+        public void AddNewActivity(string newActivity)
+        {
+            string query = "INSERT INTO Activity(Activity) VALUES(@newActivity); ";
+
+            SqlParameter[] sqlParameters = { new SqlParameter("@newActivity", SqlDbType.VarChar) { Value = newActivity } };
+                                             
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void DeleteActivity(int id)
+        {
+            string updateQuery = $"Update Teachers SET ActivityID = NULL WHERE ActivityId = @id";
+
+            SqlParameter[] updateSQLParameters = { new SqlParameter("@id", SqlDbType.Int) { Value = id } };
+
+            ExecuteEditQuery(updateQuery, updateSQLParameters);
+
+            string activityQuery = "DELETE FROM Activity WHERE ActivityId = @id";
+
+            SqlParameter[] activitySQLParameters = { new SqlParameter("@id", SqlDbType.Int) { Value = id } };
+
+            ExecuteEditQuery(activityQuery, activitySQLParameters);
+        }
+
+        public void ChangeActivity(string newActivity, int id)
+        {
+            string query = "UPDATE Activity SET Activity = @newActivity WHERE ActivityId = @id";
+
+            SqlParameter[] sqlParameters = { new SqlParameter("@newActivity", SqlDbType.Int) { Value = newActivity }, new SqlParameter("@id", SqlDbType.Int) { Value = id } };
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
     }
 }
