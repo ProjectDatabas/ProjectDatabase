@@ -64,7 +64,7 @@ namespace SomerenDAL
         {
             string query = "UPDATE Activity SET Activity = @newActivity WHERE ActivityId = @id";
 
-            SqlParameter[] sqlParameters = { new SqlParameter("@newActivity", SqlDbType.Int) { Value = newActivity }, new SqlParameter("@id", SqlDbType.Int) { Value = id } };
+            SqlParameter[] sqlParameters = { new SqlParameter("@newActivity", SqlDbType.VarChar) { Value = newActivity }, new SqlParameter("@id", SqlDbType.Int) { Value = id } };
 
             ExecuteEditQuery(query, sqlParameters);
         }

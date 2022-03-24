@@ -8,7 +8,7 @@ namespace SomerenUI
 {
     public partial class ActivitiesForm : Form
     {
-        private int ItemID = 0;
+        private int ItemID = -1;
         public ActivitiesForm()
         {
             InitializeComponent();
@@ -56,11 +56,9 @@ namespace SomerenUI
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(AddTextBox.Text) || !AddRadioButton.Checked)
+            if (string.IsNullOrWhiteSpace(AddTextBox.Text))
             {
                 MessageBox.Show("Please fill in field before pressing 'Add'");
-
-                AddRadioButton.Checked = false;
 
                 LoadList();
             }
@@ -70,10 +68,20 @@ namespace SomerenUI
                 string newActivity = AddTextBox.Text;
 
                 ActivityService activityService = new ActivityService();
+                List<Activity> activities = activityService.GetActivities();
+                foreach(Activity A in activities)
+                {
+                    if (A.ActivityName.ToLower() == newActivity.ToLower())
+                    {
+                        MessageBox.Show("Invalid, acitvity already exists.");
+                        AddTextBox.Clear();
+                        listViewActivities.Clear();
+                        LoadList();
+                        return;
+                    }
+                }
+
                 activityService.AddNewActivity(newActivity);
-
-                AddRadioButton.Checked = false;
-
                 AddTextBox.Clear();
                 listViewActivities.Clear();
                 LoadList();
@@ -93,24 +101,12 @@ namespace SomerenUI
             {
                 if (this.listViewActivities.Items[i].Selected)
                 {
-                    if (!AddRadioButton.Checked && !ChangeRadioButton.Checked && !DeleteRadioButton.Checked)
+                    ListViewItem item = listViewActivities.Items[i];
+                    ItemID = Convert.ToInt32(item.SubItems[0].Text);
+
+                    if (ItemID == -1)
                     {
-                        listViewActivities.Clear();
-                        LoadList();
-                        AddButton.Show();
-                        AddTextBox.Show();
-                        AddLabel.Show();
-                        MessageBox.Show("Please select an action first...");
-                    }
-                    else if (ChangeRadioButton.Checked)
-                    {
-                        ListViewItem item = listViewActivities.Items[i];
-                        ItemID = Convert.ToInt32(item.SubItems[0].Text);
-                    }
-                    else if (DeleteRadioButton.Checked)
-                    {
-                        ListViewItem item = listViewActivities.Items[i];
-                        ItemID = Convert.ToInt32(item.SubItems[0].Text);
+                        MessageBox.Show("Select an item");
                     }
                 }
             }
@@ -118,14 +114,6 @@ namespace SomerenUI
 
         private void EnableAndShowRadioButtons()
         {
-            AddRadioButton.Enabled = true;
-            ChangeRadioButton.Enabled = true;
-            DeleteRadioButton.Enabled = true;
-
-            AddRadioButton.Show();
-            ChangeRadioButton.Show();
-            DeleteRadioButton.Show();
-
             AddTextBox.Show();
             ChangeTextBox.Show();
 
@@ -147,8 +135,6 @@ namespace SomerenUI
             ActivityService activityService = new ActivityService();
             activityService.DeleteActivity(ItemID);
 
-            DeleteRadioButton.Checked = false;
-
             listViewActivities.Clear();
             LoadList();
 
@@ -157,22 +143,51 @@ namespace SomerenUI
 
         private void NoButton_Click(object sender, EventArgs e)
         {
-            DeleteRadioButton.Checked = false;
             LoadList();
         }
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
-            string newActivity = ChangeTextBox.Text;
-            ActivityService activityService = new ActivityService();
-            activityService.ChangeActivity(newActivity, ItemID);
+            if (string.IsNullOrWhiteSpace(ChangeTextBox.Text))
+            {
+                MessageBox.Show("Please fill in field before pressing 'Change'");
 
-            ChangeRadioButton.Checked = false;
+                LoadList();
+            }
+            else if (ItemID == -1)
+            {
+                ChangeTextBox.Clear();
+                MessageBox.Show("Please select an item");
+            }
+            else
+            {
 
-            listViewActivities.Clear();
-            LoadList();
+                string newActivity = ChangeTextBox.Text;
+                ActivityService activityService = new ActivityService();
+                List<Activity> activities = activityService.GetActivities();
+                foreach (Activity A in activities)
+                {
+                    if (A.ActivityName.ToLower() == newActivity.ToLower())
+                    {
+                        MessageBox.Show("Invalid, acitvity already exists.");
+                        ChangeTextBox.Clear();
+                        listViewActivities.Clear();
+                        LoadList();
+                        return;
+                    }
+                }
 
-            MessageBox.Show($"Succesfully changed!");
+
+                activityService.ChangeActivity(newActivity, ItemID);
+
+                listViewActivities.Clear();
+                LoadList();
+
+                MessageBox.Show($"Succesfully changed!");
+
+                ChangeTextBox.Clear();
+            }
+            
         }
     }
 }

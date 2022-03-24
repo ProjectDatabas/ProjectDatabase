@@ -32,7 +32,7 @@ namespace SomerenLogic
 
         public void ChangeActivity(string newActivity, int id)
         {
-            ChangeActivity(newActivity, id);
+            activitydb.ChangeActivity(newActivity, id);
         }
     }
 }

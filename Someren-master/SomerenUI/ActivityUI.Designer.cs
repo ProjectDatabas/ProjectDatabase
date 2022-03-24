@@ -32,18 +32,15 @@
             this.ActivityLabel = new System.Windows.Forms.Label();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
-            this.AddRadioButton = new System.Windows.Forms.RadioButton();
             this.AddTextBox = new System.Windows.Forms.TextBox();
-            this.ChangeRadioButton = new System.Windows.Forms.RadioButton();
             this.ChangeButton = new System.Windows.Forms.Button();
             this.ChangeTextBox = new System.Windows.Forms.TextBox();
-            this.DeleteRadioButton = new System.Windows.Forms.RadioButton();
             this.AddLabel = new System.Windows.Forms.Label();
             this.ChangeLabel = new System.Windows.Forms.Label();
             this.pnlAreYouSure = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.YesButton = new System.Windows.Forms.Button();
             this.NoButton = new System.Windows.Forms.Button();
+            this.YesButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlAreYouSure.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,17 +85,6 @@
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddBtn_Click);
             // 
-            // AddRadioButton
-            // 
-            this.AddRadioButton.AutoSize = true;
-            this.AddRadioButton.Location = new System.Drawing.Point(542, 103);
-            this.AddRadioButton.Name = "AddRadioButton";
-            this.AddRadioButton.Size = new System.Drawing.Size(108, 24);
-            this.AddRadioButton.TabIndex = 5;
-            this.AddRadioButton.TabStop = true;
-            this.AddRadioButton.Text = "AddCheck";
-            this.AddRadioButton.UseVisualStyleBackColor = true;
-            // 
             // AddTextBox
             // 
             this.AddTextBox.Location = new System.Drawing.Point(675, 138);
@@ -106,17 +92,6 @@
             this.AddTextBox.Size = new System.Drawing.Size(169, 26);
             this.AddTextBox.TabIndex = 6;
             this.AddTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // ChangeRadioButton
-            // 
-            this.ChangeRadioButton.AutoSize = true;
-            this.ChangeRadioButton.Location = new System.Drawing.Point(542, 220);
-            this.ChangeRadioButton.Name = "ChangeRadioButton";
-            this.ChangeRadioButton.Size = new System.Drawing.Size(135, 24);
-            this.ChangeRadioButton.TabIndex = 7;
-            this.ChangeRadioButton.TabStop = true;
-            this.ChangeRadioButton.Text = "ChangeCheck";
-            this.ChangeRadioButton.UseVisualStyleBackColor = true;
             // 
             // ChangeButton
             // 
@@ -134,17 +109,6 @@
             this.ChangeTextBox.Name = "ChangeTextBox";
             this.ChangeTextBox.Size = new System.Drawing.Size(169, 26);
             this.ChangeTextBox.TabIndex = 9;
-            // 
-            // DeleteRadioButton
-            // 
-            this.DeleteRadioButton.AutoSize = true;
-            this.DeleteRadioButton.Location = new System.Drawing.Point(542, 353);
-            this.DeleteRadioButton.Name = "DeleteRadioButton";
-            this.DeleteRadioButton.Size = new System.Drawing.Size(126, 24);
-            this.DeleteRadioButton.TabIndex = 10;
-            this.DeleteRadioButton.TabStop = true;
-            this.DeleteRadioButton.Text = "DeleteCheck";
-            this.DeleteRadioButton.UseVisualStyleBackColor = true;
             // 
             // AddLabel
             // 
@@ -174,14 +138,15 @@
             this.pnlAreYouSure.Size = new System.Drawing.Size(222, 127);
             this.pnlAreYouSure.TabIndex = 13;
             // 
-            // label1
+            // NoButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Are you sure?";
+            this.NoButton.Location = new System.Drawing.Point(132, 62);
+            this.NoButton.Name = "NoButton";
+            this.NoButton.Size = new System.Drawing.Size(67, 31);
+            this.NoButton.TabIndex = 2;
+            this.NoButton.Text = "No";
+            this.NoButton.UseVisualStyleBackColor = true;
+            this.NoButton.Click += new System.EventHandler(this.NoButton_Click);
             // 
             // YesButton
             // 
@@ -193,15 +158,14 @@
             this.YesButton.UseVisualStyleBackColor = true;
             this.YesButton.Click += new System.EventHandler(this.YesButton_Click);
             // 
-            // NoButton
+            // label1
             // 
-            this.NoButton.Location = new System.Drawing.Point(132, 62);
-            this.NoButton.Name = "NoButton";
-            this.NoButton.Size = new System.Drawing.Size(67, 31);
-            this.NoButton.TabIndex = 2;
-            this.NoButton.Text = "No";
-            this.NoButton.UseVisualStyleBackColor = true;
-            this.NoButton.Click += new System.EventHandler(this.NoButton_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(54, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Are you sure?";
             // 
             // ActivitiesForm
             // 
@@ -211,12 +175,9 @@
             this.Controls.Add(this.pnlAreYouSure);
             this.Controls.Add(this.ChangeLabel);
             this.Controls.Add(this.AddLabel);
-            this.Controls.Add(this.DeleteRadioButton);
             this.Controls.Add(this.ChangeTextBox);
             this.Controls.Add(this.ChangeButton);
-            this.Controls.Add(this.ChangeRadioButton);
             this.Controls.Add(this.AddTextBox);
-            this.Controls.Add(this.AddRadioButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.ActivityLabel);
@@ -239,12 +200,9 @@
         private System.Windows.Forms.Label ActivityLabel;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.RadioButton AddRadioButton;
         private System.Windows.Forms.TextBox AddTextBox;
-        private System.Windows.Forms.RadioButton ChangeRadioButton;
         private System.Windows.Forms.Button ChangeButton;
         private System.Windows.Forms.TextBox ChangeTextBox;
-        private System.Windows.Forms.RadioButton DeleteRadioButton;
         private System.Windows.Forms.Label AddLabel;
         private System.Windows.Forms.Label ChangeLabel;
         private System.Windows.Forms.Panel pnlAreYouSure;
