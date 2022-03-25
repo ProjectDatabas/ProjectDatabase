@@ -34,3 +34,14 @@ https://github.com/ProjectDatabas/ProjectDatabase
     Jesper van der Ven
 
 --
+-- Week 4
+
+    Opdracht Rolverdeling:
+
+    Variant A List of Activities:
+    Jesper van der Ven
+
+    Variant B Activity Supervisors:
+    Luke Huisman
+    
+--

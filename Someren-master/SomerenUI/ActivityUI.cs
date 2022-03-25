@@ -92,7 +92,17 @@ namespace SomerenUI
 
         private void RemoveBtn_Click(object sender, EventArgs e)
         {
-            pnlAreYouSure.Show();
+            if (ItemID == -1)
+            {
+                MessageBox.Show("Select an item");
+                ItemID = -1;
+                listViewActivities.Clear();
+                LoadList();
+            }
+            else 
+            { 
+                pnlAreYouSure.Show(); 
+            }
         }
 
         private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,6 +153,7 @@ namespace SomerenUI
 
         private void NoButton_Click(object sender, EventArgs e)
         {
+            ItemID = -1;
             LoadList();
         }
 
@@ -153,6 +164,7 @@ namespace SomerenUI
                 MessageBox.Show("Please fill in field before pressing 'Change'");
 
                 LoadList();
+                ItemID = -1;
             }
             else if (ItemID == -1)
             {
@@ -184,7 +196,7 @@ namespace SomerenUI
                 LoadList();
 
                 MessageBox.Show($"Succesfully changed!");
-
+                ItemID = -1;
                 ChangeTextBox.Clear();
             }
             
