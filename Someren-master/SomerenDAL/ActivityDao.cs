@@ -47,11 +47,11 @@ namespace SomerenDAL
 
         public void DeleteActivity(int id)
         {
-            string updateQuery = $"Update Teachers SET ActivityID = NULL WHERE ActivityId = @id";
+            //string updateQuery = $"Update Teachers SET ActivityID = NULL WHERE ActivityId = @id OR ActivityId = NULL";
 
-            SqlParameter[] updateSQLParameters = { new SqlParameter("@id", SqlDbType.Int) { Value = id } };
+            //SqlParameter[] updateSQLParameters = { new SqlParameter("@id", SqlDbType.Int) { Value = id } };
 
-            ExecuteEditQuery(updateQuery, updateSQLParameters);
+            //ExecuteEditQuery(updateQuery, updateSQLParameters);
 
             string activityQuery = "DELETE FROM Activity WHERE ActivityId = @id";
 
@@ -64,7 +64,7 @@ namespace SomerenDAL
         {
             string query = "UPDATE Activity SET Activity = @newActivity WHERE ActivityId = @id";
 
-            SqlParameter[] sqlParameters = { new SqlParameter("@newActivity", SqlDbType.Int) { Value = newActivity }, new SqlParameter("@id", SqlDbType.Int) { Value = id } };
+            SqlParameter[] sqlParameters = { new SqlParameter("@newActivity", SqlDbType.VarChar) { Value = newActivity }, new SqlParameter("@id", SqlDbType.Int) { Value = id } };
 
             ExecuteEditQuery(query, sqlParameters);
         }

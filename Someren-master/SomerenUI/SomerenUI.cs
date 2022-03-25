@@ -196,7 +196,7 @@ namespace SomerenUI
                     StudentListView.FullRowSelect = true;
 
                     //Add Column Header
-                    StudentListView.Columns.Add("Student ID", 150);
+                    StudentListView.Columns.Add("Student ID", 100);
                     StudentListView.Columns.Add("Student Name", 150);
 
                     foreach (Student s in studentList)
@@ -687,11 +687,6 @@ namespace SomerenUI
         private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Supervisors");
-        }
-
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
