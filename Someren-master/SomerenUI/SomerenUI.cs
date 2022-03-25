@@ -99,7 +99,6 @@ namespace SomerenUI
                     //Add Column Header
 
                     listViewMaster.Columns.Add("Teacher ID", 150);
-                    listViewMaster.Columns.Add("Supervisor", 150);
                     listViewMaster.Columns.Add("First Name", 150);
                     listViewMaster.Columns.Add("Last Name", 150);
                     listViewMaster.Columns.Add("Room ID", 150);
@@ -107,7 +106,6 @@ namespace SomerenUI
                     foreach (Teacher t in teachers)
                     {
                         ListViewItem listViewItem = new ListViewItem(Convert.ToString(t.Number));
-                        listViewItem.SubItems.Add(Convert.ToString((t.Supervisor)));
                         listViewItem.SubItems.Add(t.FirstName);
                         listViewItem.SubItems.Add(t.LastName);
                         listViewItem.SubItems.Add(Convert.ToString(t.RoomID));

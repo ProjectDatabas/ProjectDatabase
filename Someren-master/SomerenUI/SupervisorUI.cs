@@ -61,7 +61,32 @@ namespace SomerenUI
             foreach (Teacher t in teachers)
             {
                 ListViewItem listViewItem = new ListViewItem(Convert.ToString(t.FullName));
-                listViewItem.SubItems.Add(Convert.ToString((t.Supervisor)));
+                listViewItem.SubItems.Add($"{t.IsSupervisor(1)}");
+
+                SupervisorListView.Items.Add(listViewItem);
+            }
+        }
+
+        private void LoadTeachersByActivityID(int ActivityID)
+        {
+            //Fill the teacher listview within the teachers panel with a list of teachers
+            TeacherService teacherService = new TeacherService(); ;
+            List<Teacher> teachers = teacherService.GetAllTeachers(); ;
+
+            //Clear the listview before filling it again
+            SupervisorListView.Clear();
+
+            SupervisorListView.GridLines = true;
+            SupervisorListView.View = View.Details;
+
+            //Add Column Header
+            SupervisorListView.Columns.Add("Teacher ID", 150);
+            SupervisorListView.Columns.Add("Supervisor", 150);
+
+            foreach (Teacher t in teachers)
+            {
+                ListViewItem listViewItem = new ListViewItem(Convert.ToString(t.FullName));
+                listViewItem.SubItems.Add($"{t.IsSupervisor(ActivityID)}");
 
                 SupervisorListView.Items.Add(listViewItem);
             }
@@ -81,11 +106,13 @@ namespace SomerenUI
             ActivityListView.FullRowSelect = true;
 
             //Add Column Header
+            ActivityListView.Columns.Add("Activity ID", 100);
             ActivityListView.Columns.Add("Activity", 150);
 
             foreach (Activity A in activityList)
             {
-                ListViewItem listViewItem = new ListViewItem(A.ActivityName);
+                ListViewItem listViewItem = new ListViewItem(Convert.ToString(A.ActivityId));
+                listViewItem.SubItems.Add(Convert.ToString(A.ActivityName));
                 ActivityListView.Items.Add(listViewItem);
             }
         }
@@ -115,36 +142,14 @@ namespace SomerenUI
         
         private void ActivityListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // The selected activity loads the Supervisors
             for (int i = 0; i < ActivityListView.Items.Count; i++)
             {
-                if (!AddSupervisorRadioButton.Checked && !RemoveSupervisorRadioButton.Checked)
+                if (ActivityListView.Items[i].Selected == true)
                 {
-                    ReloadAll();
-                    MessageBox.Show("Please select an action first...");
-                }
-                else if (AddSupervisorRadioButton.Checked)
-                {
-                    AddSupervisorRadioButton.Enabled = false;
-                    RemoveSupervisorRadioButton.Enabled = false;
-
-                    AddSupervisorButton.Show();
-
-                    if (ActivityListView.SelectedItems.Count >= 1 && SupervisorListView.SelectedItems.Count >= 1)
-                    {
-                        AddSupervisorButton.Enabled = true;
-                    }
-                }
-                else if (RemoveSupervisorRadioButton.Checked)
-                {
-                    AddSupervisorRadioButton.Enabled = false;
-                    RemoveSupervisorRadioButton.Enabled = false;
-
-                    RemoveSupervisorButton.Show();
-
-                    if (ActivityListView.SelectedItems.Count >= 1 && SupervisorListView.SelectedItems.Count >= 1)
-                    {
-                        AddSupervisorButton.Enabled = true;
-                    }
+                    ListViewItem item = ActivityListView.Items[i];
+                    int ActivityID = Convert.ToInt32(item.SubItems[0].Text);
+                    LoadTeachersByActivityID(ActivityID);
                 }
             }
         }
@@ -157,6 +162,7 @@ namespace SomerenUI
                 {
                     ReloadAll();
                     MessageBox.Show("Please select an action first...");
+                    return;
                 }
                 else if (AddSupervisorRadioButton.Checked)
                 {
@@ -165,7 +171,7 @@ namespace SomerenUI
 
                     AddSupervisorButton.Show();
 
-                    if (ActivityListView.SelectedItems.Count >= 1 && SupervisorListView.SelectedItems.Count >= 1)
+                    if (SupervisorListView.SelectedItems.Count >= 1)
                     {
                         AddSupervisorButton.Enabled = true;
                     }
@@ -177,9 +183,9 @@ namespace SomerenUI
 
                     RemoveSupervisorButton.Show();
 
-                    if (ActivityListView.SelectedItems.Count >= 1 && SupervisorListView.SelectedItems.Count >= 1)
+                    if (SupervisorListView.SelectedItems.Count >= 1)
                     {
-                        AddSupervisorButton.Enabled = true;
+                        RemoveSupervisorButton.Enabled = true;
                     }
                 }
             }
@@ -188,6 +194,16 @@ namespace SomerenUI
         private void ResetButton_Click(object sender, EventArgs e)
         {
             ReloadAll();
+        }
+
+        private void AddSupervisorButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RemoveSupervisorButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

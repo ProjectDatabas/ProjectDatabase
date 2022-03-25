@@ -34,7 +34,6 @@ namespace SomerenDAL
 
         public void SendOrder(Order order)
         {
-
             try
             {
                 for (int i = 0; i < order.DrinksIds.Count; i++)
