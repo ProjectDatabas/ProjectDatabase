@@ -198,7 +198,7 @@ namespace SomerenUI
                     StudentListView.FullRowSelect = true;
 
                     //Add Column Header
-                    StudentListView.Columns.Add("Student ID", 150);
+                    StudentListView.Columns.Add("Student ID", 100);
                     StudentListView.Columns.Add("Student Name", 150);
 
                     foreach (Student s in studentList)
