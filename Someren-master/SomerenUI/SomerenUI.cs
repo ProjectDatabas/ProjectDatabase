@@ -3,6 +3,7 @@ using SomerenLogic;
 using SomerenModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace SomerenUI
 {
@@ -98,7 +99,6 @@ namespace SomerenUI
                     //Add Column Header
 
                     listViewMaster.Columns.Add("Teacher ID", 150);
-                    listViewMaster.Columns.Add("Supervisor", 150);
                     listViewMaster.Columns.Add("First Name", 150);
                     listViewMaster.Columns.Add("Last Name", 150);
                     listViewMaster.Columns.Add("Room ID", 150);
@@ -106,7 +106,6 @@ namespace SomerenUI
                     foreach (Teacher t in teachers)
                     {
                         ListViewItem listViewItem = new ListViewItem(Convert.ToString(t.Number));
-                        listViewItem.SubItems.Add(Convert.ToString((t.Supervisor)));
                         listViewItem.SubItems.Add(t.FirstName);
                         listViewItem.SubItems.Add(t.LastName);
                         listViewItem.SubItems.Add(Convert.ToString(t.RoomID));
@@ -134,8 +133,8 @@ namespace SomerenUI
                 try
                 {
                     // fill the drink listview within the stock panel with a list of drinks
-                    DrinkService drinkService = new DrinkService(); ;
-                    List<Drink> drinks = drinkService.GetAllDrinks(); ;
+                    DrinkService drinkService = new DrinkService();
+                    List<Drink> drinks = drinkService.GetAllDrinks();
 
                     // clear the listview before filling it again
                     listViewMaster.Clear();
@@ -197,7 +196,7 @@ namespace SomerenUI
                     StudentListView.FullRowSelect = true;
 
                     //Add Column Header
-                    StudentListView.Columns.Add("Student ID", 150);
+                    StudentListView.Columns.Add("Student ID", 100);
                     StudentListView.Columns.Add("Student Name", 150);
 
                     foreach (Student s in studentList)
@@ -239,6 +238,50 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the Drinks: " + e.Message);
                 }
             }
+            else if(panelName == "Activities")
+            {
+                // hide all other panels
+                HideAllPanelsAndComponents();
+
+                //Create a new instance of the MDI child template form
+                ActivitiesForm activityUI = new ActivitiesForm();
+
+                //Set parent form for the child window
+                activityUI.TopLevel = false;
+                activityUI.Parent = this;
+
+
+                //Set starting position
+                activityUI.StartPosition = FormStartPosition.Manual;
+                activityUI.Left = 100;
+                activityUI.Top = 50;
+
+
+                //Display the child window
+                activityUI.Show();
+            }
+            else if (panelName == "Supervisors")
+            {
+                // hide all other panels
+                HideAllPanelsAndComponents();
+
+                //Create a new instance of the MDI child template form
+                SupervisorUI supervisorUI = new SupervisorUI();
+
+                //Set parent form for the child window
+                supervisorUI.TopLevel = false;
+                supervisorUI.Parent = this;
+
+
+                //Set starting position
+                supervisorUI.StartPosition = FormStartPosition.Manual;
+                supervisorUI.Left = 100;
+                supervisorUI.Top = 50;
+
+
+                //Display the child window
+                supervisorUI.Show();
+            }
         }
 
         private void EnableAndShowStockRadioButtons()
@@ -270,6 +313,7 @@ namespace SomerenUI
             imgDashboard.Hide();
             pnlMaster.Hide();
             pnlDrinks.Hide();
+            pnlSupervisor.Hide();
             StockTextBoxAndButtonReset();
         }
 
@@ -632,6 +676,16 @@ namespace SomerenUI
             showPanel("Stock");
 
             MessageBox.Show($"Succesfully deleted!");
+        }
+
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
+
+        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Supervisors");
         }
     }
 }

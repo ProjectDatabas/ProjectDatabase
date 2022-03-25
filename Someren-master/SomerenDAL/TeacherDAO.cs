@@ -8,10 +8,10 @@ using System.Data;
 namespace SomerenDAL
 {
     public class TeacherDAO : BaseDao
-    {
+    {   
         public List<Teacher> GetAll()
         {
-            string query = "SELECT teacher_ID, supervisor, room_ID, FirstName, LastName FROM Teachers";
+            string query = "SELECT teacher_ID, room_ID, FirstName, LastName, ActivityID FROM Teachers AS T JOIN Supervisors AS S ON T.Teacher_ID = S.TeacherID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -22,12 +22,12 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                bool supervisor = (bool)dr["supervisor"];
                 int number = (int)dr["teacher_ID"];
                 string firstName = (string)(dr["FirstName"].ToString());
                 string lastName = (string)(dr["LastName"].ToString());
                 int roomID = (int)(dr["Room_ID"]);
-                Teacher teacher = new Teacher(number, firstName, lastName, supervisor, roomID);
+                int activityID = (int)(dr["ActivityID"]);
+                Teacher teacher = new Teacher(number, firstName, lastName, roomID, activityID);
                 teachers.Add(teacher);
             }
             return teachers;
