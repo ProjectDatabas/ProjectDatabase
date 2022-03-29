@@ -45,3 +45,14 @@ https://github.com/ProjectDatabas/ProjectDatabase
     Luke Huisman
     
 --
+-- Week 5
+
+    Opdracht Rolverdeling:
+
+    Variant A Log in:
+    Luke Huisman
+
+    Variant B Registration:
+    Jesper van der Ven
+	
+--

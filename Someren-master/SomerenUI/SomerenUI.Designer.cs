@@ -100,7 +100,7 @@
             // 
             // imgDashboard
             // 
-            this.imgDashboard.Location = new System.Drawing.Point(470, 0);
+            this.imgDashboard.Location = new System.Drawing.Point(706, -1);
             this.imgDashboard.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.imgDashboard.Name = "imgDashboard";
             this.imgDashboard.Size = new System.Drawing.Size(233, 216);
@@ -663,10 +663,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.pnlSupervisor);
-            this.Controls.Add(this.pnlMaster);
             this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.pnlDrinks);
+            this.Controls.Add(this.pnlSupervisor);
+            this.Controls.Add(this.pnlMaster);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SomerenUI";
