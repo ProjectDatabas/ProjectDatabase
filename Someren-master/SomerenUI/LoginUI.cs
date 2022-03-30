@@ -1,4 +1,6 @@
 ﻿using System;
+using SomerenLogic;
+using SomerenModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,8 @@ namespace SomerenUI
 {
     public partial class LoginUI : Form
     {
+        private LoginLogic loginLogic = new LoginLogic();
+
         public LoginUI()
         {
             InitializeComponent();
@@ -21,17 +25,17 @@ namespace SomerenUI
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Check if username and password are correct
-            if (emailTextBox.Text == "admin" && passwordTextBox.Text == "admin")
+            if (loginLogic.CheckLogin(emailTextBox.Text, passwordTextBox.Text))
             {
-                // Show the main screen
+                // If correct, show the main form
                 SomerenUI mainFrame = new SomerenUI();
                 mainFrame.Show();
                 this.Hide();
             }
             else
             {
-                // Show error message
-                MessageBox.Show("Incorrect username or password", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // If incorrect, show error message
+                MessageBox.Show("Incorrect username or password", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
