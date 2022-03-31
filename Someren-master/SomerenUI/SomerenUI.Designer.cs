@@ -663,10 +663,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.pnlDashboard);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlSupervisor);
             this.Controls.Add(this.pnlMaster);
+            this.Controls.Add(this.pnlDashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SomerenUI";

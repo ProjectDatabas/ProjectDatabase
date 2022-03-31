@@ -34,6 +34,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.emailLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
+            this.RegisterButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // WelcomeLabel
@@ -64,9 +65,9 @@
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(116, 164);
+            this.btnLogin.Location = new System.Drawing.Point(77, 164);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(89, 27);
+            this.btnLogin.Size = new System.Drawing.Size(76, 27);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Log in";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -92,11 +93,23 @@
             this.passwordLabel.TabIndex = 0;
             this.passwordLabel.Text = "Password";
             // 
+            // RegisterButton
+            // 
+            this.RegisterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterButton.Location = new System.Drawing.Point(169, 164);
+            this.RegisterButton.Name = "RegisterButton";
+            this.RegisterButton.Size = new System.Drawing.Size(76, 27);
+            this.RegisterButton.TabIndex = 4;
+            this.RegisterButton.Text = "Register";
+            this.RegisterButton.UseVisualStyleBackColor = true;
+            this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
+            // 
             // LoginUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 212);
+            this.Controls.Add(this.RegisterButton);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.emailTextBox);
@@ -118,5 +131,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Button RegisterButton;
     }
 }
