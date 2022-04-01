@@ -10,7 +10,7 @@ namespace SomerenLogic
     public class PasswordWithSaltHasher
     {
         RNG rng = new RNG();
-        public PasswordWithSaltHasher HashWithSalt(string password, int saltLength, HashAlgorithm hashAlgo)
+        public HashWithSaltResult HashWithSalt(string password, int saltLength, HashAlgorithm hashAlgo)
         {
             RNG rng = new RNG();
             byte[] saltBytes = rng.GenerateRandomCryptographicBytes(saltLength);
@@ -19,7 +19,7 @@ namespace SomerenLogic
             passwordWithSaltBytes.AddRange(passwordAsBytes);
             passwordWithSaltBytes.AddRange(saltBytes);
             byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
-            return new Salt(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
+            return new HashWithSaltResult(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
         }
     }
 }

@@ -36,6 +36,8 @@
             this.RegisterButton = new System.Windows.Forms.Button();
             this.registerCodeLabel = new System.Windows.Forms.Label();
             this.registerCodeTextBox = new System.Windows.Forms.TextBox();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RegisterLabel
@@ -100,9 +102,9 @@
             this.registerCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registerCodeLabel.Location = new System.Drawing.Point(74, 143);
             this.registerCodeLabel.Name = "registerCodeLabel";
-            this.registerCodeLabel.Size = new System.Drawing.Size(74, 13);
+            this.registerCodeLabel.Size = new System.Drawing.Size(64, 13);
             this.registerCodeLabel.TabIndex = 7;
-            this.registerCodeLabel.Text = "Register Code";
+            this.registerCodeLabel.Text = "License key";
             // 
             // registerCodeTextBox
             // 
@@ -111,11 +113,34 @@
             this.registerCodeTextBox.Size = new System.Drawing.Size(168, 20);
             this.registerCodeTextBox.TabIndex = 8;
             // 
+            // BackButton
+            // 
+            this.BackButton.Location = new System.Drawing.Point(12, 12);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(51, 24);
+            this.BackButton.TabIndex = 9;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.Location = new System.Drawing.Point(280, 12);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(27, 24);
+            this.CloseButton.TabIndex = 10;
+            this.CloseButton.Text = "X";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 241);
+            this.ControlBox = false;
+            this.Controls.Add(this.CloseButton);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.registerCodeTextBox);
             this.Controls.Add(this.registerCodeLabel);
             this.Controls.Add(this.RegisterButton);
@@ -124,8 +149,11 @@
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.RegisterLabel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RegistrationForm";
             this.Text = "Registration";
+            this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,5 +169,7 @@
         private System.Windows.Forms.Button RegisterButton;
         private System.Windows.Forms.Label registerCodeLabel;
         private System.Windows.Forms.TextBox registerCodeTextBox;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Button CloseButton;
     }
 }
