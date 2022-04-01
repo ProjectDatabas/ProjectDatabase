@@ -22,7 +22,9 @@ namespace SomerenLogic
             // Check for each User in the list<Login> users if their email and password are the same
             foreach (Login user in users)
             {
-                if (user.Email == email && user.Password == password)
+                byte[] digestBytes = SetGivenPasswordToHash(password, user);
+
+                if (user.Email == email && user.Password == digestBytes)
                 {
                     loginCheck = true;
                 }
@@ -39,14 +41,29 @@ namespace SomerenLogic
             // Check for each User in the list<Login> users if their email and password are the same
             foreach (Login user in users)
             {
-                if (user.Email == email && user.Password == password)
+                byte[] digestBytes = SetGivenPasswordToHash(password, user);
+
+                if (user.Email == email && user.Password == digestBytes)
                 {
                     currentUser = user;
                 }
             }
             return currentUser;
         }
+        
+        private static byte[] SetGivenPasswordToHash(string password, Login user)
+        {
+            HashAlgorithm hashAlgo = new SHA256Managed();
+            byte[] passwordAsBytes = Encoding.UTF8.GetBytes(password);
 
+            List<byte> passwordWithSaltBytes = new List<byte>();
+            passwordWithSaltBytes.AddRange(passwordAsBytes);
+            passwordWithSaltBytes.AddRange(user.SaltHash);
+
+            byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
+            return digestBytes;
+        }
+        
         public List<Login> GetAllLogins()
         {
             return loginDao.GetAllLogins();

@@ -8,9 +8,24 @@ namespace SomerenModel
 {
     public class Login
     {
-        public int UserId { get; set; }
+        public int UserId { get; }
         public string Email { get; set; }
-        public string Password { get; set; }
+        public byte[] Password { get; set; }
         public bool UserStatus { get; set; }
+        public byte[] SaltHash { get; }
+
+        public Login(int userId, string email, byte[] password, bool userStatus, byte[] saltHash)
+        {
+            UserId = userId;
+            Email = email;
+            Password = password;
+            UserStatus = userStatus;
+            SaltHash = saltHash;
+        }
+
+        public Login()
+        {
+            
+        }
     }
 }
