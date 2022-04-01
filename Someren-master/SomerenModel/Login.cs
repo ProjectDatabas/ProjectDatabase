@@ -14,12 +14,12 @@ namespace SomerenModel
         public bool UserStatus { get; set; }
         public byte[] SaltHash { get; }
 
-        public Login(int userId, string email, byte[] password, bool userStatus, byte[] saltHash)
+        public Login(int userId, string email, byte[] password, bool adminStatus, byte[] saltHash)
         {
             UserId = userId;
             Email = email;
             Password = password;
-            UserStatus = userStatus;
+            AdminStatus = adminStatus;
             SaltHash = saltHash;
         }
 

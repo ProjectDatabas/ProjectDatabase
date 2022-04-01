@@ -80,22 +80,12 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlSupervisor = new System.Windows.Forms.Panel();
-            this.AddSupervisorRadioButton = new System.Windows.Forms.RadioButton();
-            this.RemoveSupervisorRadioButton = new System.Windows.Forms.RadioButton();
-            this.ActivityTeacherListView = new System.Windows.Forms.ListView();
-            this.ActivityTeacherLabel = new System.Windows.Forms.Label();
-            this.ActivityListView = new System.Windows.Forms.ListView();
-            this.ActivityLabel = new System.Windows.Forms.Label();
-            this.AddSupervisorButton = new System.Windows.Forms.Button();
-            this.RemoveSupervisorButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
             this.pnlMaster.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlDrinks.SuspendLayout();
-            this.pnlSupervisor.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -141,19 +131,19 @@
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -557,106 +547,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Drinks";
             // 
-            // pnlSupervisor
-            // 
-            this.pnlSupervisor.Controls.Add(this.AddSupervisorRadioButton);
-            this.pnlSupervisor.Controls.Add(this.RemoveSupervisorRadioButton);
-            this.pnlSupervisor.Controls.Add(this.ActivityTeacherListView);
-            this.pnlSupervisor.Controls.Add(this.ActivityTeacherLabel);
-            this.pnlSupervisor.Controls.Add(this.ActivityListView);
-            this.pnlSupervisor.Controls.Add(this.ActivityLabel);
-            this.pnlSupervisor.Controls.Add(this.AddSupervisorButton);
-            this.pnlSupervisor.Controls.Add(this.RemoveSupervisorButton);
-            this.pnlSupervisor.Location = new System.Drawing.Point(12, 27);
-            this.pnlSupervisor.Margin = new System.Windows.Forms.Padding(1);
-            this.pnlSupervisor.Name = "pnlSupervisor";
-            this.pnlSupervisor.Size = new System.Drawing.Size(938, 464);
-            this.pnlSupervisor.TabIndex = 22;
-            // 
-            // AddSupervisorRadioButton
-            // 
-            this.AddSupervisorRadioButton.AutoSize = true;
-            this.AddSupervisorRadioButton.Location = new System.Drawing.Point(137, 389);
-            this.AddSupervisorRadioButton.Name = "AddSupervisorRadioButton";
-            this.AddSupervisorRadioButton.Size = new System.Drawing.Size(97, 17);
-            this.AddSupervisorRadioButton.TabIndex = 17;
-            this.AddSupervisorRadioButton.TabStop = true;
-            this.AddSupervisorRadioButton.Text = "Add Supervisor";
-            this.AddSupervisorRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // RemoveSupervisorRadioButton
-            // 
-            this.RemoveSupervisorRadioButton.AutoSize = true;
-            this.RemoveSupervisorRadioButton.Location = new System.Drawing.Point(137, 411);
-            this.RemoveSupervisorRadioButton.Name = "RemoveSupervisorRadioButton";
-            this.RemoveSupervisorRadioButton.Size = new System.Drawing.Size(118, 17);
-            this.RemoveSupervisorRadioButton.TabIndex = 16;
-            this.RemoveSupervisorRadioButton.TabStop = true;
-            this.RemoveSupervisorRadioButton.Text = "Remove Supervisor";
-            this.RemoveSupervisorRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // ActivityTeacherListView
-            // 
-            this.ActivityTeacherListView.HideSelection = false;
-            this.ActivityTeacherListView.Location = new System.Drawing.Point(193, 42);
-            this.ActivityTeacherListView.Margin = new System.Windows.Forms.Padding(1);
-            this.ActivityTeacherListView.Name = "ActivityTeacherListView";
-            this.ActivityTeacherListView.Size = new System.Drawing.Size(467, 276);
-            this.ActivityTeacherListView.TabIndex = 3;
-            this.ActivityTeacherListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // ActivityTeacherLabel
-            // 
-            this.ActivityTeacherLabel.AutoSize = true;
-            this.ActivityTeacherLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.ActivityTeacherLabel.Location = new System.Drawing.Point(203, 13);
-            this.ActivityTeacherLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.ActivityTeacherLabel.Name = "ActivityTeacherLabel";
-            this.ActivityTeacherLabel.Size = new System.Drawing.Size(90, 24);
-            this.ActivityTeacherLabel.TabIndex = 2;
-            this.ActivityTeacherLabel.Text = "Teachers";
-            // 
-            // ActivityListView
-            // 
-            this.ActivityListView.HideSelection = false;
-            this.ActivityListView.Location = new System.Drawing.Point(29, 42);
-            this.ActivityListView.Margin = new System.Windows.Forms.Padding(1);
-            this.ActivityListView.Name = "ActivityListView";
-            this.ActivityListView.Size = new System.Drawing.Size(103, 276);
-            this.ActivityListView.TabIndex = 1;
-            this.ActivityListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // ActivityLabel
-            // 
-            this.ActivityLabel.AutoSize = true;
-            this.ActivityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.ActivityLabel.Location = new System.Drawing.Point(43, 13);
-            this.ActivityLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.ActivityLabel.Name = "ActivityLabel";
-            this.ActivityLabel.Size = new System.Drawing.Size(67, 24);
-            this.ActivityLabel.TabIndex = 0;
-            this.ActivityLabel.Text = "Activity";
-            // 
-            // AddSupervisorButton
-            // 
-            this.AddSupervisorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.AddSupervisorButton.Location = new System.Drawing.Point(36, 382);
-            this.AddSupervisorButton.Name = "AddSupervisorButton";
-            this.AddSupervisorButton.Size = new System.Drawing.Size(90, 46);
-            this.AddSupervisorButton.TabIndex = 19;
-            this.AddSupervisorButton.Text = "Add Supervisor";
-            this.AddSupervisorButton.UseVisualStyleBackColor = true;
-            // 
-            // RemoveSupervisorButton
-            // 
-            this.RemoveSupervisorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.RemoveSupervisorButton.Location = new System.Drawing.Point(36, 382);
-            this.RemoveSupervisorButton.Name = "RemoveSupervisorButton";
-            this.RemoveSupervisorButton.Size = new System.Drawing.Size(90, 46);
-            this.RemoveSupervisorButton.TabIndex = 18;
-            this.RemoveSupervisorButton.Text = "Remove Supervisor";
-            this.RemoveSupervisorButton.UseVisualStyleBackColor = true;
-            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -664,7 +554,6 @@
             this.ClientSize = new System.Drawing.Size(962, 505);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnlDrinks);
-            this.Controls.Add(this.pnlSupervisor);
             this.Controls.Add(this.pnlMaster);
             this.Controls.Add(this.pnlDashboard);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -683,8 +572,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlDrinks.ResumeLayout(false);
             this.pnlDrinks.PerformLayout();
-            this.pnlSupervisor.ResumeLayout(false);
-            this.pnlSupervisor.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -742,15 +629,6 @@
         private System.Windows.Forms.Label NameNewDrinkLabel;
         private System.Windows.Forms.Button DeleteDrinkButton;
         private System.Windows.Forms.RadioButton DeleteDrinkRadioButton;
-        private System.Windows.Forms.Panel pnlSupervisor;
-        private System.Windows.Forms.ListView ActivityTeacherListView;
-        private System.Windows.Forms.Label ActivityTeacherLabel;
-        private System.Windows.Forms.ListView ActivityListView;
-        private System.Windows.Forms.Label ActivityLabel;
-        private System.Windows.Forms.RadioButton AddSupervisorRadioButton;
-        private System.Windows.Forms.RadioButton RemoveSupervisorRadioButton;
-        private System.Windows.Forms.Button AddSupervisorButton;
-        private System.Windows.Forms.Button RemoveSupervisorButton;
         private System.Windows.Forms.ToolStripMenuItem supervisorsToolStripMenuItem;
     }
 }

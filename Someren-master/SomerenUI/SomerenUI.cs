@@ -10,15 +10,25 @@ namespace SomerenUI
     public partial class SomerenUI : Form
     {
         private int ItemID = 0;
-
-        public SomerenUI()
+        Login currentUser;
+        public SomerenUI(Login user)
         {
             InitializeComponent();
+            currentUser = user;
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
         {
+            if (!currentUser.AdminStatus)
+            {
+                HideMenuTools();
+            }
             showPanel("Dashboard");
+        }
+
+        private void HideMenuTools()
+        {
+            stockToolStripMenuItem.Enabled = false;
         }
 
         private void showPanel(string panelName)
@@ -244,7 +254,7 @@ namespace SomerenUI
                 HideAllPanelsAndComponents();
 
                 //Create a new instance of the MDI child template form
-                ActivitiesForm activityUI = new ActivitiesForm();
+                ActivitiesForm activityUI = new ActivitiesForm(currentUser);
 
                 //Set parent form for the child window
                 activityUI.TopLevel = false;
@@ -266,7 +276,7 @@ namespace SomerenUI
                 HideAllPanelsAndComponents();
 
                 //Create a new instance of the MDI child template form
-                SupervisorUI supervisorUI = new SupervisorUI();
+                SupervisorUI supervisorUI = new SupervisorUI(currentUser);
 
                 //Set parent form for the child window
                 supervisorUI.TopLevel = false;
