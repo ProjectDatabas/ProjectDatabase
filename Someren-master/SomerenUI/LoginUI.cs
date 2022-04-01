@@ -1,4 +1,5 @@
 ﻿using System;
+using SomerenUI;
 using SomerenLogic;
 using SomerenModel;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace SomerenUI
             if (loginSuccess)
             {
                 // If correct, show the main form
-                SomerenUI mainFrame = new SomerenUI(user);
+                SomerenUI mainFrame = new SomerenUI(currentUser);
                 mainFrame.Show();
                 this.Hide();
             }

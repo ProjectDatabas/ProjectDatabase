@@ -14,7 +14,7 @@ namespace SomerenDAL
     {
         public List<Login> GetAllLogins()
         {
-            string query = "SELECT UserID, LoginEmail, PasswordHash, IsAdmin FROM User";
+            string query = "SELECT UserID, LoginEmail, PasswordHash, IsAdmin, SaltyUser FROM User";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -25,14 +25,13 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Login login = new Login()
-                {
-                    UserId = (int)dr["UserID"],
-                    Email = (string)dr["LoginEmail"],
-                    Password = (string)dr["PasswordHash"],
-                    AdminStatus = (bool)dr["IsAdmin"]
-                };
-                logins.Add(login);
+                int userID = (int)dr["UserID"];
+                string loginEmail = (string)dr["LoginEmail"];
+                byte[] passwordHash = (byte[])dr["PasswordHash"];
+                bool isAdmin = (bool)dr["IsAdmin"];
+                byte[] saltyUser = (byte[])dr["SaltyUser"];
+
+                logins.Add(new Login(userID, loginEmail, passwordHash, isAdmin, saltyUser));
             }
             return logins;
         }
