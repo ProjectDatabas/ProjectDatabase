@@ -53,6 +53,12 @@
     <Compile Include="ActivityUI.Designer.cs">
       <DependentUpon>ActivityUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrationUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrationUI.Designer.cs">
+      <DependentUpon>RegistrationUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
     <EmbeddedResource Include="ActivityUI.resx">
       <DependentUpon>ActivityUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrationUI.resx">
+      <DependentUpon>RegistrationUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUI.resx">
       <DependentUpon>LoginUI.cs</DependentUpon>

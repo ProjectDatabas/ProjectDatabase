@@ -38,5 +38,15 @@ namespace SomerenUI
                 MessageBox.Show("Incorrect username or password", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            //create instance of new form
+            RegistrationForm registerUI = new RegistrationForm();
+
+            //Display the new form
+            this.Hide();
+            registerUI.Show();
+        }
     }
 }
