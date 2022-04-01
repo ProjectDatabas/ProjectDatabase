@@ -14,9 +14,12 @@ namespace SomerenUI
 {
     public partial class SupervisorUI : Form
     {
-        public SupervisorUI()
+        private Login currentUser;
+
+        public SupervisorUI(Login user)
         {
             InitializeComponent();
+            currentUser = user;
             ReloadAll();
         }
 
@@ -138,6 +141,15 @@ namespace SomerenUI
 
             AddSupervisorButton.Hide();
             RemoveSupervisorButton.Hide();
+
+            if (!currentUser.UserStatus)
+            {
+                AddSupervisorButton.Hide();
+                AddSupervisorRadioButton.Hide();
+                RemoveSupervisorButton.Hide();
+                RemoveSupervisorRadioButton.Hide();
+
+            }
         }
         
         private void ActivityListView_SelectedIndexChanged(object sender, EventArgs e)

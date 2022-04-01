@@ -9,15 +9,25 @@ namespace SomerenUI
     public partial class ActivitiesForm : Form
     {
         private int ItemID = -1;
-        public ActivitiesForm()
+        private Login currentUser;
+
+        public ActivitiesForm(Login user)
         {
             InitializeComponent();
+            currentUser = user;
         }
 
         private void ActivitiesForm_Load(object sender, EventArgs e)
         {
-            EnableAndShowRadioButtons();
-
+            if (currentUser.UserStatus)
+            {
+                EnableAndShowRadioButtons();
+            }
+            else
+            {
+                HideButtons();
+            }
+            
             try
             {
                 LoadList();
@@ -26,6 +36,19 @@ namespace SomerenUI
             {
                 MessageBox.Show("Something went wrong while loading the Activities: " + a.Message);
             }
+        }
+
+        private void HideButtons()
+        {
+            AddButton.Hide();
+            AddLabel.Hide();
+            AddTextBox.Hide();
+
+            ChangeButton.Hide();
+            ChangeLabel.Hide();
+            ChangeTextBox.Hide();
+
+            DeleteButton.Hide();
         }
 
         private void LoadList()
