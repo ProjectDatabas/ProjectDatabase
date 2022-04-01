@@ -20,7 +20,7 @@ namespace SomerenLogic
             passwordWithSaltBytes.AddRange(passwordAsBytes);
             passwordWithSaltBytes.AddRange(saltBytes);
             byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
-            return new HashWithSalt(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes));
+            return new HashWithSalt(saltBytes, digestBytes);
         }
     }
 }
