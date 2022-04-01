@@ -19,7 +19,7 @@ namespace SomerenUI
 
         private void SomerenUI_Load(object sender, EventArgs e)
         {
-            if (!currentUser.UserStatus)
+            if (!currentUser.AdminStatus)
             {
                 HideMenuTools();
             }

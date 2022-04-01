@@ -30,7 +30,7 @@ namespace SomerenDAL
                     UserId = (int)dr["UserID"],
                     Email = (string)dr["LoginEmail"],
                     Password = (string)dr["PasswordHash"],
-                    UserStatus = (bool)dr["IsAdmin"]
+                    AdminStatus = (bool)dr["IsAdmin"]
                 };
                 logins.Add(login);
             }

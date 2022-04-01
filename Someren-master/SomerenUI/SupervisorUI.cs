@@ -142,7 +142,7 @@ namespace SomerenUI
             AddSupervisorButton.Hide();
             RemoveSupervisorButton.Hide();
 
-            if (!currentUser.UserStatus)
+            if (!currentUser.AdminStatus)
             {
                 AddSupervisorButton.Hide();
                 AddSupervisorRadioButton.Hide();
