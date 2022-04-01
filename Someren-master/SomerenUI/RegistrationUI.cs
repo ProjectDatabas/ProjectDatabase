@@ -4,6 +4,7 @@ using SomerenModel;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Security.Cryptography;
 
 namespace SomerenUI
 {
@@ -53,11 +54,14 @@ namespace SomerenUI
             string email = emailTextBox.Text;
             string password = passwordTextBox.Text;
 
+            
+
             LoginLogic loginLogic = new LoginLogic();
             try
             {
-                loginLogic.AddNewUser(email, password);
-
+                PasswordWithSaltHasher hash = new PasswordWithSaltHasher();
+                HashWithSalt HwS = hash.HashWithSalt(password, 64, SHA256.Create());
+                loginLogic.AddNewUser(email, HwS.Digest, HwS.Salt);
             }
             catch (Exception ex)
             {
@@ -67,10 +71,9 @@ namespace SomerenUI
                 registerCodeTextBox.Clear();
                 return;
             }
-            
-            // If correct, show the main form
-            SomerenUI mainFrame = new SomerenUI();
-            mainFrame.Show();
+
+            LoginUI loginUI = new LoginUI();
+            loginUI.Show();
             this.Hide();
         }
 

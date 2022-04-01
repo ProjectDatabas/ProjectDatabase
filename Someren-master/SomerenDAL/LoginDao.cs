@@ -14,7 +14,7 @@ namespace SomerenDAL
     {
         public List<Login> GetAllLogins()
         {
-            string query = "SELECT UserID, LoginEmail, PasswordHash, IsAdmin, SaltyUser FROM User";
+            string query = "SELECT UserID, LoginEmail, PasswordHash, IsAdmin, SaltyUser FROM [User]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -37,22 +37,22 @@ namespace SomerenDAL
         }
 
 
-        public void AddNewUser(string email, string passwordHash)
+        public void AddNewUser(string email, byte[] passwordHash, byte[] saltyUser)
         {
-            foreach (Login L in GetAllLogins())
-            {
-                if (email == L.Email)
-                {
-                    throw new Exception("User already exists");
-                }
-            }
+            //foreach (Login L in GetAllLogins())
+            //{
+            //    if (email == L.Email)
+            //    {
+            //        throw new Exception("User already exists");
+            //    }
+            //}
 
-            string query = "INSERT INTO User(LoginEmail, IsAdmin, PasswordHash, SaltyUser) VALUES(@LoginEmail, @IsAdmin, @PasswordHash, @SaltyUser); ";
+            string query = "INSERT INTO [user](LoginEmail, IsAdmin, PasswordHash, SaltyUser) VALUES(@LoginEmail, @IsAdmin, @PasswordHash, @SaltyUser); ";
 
             SqlParameter[] sqlParameters = { new SqlParameter("@LoginEmail", SqlDbType.NVarChar) { Value = email },
                                              new SqlParameter("@IsAdmin", SqlDbType.Bit) { Value = false },
-                                             new SqlParameter("@PasswordHash", SqlDbType.NVarChar) { Value = passwordHash },
-                                             new SqlParameter("@SaltyUser", SqlDbType.NVarChar) { Value = saltyUser } };
+                                             new SqlParameter("@PasswordHash", SqlDbType.Binary) { Value = passwordHash },
+                                             new SqlParameter("@SaltyUser", SqlDbType.Binary) { Value = saltyUser } };
 
             ExecuteEditQuery(query, sqlParameters);
         }

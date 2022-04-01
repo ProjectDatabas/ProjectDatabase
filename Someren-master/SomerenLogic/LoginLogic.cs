@@ -11,7 +11,7 @@ namespace SomerenLogic
 {
     public class LoginLogic
     {
-        LoginDao loginDao;
+        LoginDao loginDao = new LoginDao();
 
         public bool CheckLogin(string email, string password)
         {
@@ -69,9 +69,9 @@ namespace SomerenLogic
             return loginDao.GetAllLogins();
         }
 
-        public void AddNewUser(string email, string passwordHash)
+        public void AddNewUser(string email, byte[] passwordHash, byte[] saltyUser)
         {
-            loginDao.AddNewUser(email, passwordHash);
+            loginDao.AddNewUser(email, passwordHash, saltyUser);
         }
     }
 }
