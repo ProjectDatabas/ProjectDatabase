@@ -11,7 +11,7 @@ namespace SomerenModel
         public int UserId { get; }
         public string Email { get; set; }
         public byte[] Password { get; set; }
-        public bool UserStatus { get; set; }
+        public bool AdminStatus { get; set; }
         public byte[] SaltHash { get; }
 
         public Login(int userId, string email, byte[] password, bool adminStatus, byte[] saltHash)

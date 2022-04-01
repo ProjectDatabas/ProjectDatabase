@@ -323,7 +323,6 @@ namespace SomerenUI
             imgDashboard.Hide();
             pnlMaster.Hide();
             pnlDrinks.Hide();
-            pnlSupervisor.Hide();
             StockTextBoxAndButtonReset();
         }
 
