@@ -48,11 +48,12 @@ namespace SomerenDAL
                 }
             }
 
-            string query = "INSERT INTO User(LoginEmail, PasswordHash, IsAdmin) VALUES(@LoginEmail, @PasswordHash, @IsAdmin); ";
+            string query = "INSERT INTO User(LoginEmail, IsAdmin, PasswordHash, SaltyUser) VALUES(@LoginEmail, @IsAdmin, @PasswordHash, @SaltyUser); ";
 
             SqlParameter[] sqlParameters = { new SqlParameter("@LoginEmail", SqlDbType.NVarChar) { Value = email },
+                                             new SqlParameter("@IsAdmin", SqlDbType.Bit) { Value = false },
                                              new SqlParameter("@PasswordHash", SqlDbType.NVarChar) { Value = passwordHash },
-                                             new SqlParameter("@IsAdmin", SqlDbType.Bit) { Value = false } };
+                                             new SqlParameter("@SaltyUser", SqlDbType.NVarChar) { Value = saltyUser } };
 
             ExecuteEditQuery(query, sqlParameters);
         }
