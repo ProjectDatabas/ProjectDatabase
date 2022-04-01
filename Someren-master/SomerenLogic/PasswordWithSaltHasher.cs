@@ -1,17 +1,14 @@
-﻿using System;
+﻿using SomerenLogic;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using SomerenLogic;
-using SomerenModel;
 
 namespace SomerenLogic
 {
     public class PasswordWithSaltHasher
     {
-        public HashWithSalt HashWithSalt(string password, int saltLength, HashAlgorithm hashAlgo)
+        public HashWithSaltResult HashWithSalt(string password, int saltLength, HashAlgorithm hashAlgo)
         {
             RNG rng = new RNG();
             byte[] saltBytes = rng.GenerateRandomCryptographicBytes(saltLength);
@@ -20,7 +17,24 @@ namespace SomerenLogic
             passwordWithSaltBytes.AddRange(passwordAsBytes);
             passwordWithSaltBytes.AddRange(saltBytes);
             byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
-            return new HashWithSalt(saltBytes, digestBytes);
+            return new HashWithSaltResult(Convert.ToBase64String(saltBytes), Convert.ToBase64String(digestBytes), digestBytes);
+        }
+
+        public string PasswordPlusSalt(string inputPassword, string salt)
+        {
+            byte[] saltBytes = Convert.FromBase64String(salt);
+            byte[] passwordAsBytes = Encoding.UTF8.GetBytes(inputPassword);
+            List<byte> passwordWithSaltBytes = new List<byte>();
+            passwordWithSaltBytes.AddRange(passwordAsBytes);
+            passwordWithSaltBytes.AddRange(saltBytes);
+            byte[] digestBytes = SHA256.Create().ComputeHash(passwordWithSaltBytes.ToArray());
+            return Convert.ToBase64String(digestBytes);
+        }
+
+        public byte[] ConvertToSHA256(string s)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(s);
+            return SHA256.Create().ComputeHash(bytes);
         }
     }
 }

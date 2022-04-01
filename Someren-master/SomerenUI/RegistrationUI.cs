@@ -60,8 +60,8 @@ namespace SomerenUI
             try
             {
                 PasswordWithSaltHasher hash = new PasswordWithSaltHasher();
-                HashWithSalt HwS = hash.HashWithSalt(password, 64, SHA256.Create());
-                loginLogic.AddNewUser(email, HwS.Digest, HwS.Salt);
+                HashWithSaltResult HwS = hash.HashWithSalt(password, 64, SHA256.Create());
+                loginLogic.AddNewUser(email, HwS.DigestHash, HwS.Salt);
             }
             catch (Exception ex)
             {

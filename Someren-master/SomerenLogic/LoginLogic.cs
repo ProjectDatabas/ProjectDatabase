@@ -11,7 +11,9 @@ namespace SomerenLogic
 {
     public class LoginLogic
     {
+        private const int FourtyThreeChars = 43;
         LoginDao loginDao = new LoginDao();
+        PasswordWithSaltHasher pwsh = new PasswordWithSaltHasher();
 
         public bool CheckLogin(string email, string password)
         {
@@ -22,12 +24,25 @@ namespace SomerenLogic
             // Check for each User in the list<Login> users if their email and password are the same
             foreach (Login user in users)
             {
-                byte[] digestBytes = SetGivenPasswordToHash(password, user);
-
-                if (user.Email == email && user.Password == digestBytes)
+                string filledInPassword = pwsh.PasswordPlusSalt(password, user.Salt);
+                // check if the first 43 letters in a string are the same as the password
+                int counter = 0;
+                for (int i = 0; i < FourtyThreeChars; i++)
+                {
+                    if (filledInPassword[i] != user.Password[i])
+                    {
+                        break;
+                    } 
+                    else
+                    {
+                        counter++;
+                    }
+                }
+                
+                if (user.Email == email && counter == FourtyThreeChars)
                 {
                     loginCheck = true;
-                }
+                }         
             }
             return loginCheck;
         }
@@ -41,9 +56,23 @@ namespace SomerenLogic
             // Check for each User in the list<Login> users if their email and password are the same
             foreach (Login user in users)
             {
-                byte[] digestBytes = SetGivenPasswordToHash(password, user);
 
-                if (user.Email == email && user.Password == digestBytes)
+                string filledInPassword = pwsh.PasswordPlusSalt(password, user.Salt);
+                // check if the first 43 letters in a string are the same as the password
+                int counter = 0;
+                for (int i = 0; i < FourtyThreeChars; i++)
+                {
+                    if (filledInPassword[i] != user.Password[i])
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        counter++;
+                    }
+                }
+
+                if (user.Email == email && counter == FourtyThreeChars)
                 {
                     currentUser = user;
                 }
@@ -51,25 +80,13 @@ namespace SomerenLogic
             return currentUser;
         }
         
-        private static byte[] SetGivenPasswordToHash(string password, Login user)
-        {
-            HashAlgorithm hashAlgo = new SHA256Managed();
-            byte[] passwordAsBytes = Encoding.UTF8.GetBytes(password);
-
-            List<byte> passwordWithSaltBytes = new List<byte>();
-            passwordWithSaltBytes.AddRange(passwordAsBytes);
-            passwordWithSaltBytes.AddRange(user.SaltHash);
-
-            byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
-            return digestBytes;
-        }
         
         public List<Login> GetAllLogins()
         {
             return loginDao.GetAllLogins();
         }
 
-        public void AddNewUser(string email, byte[] passwordHash, byte[] saltyUser)
+        public void AddNewUser(string email, byte[] passwordHash, string saltyUser)
         {
             loginDao.AddNewUser(email, passwordHash, saltyUser);
         }

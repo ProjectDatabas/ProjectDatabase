@@ -27,9 +27,10 @@ namespace SomerenDAL
             {
                 int userID = (int)dr["UserID"];
                 string loginEmail = (string)dr["LoginEmail"];
-                byte[] passwordHash = (byte[])dr["PasswordHash"];
+                byte[] passwordHashByte = (byte[])dr["PasswordHash"];
+                string passwordHash = Convert.ToBase64String(passwordHashByte);
                 bool isAdmin = (bool)dr["IsAdmin"];
-                byte[] saltyUser = (byte[])dr["SaltyUser"];
+                string saltyUser = (string)dr["SaltyUser"];
 
                 logins.Add(new Login(userID, loginEmail, passwordHash, isAdmin, saltyUser));
             }
@@ -37,7 +38,7 @@ namespace SomerenDAL
         }
 
 
-        public void AddNewUser(string email, byte[] passwordHash, byte[] saltyUser)
+        public void AddNewUser(string email, byte[] passwordHash, string saltyUser)
         {
             //foreach (Login L in GetAllLogins())
             //{
@@ -45,14 +46,14 @@ namespace SomerenDAL
             //    {
             //        throw new Exception("User already exists");
             //    }
-            //}
+            //}            
 
             string query = "INSERT INTO [user](LoginEmail, IsAdmin, PasswordHash, SaltyUser) VALUES(@LoginEmail, @IsAdmin, @PasswordHash, @SaltyUser); ";
 
             SqlParameter[] sqlParameters = { new SqlParameter("@LoginEmail", SqlDbType.NVarChar) { Value = email },
                                              new SqlParameter("@IsAdmin", SqlDbType.Bit) { Value = false },
                                              new SqlParameter("@PasswordHash", SqlDbType.Binary) { Value = passwordHash },
-                                             new SqlParameter("@SaltyUser", SqlDbType.Binary) { Value = saltyUser } };
+                                             new SqlParameter("@SaltyUser", SqlDbType.NVarChar) { Value = saltyUser } };
 
             ExecuteEditQuery(query, sqlParameters);
         }

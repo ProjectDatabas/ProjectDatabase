@@ -25,8 +25,8 @@ namespace SomerenUI
         // Login button
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            bool loginSuccess = loginLogic.CheckLogin(emailLabel.Text, passwordLabel.Text);
-            Login currentUser = loginLogic.GetCurrentUser(emailLabel.Text, passwordLabel.Text);
+            bool loginSuccess = loginLogic.CheckLogin(emailTextBox.Text, passwordTextBox.Text);
+            Login currentUser = loginLogic.GetCurrentUser(emailTextBox.Text, passwordTextBox.Text);
             // Check if username and password are correct
             if (loginSuccess)
             {
