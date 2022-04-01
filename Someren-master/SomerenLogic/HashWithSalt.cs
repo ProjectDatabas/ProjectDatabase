@@ -9,10 +9,10 @@ namespace SomerenLogic
     // Author: "Andras Nemes"
     public class HashWithSalt
     {
-        public string Salt { get; }
-        public string Digest { get; set; }
+        public byte[] Salt { get; }
+        public byte[] Digest { get; }
 
-        public HashWithSalt(string salt, string digest)
+        public HashWithSalt(byte[] salt, byte[] digest)
         {
             Salt = salt;
             Digest = digest;
