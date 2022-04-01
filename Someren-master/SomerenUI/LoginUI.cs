@@ -1,4 +1,7 @@
 ﻿using System;
+using SomerenUI;
+using SomerenLogic;
+using SomerenModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,8 @@ namespace SomerenUI
 {
     public partial class LoginUI : Form
     {
+        private LoginLogic loginLogic = new LoginLogic();
+
         public LoginUI()
         {
             InitializeComponent();
@@ -20,19 +25,36 @@ namespace SomerenUI
         // Login button
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            bool loginSuccess = loginLogic.CheckLogin(emailTextBox.Text, passwordTextBox.Text);
+            Login currentUser = loginLogic.GetCurrentUser(emailTextBox.Text, passwordTextBox.Text);
             // Check if username and password are correct
-            if (emailTextBox.Text == "admin" && passwordTextBox.Text == "admin")
+            if (loginSuccess)
             {
-                // Show the main screen
-                SomerenUI mainFrame = new SomerenUI();
+                // If correct, show the main form
+                SomerenUI mainFrame = new SomerenUI(currentUser);
                 mainFrame.Show();
                 this.Hide();
             }
             else
             {
-                // Show error message
-                MessageBox.Show("Incorrect username or password", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // If incorrect, show error message
+                MessageBox.Show("Incorrect username or password", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            //create instance of new form
+            RegistrationForm registerUI = new RegistrationForm();
+
+            //Display the new form
+            this.Hide();
+            registerUI.Show();
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

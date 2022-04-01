@@ -46,7 +46,11 @@
     <Compile Include="ActivityService.cs" />
     <Compile Include="DrinkService.cs" />
     <Compile Include="DrinksService.cs" />
+    <Compile Include="HashWithSaltResult.cs" />
+    <Compile Include="LoginLogic.cs" />
     <Compile Include="OrderService.cs" />
+    <Compile Include="PasswordWithSaltHasher.cs" />
+    <Compile Include="RNG.cs" />
     <Compile Include="TeacherService.cs" />
     <Compile Include="StudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
