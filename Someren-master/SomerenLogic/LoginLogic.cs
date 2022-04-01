@@ -15,22 +15,36 @@ namespace SomerenLogic
 
         public bool CheckLogin(string email, string password)
         {
-            // Check if email and password are correct
-            return email == "admin@inholland.nl" && password == "admin";
+            LoginDao loginDao = new LoginDao();
+            List<Login> users = loginDao.GetAllLogins();
+            bool loginCheck = false;
+
+            // Check for each User in the list<Login> users if their email and password are the same
+            foreach (Login user in users)
+            {
+                if (user.Email == email && user.Password == password)
+                {
+                    loginCheck = true;
+                }
+            }
+            return loginCheck;
         }
 
-        private static void TestPasswordHasher()
+        public Login GetCurrentUser(string email, string password)
         {
-            PasswordWithSaltHasher pwHasher = new PasswordWithSaltHasher();
-            HashWithSalt hashResultSha256 = pwHasher.HashWithSalt("ultra_safe_P455w0rD", 64, SHA256.Create());
-            HashWithSalt hashResultSha512 = pwHasher.HashWithSalt("ultra_safe_P455w0rD", 64, SHA512.Create());
-            HashWithSalt unHashedResultSha256 = pwHasher.HashWithSalt("ultra_safe_P455w0rD", 64, SHA256.Create());
+            LoginDao loginDao = new LoginDao();
+            List<Login> users = loginDao.GetAllLogins();
+            Login currentUser = new Login();
 
-            Console.WriteLine(hashResultSha256.Salt);
-            Console.WriteLine(hashResultSha256.Digest);
-            Console.WriteLine();
-            Console.WriteLine(hashResultSha512.Salt);
-            Console.WriteLine(hashResultSha512.Digest);
+            // Check for each User in the list<Login> users if their email and password are the same
+            foreach (Login user in users)
+            {
+                if (user.Email == email && user.Password == password)
+                {
+                    currentUser = user;
+                }
+            }
+            return currentUser;
         }
 
         public List<Login> GetAllLogins()

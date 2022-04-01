@@ -24,11 +24,13 @@ namespace SomerenUI
         // Login button
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            bool loginSuccess = loginLogic.CheckLogin(emailLabel.Text, passwordLabel.Text);
+            Login currentUser = loginLogic.GetCurrentUser(emailLabel.Text, passwordLabel.Text);
             // Check if username and password are correct
-            if (loginLogic.CheckLogin(emailTextBox.Text, passwordTextBox.Text))
+            if (loginSuccess)
             {
                 // If correct, show the main form
-                SomerenUI mainFrame = new SomerenUI();
+                SomerenUI mainFrame = new SomerenUI(user);
                 mainFrame.Show();
                 this.Hide();
             }
